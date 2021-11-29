@@ -1,0 +1,13 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>
+      Home
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content style="height: 100px" [fullscreen]="true">
+  <div id="container" >
+    <ion-button (click)="initModal()">Click to select consultant</ion-button>
+    <p *ngIf="modalDataResponse">{{modalDataResponse}}</p>
+  </div>
+</ion-content>
