@@ -31,20 +31,20 @@ export class LogInComponent implements OnInit {
     userResponse.name = '----------';
     userResponse.email = '----------';
     userResponse.surname = '----------';
-    const strings: Array<string> = ['----------', '----------'];   //// non si può pushare gli array di stringhe, ma solo assegnare
+    const strings: Array<string> = ['----------', '----------'];   //// non si può fare push sugli array di stringhe, ma solo assegnare
     userResponse.roles = strings;
     this.listElements.push(userResponse);
   }
 
   async submitToServerLogIn() {
-
     if (this.appComponent.pageConsultant === true) {
       this.listElements = this.consulantService.getConsultantList();
       await this.delay(500);
       for (this.element of this.listElements) {
         if (this.element.userName === this.childInput) {
-          this.appComponent.userLogged = this.childInput;
           alert("User " + this.childInput + " found");
+          this.consulantService.loggedConsultant = this.element;
+          document.getElementById("header").textContent = "Commercialisti" + "logged: "+this.childInput;
           return;
         }
       }
@@ -56,6 +56,7 @@ export class LogInComponent implements OnInit {
       for (this.element of this.listElements) {
         if (this.element.userName === this.childInput) {
           this.appComponent.userLogged = this.childInput;
+          document.getElementById("header").textContent = "Commercialisti " + "logged: "+this.childInput;
           alert("User " + this.childInput + " found");
           return;
         }

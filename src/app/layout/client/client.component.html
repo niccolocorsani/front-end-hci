@@ -27,13 +27,14 @@
             </ion-menu-toggle>
           </ion-list>
         </ion-col>
-        <ion-col size="6" size-sm>
+        <ion-col >
           <!--<object data="assets/polygon-rotation.svg"></object>-->
           <app-log-in-or-register-menu *ngIf="openDialogVarAccount"></app-log-in-or-register-menu>
-          <app-show-users *ngIf="openDialogVarShowUsers"></app-show-users>
+          <app-show-users *ngIf="openDialogCalendar || openDialogVarShowUsers"></app-show-users>
           <app-my-calendar *ngIf="openDialogCalendar"></app-my-calendar>
         </ion-col>
-        <ion-col size="0" size-sm> <!--con size = 0 non fa il display di quest'ultima colonna-->
+        <ion-col>
+          <!--con size = 0 non fa il display di quest'ultima colonna-->
           <!--<img src="http://www.cflc.eu/wp-content/uploads/2018/12/commercialista-impresa-1080x675.jpg">-->
           <!--  Qui sarebbe interssante metterci una cosa fatta con figma, design bellino dove viene spiegata l'app
           -->

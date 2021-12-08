@@ -1,7 +1,7 @@
 <ion-app class="background-image">
   <ion-header>
     <ion-toolbar style="  --ion-background-color: linear-gradient(to right, #11998e, #38ef7d);">
-      <ion-title class="ion-text-center">Commercialisti</ion-title>
+      <ion-title id="header" class="ion-text-center">Commercialisti</ion-title>
     </ion-toolbar>
   </ion-header>
   <ion-content>
@@ -30,7 +30,7 @@
         <ion-col >
           <!--<object data="assets/polygon-rotation.svg"></object>-->
           <app-log-in-or-register-menu *ngIf="openDialogVarAccount"></app-log-in-or-register-menu>
-          <app-show-users></app-show-users>
+          <app-show-users *ngIf="openDialogCalendar || openDialogVarShowUsers" ></app-show-users>
           <app-my-calendar *ngIf="openDialogCalendar"></app-my-calendar>
         </ion-col>
         <ion-col>

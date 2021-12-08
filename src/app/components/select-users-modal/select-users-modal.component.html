@@ -1,17 +1,14 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>Ionic Modal Popover Demo</ion-title>
+    <ion-title>Select consultant</ion-title>
   </ion-toolbar>
 </ion-header>
-
 <ion-content>
   <ion-grid>
     <ion-row>
       <ion-col text-center>
-
         <div style="width: 60%"> <!--attraverso la specifica di width: 50%, verrà occupato meta dello spazio relativo allo spazio di ion-col-->
           <br/>
-
           <ion-item  (click)="retriveUsers()">Click to show consultants available </ion-item>
           <div *ngIf="showUser==true">
             <div *ngFor="let item of listElements">
@@ -19,7 +16,7 @@
                 <li class="list-group-item">
                   <br/>
                   UserName: {{item.userName}}
-                  <ion-button expand="block" fill="outline" (click)="loadAppointments(item.userName)">clicca per selezionare consulente</ion-button>
+                  <ion-button expand="block" fill="outline" (click)="loadAppointments(item.id)">clicca per selezionare consulente</ion-button>
                 </li>
                 <li class="list-group-item">
                   <br/>
@@ -29,14 +26,13 @@
                   <br/>
                   Email: {{item.lastName}}
                 </li>
-
-                <li class="list-group-item" *ngFor="let itemRole of item.roles">
+                <li class="list-group-item" *ngFor="let appointment of item.appointments">
                   <br/>
-                  Ruolo:
+                  appuntamento:
                   <br/>
                   <ul class="list-group">
                     <li class="list-group-item">
-                      {{itemRole}}
+                      {{appointment}}
                     </li>
                   </ul>
                 </li>

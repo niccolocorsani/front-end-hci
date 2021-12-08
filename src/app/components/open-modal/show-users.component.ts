@@ -12,31 +12,22 @@ import {SelectUsersModalComponent} from "../select-users-modal/select-users-moda
 })
 export class ShowUsersComponent implements OnInit {
 
-
-  constructor(public modalCtrl: ModalController) {
+  constructor(private consultantService: RequestConsultantServiceService, public modalCtrl: ModalController) {
   }
 
   ngOnInit(): void {
   }
 
-  modalDataResponse: any;
 
 
   async initModal() {
     const modal = await this.modalCtrl.create({
       component: SelectUsersModalComponent,
-      componentProps: {
-        'name': 'The Winter Soldier'
-      }
     });
-
-    modal.onDidDismiss().then((modalDataResponse) => {
-      if (modalDataResponse !== null) {
-        this.modalDataResponse = modalDataResponse.data;
-        console.log('Modal Sent Data : '+ modalDataResponse.data);
-      }
-    });
-
     return await modal.present();
+  }
+
+  viewLoggedUserAppointments() {
+    this.consultantService.viewLoggedUserAppointments();
   }
 }

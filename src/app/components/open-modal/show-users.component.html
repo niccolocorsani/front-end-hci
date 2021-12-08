@@ -7,7 +7,9 @@
 </ion-header>
 <ion-content style="height: 100px" [fullscreen]="true">
   <div id="container" >
-    <ion-button (click)="initModal()">Click to select consultant</ion-button>
-    <p *ngIf="modalDataResponse">{{modalDataResponse}}</p>
+    <ion-button (click)="initModal()">Click to select appointment consultant</ion-button>
+  </div>
+  <div  >
+    <ion-button (click)="viewLoggedUserAppointments()">Click to view my scheduled appointments</ion-button>
   </div>
 </ion-content>

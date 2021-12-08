@@ -20,8 +20,7 @@ export class SelectUsersModalComponent implements OnInit {
   ngOnInit() { }
 
   async close() {
-    const closeModal: string = "Modal Closed";
-    await this.modalCtrl.dismiss(closeModal);
+    await this.modalCtrl.dismiss();
   }
 
   public listElements: Array<ConsultantResponse> = [];
@@ -43,8 +42,9 @@ export class SelectUsersModalComponent implements OnInit {
   eventStart: any;
   modalDataResponse: any;
 
-  loadAppointments(userName: string) {
-    this.consultantService.updateAppointments(userName);
+  loadAppointments(id: string) {
+    alert("smkdcs")
+    this.consultantService.updateAppointments(id);
   }
 
 }
