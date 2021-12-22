@@ -90,7 +90,7 @@ export class RequestConsultantServiceService {
 
   public getConsultantList(): any {
     //// metodo asicnrono
-    alert("ooooo")
+    alert("Retrive consultant list")
     this.listElements.splice(0, this.listElements.length);
     this.http.get<any>(this.url + '/consultant/api/consultants').pipe(
       // delay(1000),

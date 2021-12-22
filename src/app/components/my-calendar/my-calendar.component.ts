@@ -102,7 +102,7 @@ export class MyCalendarComponent implements OnInit {
             end.getUTCMinutes()
           )
         );
-        alert('Aggiunto evento con orario: ' + event.startTime + ' ' + event.endTime)
+        alert('Aggiunto evento con orario: ' + event.startTime + ' ' + event.endTime+'..')
         this.eventSource.push(event);
         this.myCal.loadEvents();
       }

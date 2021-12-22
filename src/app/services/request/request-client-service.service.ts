@@ -13,7 +13,7 @@ export class RequestClientServiceService {
   private listElements: Array<ClientResponse> = [];
 
   myObserver = {
-    error: (err: any) => alert('Observer got an error: ' + err),
+    error: (err: any) => alert('Observer got an error: ' + err +'..'),
   };
 
   constructor(public http: HttpClient) {
@@ -45,7 +45,6 @@ export class RequestClientServiceService {
     return this.listElements;
   }
 
-
   private handleError(error: HttpErrorResponse) {
     if (error.status === 0) {
       // A client-side or network error occurred. Handle it accordingly.
@@ -60,5 +59,4 @@ export class RequestClientServiceService {
     return throwError(
       'Something bad happened; please try again later.');
   }
-
 }

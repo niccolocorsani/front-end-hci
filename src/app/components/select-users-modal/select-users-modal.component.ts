@@ -43,7 +43,7 @@ export class SelectUsersModalComponent implements OnInit {
   modalDataResponse: any;
 
   loadAppointments(id: string) {
-    alert("smkdcs")
+    alert("Load appointments..")
     this.consultantService.updateAppointments(id);
   }
 

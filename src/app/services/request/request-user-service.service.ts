@@ -42,7 +42,7 @@ export class RequestUserServiceService {
 
       },
       error => {
-        alert('messaggio di errore' + error.message);
+        alert('messaggio di errore' + error.message+'..');
       });
     this.http.get<any>(this.url + '/operations-backend/api/user/2').subscribe(this.myObserver);
     return this.http.get<any>(this.url + '/operations-backend/api/user/2');

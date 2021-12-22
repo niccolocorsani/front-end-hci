@@ -42,13 +42,13 @@ export class LogInComponent implements OnInit {
       await this.delay(500);
       for (this.element of this.listElements) {
         if (this.element.userName === this.childInput) {
-          alert("User " + this.childInput + " found");
+          alert("User " + this.childInput + " found..");
           this.consulantService.loggedConsultant = this.element;
           document.getElementById("header").textContent = "Commercialisti" + "logged: "+this.childInput;
           return;
         }
       }
-      alert("User not found");
+      alert("User not found..");
     }
     else   {
       this.listElements = this.clientService.getClientList();
@@ -57,11 +57,11 @@ export class LogInComponent implements OnInit {
         if (this.element.userName === this.childInput) {
           this.appComponent.userLogged = this.childInput;
           document.getElementById("header").textContent = "Commercialisti " + "logged: "+this.childInput;
-          alert("User " + this.childInput + " found");
+          alert("User " + this.childInput + " found..");
           return;
         }
       }
-      alert("User not found");
+      alert("User not found..");
     }
   }
 
