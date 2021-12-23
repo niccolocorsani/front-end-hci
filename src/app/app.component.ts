@@ -12,8 +12,7 @@ export class AppComponent {
   chosePage = true;
  userLogged: string;
 
-  constructor() {
-  }
+
   openCliente() {
     this.pageConsultant = false;
     this.chosePage = false;

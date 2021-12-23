@@ -1,7 +1,5 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {ConsultantResponse} from "../../services/response/consultant-response";
 import {RequestConsultantServiceService} from "../../services/request/request-consultant-service.service";
-import {MyCalendarComponent} from "../my-calendar/my-calendar.component";
 import {ModalController} from "@ionic/angular";
 import {SelectUsersModalComponent} from "../select-users-modal/select-users-modal.component";
 
