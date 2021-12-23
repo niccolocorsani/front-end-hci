@@ -1,10 +1,8 @@
 import {Injectable} from '@angular/core';
-import {ClientResponse} from "../response/client-response";
 import {HttpClient, HttpErrorResponse} from "@angular/common/http";
 import {catchError, map} from "rxjs/operators";
 import {BehaviorSubject, Observable, Subject, throwError} from "rxjs";
 import {ConsultantResponse} from "../response/consultant-response";
-import {forEach} from "@angular-devkit/schematics";
 
 @Injectable({
   providedIn: 'root'
@@ -97,7 +95,6 @@ export class RequestConsultantServiceService {
       map((data: any) => {
         data.forEach(element => {
           this.listElements.push(new ConsultantResponse(element));
-          let response = new ConsultantResponse(element);
         });
         return this.listElements;
       })).subscribe({

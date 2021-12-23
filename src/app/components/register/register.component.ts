@@ -1,6 +1,5 @@
 import {Component, OnInit} from '@angular/core';
 import {UserResponse} from "../../services/response/user-response";
-import {HttpHeaders} from "@angular/common/http";
 import {RequestClientServiceService} from "../../services/request/request-client-service.service";
 import {AppComponent} from "../../app.component";
 import {RequestConsultantServiceService} from "../../services/request/request-consultant-service.service";
@@ -45,7 +44,6 @@ export class RegisterComponent implements OnInit {
       this.clientService.putClient(this.childInputUsername);
     else this.consulantService.putConsultant(this.childInputUsername);
     alert('aggiunto utente: ' + this.childInputUsername);
-    return;
   }
 
   delay(ms: number) {

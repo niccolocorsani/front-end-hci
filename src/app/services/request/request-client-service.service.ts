@@ -26,7 +26,6 @@ export class RequestClientServiceService {
     this.http.put<ClientResponse>(this.url + '/client/putClient', body).pipe(
       catchError(this.handleError)
     ).subscribe(this.myObserver); ////sembra che senza sto subscribe non sia in grado di fare la richiesta
-    return;
   }
 
   public getClientList(): any {
@@ -35,10 +34,8 @@ export class RequestClientServiceService {
     this.http.get<any>(this.url + '/client/api/clients').pipe(
       // delay(1000),
       map((data: any) => {
-        // @ts-ignore
         data.forEach(element => {
           this.listElements.push(new ClientResponse(element));
-          let response = new ClientResponse(element);
         });
         return this.listElements;
       })).subscribe(this.myObserver);

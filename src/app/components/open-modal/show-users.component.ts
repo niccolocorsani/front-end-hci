@@ -1,4 +1,4 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {RequestConsultantServiceService} from "../../services/request/request-consultant-service.service";
 import {ModalController} from "@ionic/angular";
 import {SelectUsersModalComponent} from "../select-users-modal/select-users-modal.component";
@@ -22,7 +22,7 @@ export class ShowUsersComponent implements OnInit {
     const modal = await this.modalCtrl.create({
       component: SelectUsersModalComponent,
     });
-    return await modal.present();
+    return modal.present();
   }
 
   viewLoggedUserAppointments() {

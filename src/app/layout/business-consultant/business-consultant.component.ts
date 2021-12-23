@@ -7,7 +7,6 @@ import { Component, OnInit } from '@angular/core';
 })
 export class BusinessConsultantComponent implements OnInit {
 
-  constructor() { }
 
   ngOnInit() {}
 
@@ -74,7 +73,6 @@ export class BusinessConsultantComponent implements OnInit {
       this.openDialogCalendar = true;
       this.openDialogVarShowUsers = false;
       this.openDialogVarAccount = false;
-      return;
     }
   }
 
