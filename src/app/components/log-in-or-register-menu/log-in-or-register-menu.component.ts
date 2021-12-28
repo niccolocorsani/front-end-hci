@@ -6,7 +6,6 @@ import {HttpHeaders} from '@angular/common/http';
 @Component({
   selector: 'app-log-in-or-register-menu',
   templateUrl: './log-in-or-register-menu.component.html',
-  styleUrls: ['./log-in-or-register-menu.component.css']
 })
 export class LogInOrRegisterMenuComponent implements OnInit {
 

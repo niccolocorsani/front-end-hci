@@ -7,7 +7,6 @@ import {MyCalendarComponent} from "../my-calendar/my-calendar.component";
 @Component({
   selector: 'app-select-users-modal',
   templateUrl: './select-users-modal.component.html',
-  styleUrls: ['./select-users-modal.component.scss'],
 })
 export class SelectUsersModalComponent implements OnInit {
 

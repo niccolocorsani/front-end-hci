@@ -1,7 +1,7 @@
 import {Injectable} from '@angular/core';
 import {HttpClient, HttpErrorResponse} from "@angular/common/http";
 import {catchError, map} from "rxjs/operators";
-import {BehaviorSubject, Observable, Subject, throwError} from "rxjs";
+import {BehaviorSubject, throwError} from "rxjs";
 import {ConsultantResponse} from "../response/consultant-response";
 
 @Injectable({
@@ -27,13 +27,13 @@ export class RequestConsultantServiceService {
     this.getConsultantById(id);
     await this.delay(500);
     let consultant = this.currentSelectedConsultant;
-    var events = [];
+    let events = [];
     console.log(consultant)
     let i = 0;
     consultant.appointments.forEach(element =>{
       let appointment = consultant.appointments[i++]
-      var startTime;
-      var endTime;
+      let startTime;
+      let endTime;
       let splitDate = appointment.date.split("-");
       let splitStartTime = appointment.startTime.split(":");
       let splitEndTime = appointment.endTime.split(":");
@@ -104,9 +104,10 @@ export class RequestConsultantServiceService {
     return this.listElements;
   }
 
-  delay(ms: number) {
-    return new Promise(resolve => setTimeout(resolve, ms));
+  public viewLoggedUserAppointments(){
+    this.updateAppointments(this.loggedConsultant.id);
   }
+
 
   private handleError(error: HttpErrorResponse) {
     if (error.status === 0) {
@@ -123,8 +124,8 @@ export class RequestConsultantServiceService {
       'Something bad happened; please try again later.');
   }
 
-
-  public viewLoggedUserAppointments(){
-    this.updateAppointments(this.loggedConsultant.id);
+  delay(ms: number) {
+    return new Promise(resolve => setTimeout(resolve, ms));
   }
+
 }

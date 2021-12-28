@@ -4,7 +4,7 @@ import {RouteReuseStrategy} from '@angular/router';
 import {IonicModule, IonicRouteStrategy} from '@ionic/angular';
 import {AppComponent} from './app.component';
 import {AppRoutingModule} from './app-routing.module';
-import {ShowUsersComponent} from './components/open-modal/show-users.component';
+import {OpenModal} from './components/open-modal/open-modal';
 import {LogInOrRegisterMenuComponent} from './components/log-in-or-register-menu/log-in-or-register-menu.component';
 import {LogInComponent} from './components/log-in/log-in.component';
 import {MyInputComponent} from './components/my-input/my-input.component';
@@ -26,7 +26,7 @@ import {SelectUsersModalComponent} from "./components/select-users-modal/select-
 @NgModule({
   declarations: [
     AppComponent,
-    ShowUsersComponent,
+    OpenModal,
     LogInOrRegisterMenuComponent,
     LogInComponent,
     MyInputComponent,

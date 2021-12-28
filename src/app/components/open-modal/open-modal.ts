@@ -4,11 +4,10 @@ import {ModalController} from "@ionic/angular";
 import {SelectUsersModalComponent} from "../select-users-modal/select-users-modal.component";
 
 @Component({
-  selector: 'app-show-users',
+  selector: 'app-open-modal',
   templateUrl: './show-users.component.html',
-  styleUrls: ['./show-users.component.css']
 })
-export class ShowUsersComponent implements OnInit {
+export class OpenModal implements OnInit {
 
   constructor(private consultantService: RequestConsultantServiceService, public modalCtrl: ModalController) {
   }

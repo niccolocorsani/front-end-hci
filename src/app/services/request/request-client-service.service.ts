@@ -19,7 +19,6 @@ export class RequestClientServiceService {
   constructor(public http: HttpClient) {
   }
 
-
   public putClient(userName: string): any {
     let body = new ClientResponse();
     body.firstName = userName;

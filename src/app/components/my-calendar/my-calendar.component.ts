@@ -9,7 +9,6 @@ import {RequestConsultantServiceService} from "../../services/request/request-co
 @Component({
   selector: 'app-my-calendar',
   templateUrl: './my-calendar.component.html',
-  styleUrls: ['./my-calendar.component.scss'],
 })
 export class MyCalendarComponent implements OnInit {
   eventSource = [];

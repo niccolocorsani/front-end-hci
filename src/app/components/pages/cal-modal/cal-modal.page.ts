@@ -4,7 +4,6 @@ import {ModalController} from '@ionic/angular';
 @Component({
   selector: 'app-cal-modal',
   templateUrl: './cal-modal.page.html',
-  styleUrls: ['./cal-modal.page.scss'],
 })
 export class CalModalPage implements AfterViewInit {
   calendar = {
