@@ -13,6 +13,7 @@ export class OpenModal implements OnInit {
   }
 
   ngOnInit(): void {
+    //nothing to do
   }
 
 

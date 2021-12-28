@@ -34,6 +34,7 @@ export class RegisterComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    //nothing to do
   }
 
   async submitToServerRegister() {

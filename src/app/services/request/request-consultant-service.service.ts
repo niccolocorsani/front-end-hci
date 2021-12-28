@@ -83,7 +83,6 @@ export class RequestConsultantServiceService {
     this.http.put<ConsultantResponse>(this.url + '/consultant/putConsultant', body).pipe(
       catchError(this.handleError)
     ).subscribe(this.myObserver); ////sembra che senza sto subscribe non sia in grado di fare la richiesta
-    return;
   }
 
   public getConsultantList(): any {

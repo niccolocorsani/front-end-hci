@@ -10,13 +10,12 @@ import {RequestClientServiceService} from "../../services/request/request-client
 })
 export class LogInComponent implements OnInit {
 
-
+  public listElements: Array<UserResponse> = [];
+  private element: any;
   name = 'Insert name';
   userName = 'Insert Username';
   eMail = 'Insert Email';
-  public listElements: Array<UserResponse> = [];
-  private element: any;
-  childInput: string | undefined;
+  childInput: string ;
 
   addInputToVariable(newItem: string) {
     this.childInput = newItem;

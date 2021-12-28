@@ -6,17 +6,12 @@ import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 })
 export class MyInputComponent implements OnInit {
 
-  constructor() {
-  }
-
+  //https://angular.io/guide/inputs-outputs
+  @Output() newItemEvent = new EventEmitter<string>();
   @Input() inputStringValue = '';
 
-
-////https://angular.io/guide/inputs-outputs
-  @Output() newItemEvent = new EventEmitter<string>();
-
-
   ngOnInit(): void {
+    //nothing to do
   }
 
 

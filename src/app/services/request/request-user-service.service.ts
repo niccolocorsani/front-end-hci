@@ -1,7 +1,7 @@
-import {Inject, Injectable} from '@angular/core';
+import { Injectable} from '@angular/core';
 import {HttpClient, HttpErrorResponse, HttpHeaders} from '@angular/common/http';
 import {Observable, throwError} from 'rxjs';
-import {catchError, delay, map} from 'rxjs/operators';
+import {catchError, map} from 'rxjs/operators';
 import {UserResponse} from '../response/user-response';
 
 @Injectable({
@@ -100,7 +100,6 @@ export class RequestUserServiceService {
     this.http.post<UserResponse>(this.url + '/operations-backend/api/user', userResponse).pipe(
       catchError(this.handleError)
     ).subscribe(this.myObserver); ////sembra che senza sto subscribe non sia in grado di fare la richiesta
-    return;
   }
 
   private handleError(error: HttpErrorResponse) {

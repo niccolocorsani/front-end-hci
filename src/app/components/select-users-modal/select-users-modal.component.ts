@@ -16,7 +16,9 @@ export class SelectUsersModalComponent implements OnInit {
     this.showUser = false;
   }
 
-  ngOnInit() { }
+  ngOnInit() {
+    //nothing to do
+  }
 
   async close() {
     await this.modalCtrl.dismiss();

@@ -10,6 +10,7 @@ export class NotificationComponent implements OnInit {
   constructor(private localNotifications: LocalNotifications) { }
 
   ngOnInit(): void {
+    //nothing to do
   }
 //https://ionicframework.com/docs/native/local-notifications
 //Per far funzionare il tutto qui sotto è stato aggiunto:

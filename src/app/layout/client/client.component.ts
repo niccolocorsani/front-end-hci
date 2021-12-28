@@ -7,7 +7,9 @@ import { Component, OnInit } from '@angular/core';
 export class ClientComponent implements OnInit {
 
 
-  ngOnInit() {}
+  ngOnInit() {
+    //nothing to do
+  }
 
 
   openDialogVarAccount = false;
