@@ -5,3 +5,13 @@
 /documentation/
 request-user-service.service.ts
 user-response.ts
+Readme2.md
+e2e/
+.github/
+capacitor.config.ts
+.eslintrc.json
+.browserslistrc
+.editorconfig
+capacitor.config.ts
+package-lock.json
+tsconfig.doc.json
