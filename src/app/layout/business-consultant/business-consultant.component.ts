@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {OpenComponentsService} from "../../services/open-components/open-components.service";
 
 @Component({
   selector: 'app-business-consultant',
@@ -12,19 +13,12 @@ export class BusinessConsultantComponent implements OnInit {
   }
 
 
-  openDialogVarAccount = false;
-  openDialogVarShowUsers = false;
-  openDialogNotification = false;
-  openDialogCalendar = false;
-  openDialogMenu = true;
-
-
-
+  constructor(private openComponentsService: OpenComponentsService){
+  }
 
 
   public appPages = [
     {title: 'Account', url: '/folder/Inbox', icon: 'mail'},
-    {title: 'Show Users', url: '/folder/Outbox', icon: 'paper-plane'},
     {title: 'Calendar', url: '/folder/Trash', icon: 'trash'},
     /*  {title: 'Trash', url: '/folder/Trash', icon: 'star'},
       {title: 'Trash', url: '/folder/Trash', icon: 'alarm'},
@@ -43,37 +37,28 @@ export class BusinessConsultantComponent implements OnInit {
 
 
   openMenu() {
-    if (this.openDialogMenu === false) {
-      this.openDialogMenu = true;
+    if (this.openComponentsService.openDialogMenu === false) {
+      this.openComponentsService.openDialogMenu = true;
     } else {
-      this.openDialogMenu = false;
-      this.openDialogVarAccount = false;
-      this.openDialogVarShowUsers = false;
-      this.openDialogCalendar = false;
+      this.openComponentsService.openDialogMenu = false;
+      this.openComponentsService.openDialogVarAccount = false;
+      this.openComponentsService.openDialogCalendar = false;
 
     }
   }
 
   openDialog(title: any) {
     if (title === 'Account') {
-      this.openDialogVarAccount = true;
-      this.openDialogVarShowUsers = false;
-      this.openDialogCalendar = false;
+      this.openComponentsService.openDialogVarAccount = true;
+      this.openComponentsService.openDialogCalendar = false;
 
       return;
     }
-    if (title === 'Show Users') {
-      this.openDialogVarShowUsers = true;
-      this.openDialogVarAccount = false;
-      this.openDialogCalendar = false;
 
-      return;
-    }
 
     if (title === 'Calendar') {
-      this.openDialogCalendar = true;
-      this.openDialogVarShowUsers = false;
-      this.openDialogVarAccount = false;
+      this.openComponentsService.openDialogCalendar = true;
+      this.openComponentsService.openDialogVarAccount = false;
     }
   }
 

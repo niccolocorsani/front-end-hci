@@ -139,7 +139,7 @@ export class MyCalendarComponent implements OnInit {
           endTime: endTime,
           allDay: false,
         });
-    ////Provando a scatenare il riempiment cliccando il tasto random events si osserva che i dati di otherevents sono nulli
+    ////Provando a scatenare il riempimento cliccando il tasto random events si osserva che i dati di otherevents sono nulli
     alert("prima dell'assegnamento " + this.otherEvents);
     this.eventSource = events;
 

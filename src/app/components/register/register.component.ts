@@ -39,7 +39,6 @@ export class RegisterComponent implements OnInit {
 
   async submitToServerRegister() {
     await this.delay(500);
-    ////Post request realizzata attraverso uso di algoritmo di Sprin Security
     if (this.appComponent.pageClient === true)
       this.clientService.putClient(this.childInputUsername);
     else this.consulantService.putConsultant(this.childInputUsername);

@@ -1,14 +1,14 @@
 <ion-app class="background-image">
   <ion-header>
     <ion-toolbar style="  --ion-background-color: linear-gradient(to right, #11998e, #38ef7d);">
-      <ion-title class="ion-text-center">Commercialisti</ion-title>
+      <ion-title  id="header" class="ion-text-center">Client portal</ion-title>
     </ion-toolbar>
   </ion-header>
   <ion-content>
     <ion-item style="padding-top: 0px; width: 4%">
-      <ion-icon *ngIf="!openDialogMenu" (click)="openMenu()"
+      <ion-icon *ngIf="!openComponentsService.openDialogMenu" (click)="openMenu()"
                 name="list-outline" size="large"></ion-icon>
-      <ion-icon *ngIf="openDialogMenu" (click)="openMenu()"
+      <ion-icon *ngIf="openComponentsService.openDialogMenu" (click)="openMenu()"
                 name="close-outline" size="large"></ion-icon>
     </ion-item>
     <ion-grid class="ion-no-padding">
@@ -16,7 +16,7 @@
         <ion-col size="6" size-sm>
           <!--La combinazione di size="3" insieme a size-md renderizza 3 colonne solo quando è su sm device, l'idea è di partire a  fare un layout
           buono per i device desktop e poi aggiungere  sm, md, lg così da aggiustare gli small, medium e large devices-->
-          <ion-list *ngIf="openDialogMenu" id="inbox-list">
+          <ion-list *ngIf="openComponentsService.openDialogMenu" id="inbox-list"  style="height: 100vh !important">
             <ion-menu-toggle auto-hide="false" *ngFor="let p of appPages; let i = index">
               <ion-item routerDirection="root" [routerLink]="[p.url]" lines="none" detail="false"
                         routerLinkActive="selected" (click)="openDialog(p.title)">
@@ -29,9 +29,9 @@
         </ion-col>
         <ion-col >
           <!--<object data="assets/polygon-rotation.svg"></object>-->
-          <app-log-in-or-register-menu *ngIf="openDialogVarAccount"></app-log-in-or-register-menu>
-          <app-open-modal *ngIf="openDialogCalendar || openDialogVarShowUsers"></app-open-modal>
-          <app-my-calendar *ngIf="openDialogCalendar"></app-my-calendar>
+          <app-log-in-or-register-menu *ngIf="openComponentsService.openDialogVarAccount"></app-log-in-or-register-menu>
+          <app-open-modal *ngIf="openComponentsService.openDialogCalendar || openComponentsService.openDialogVarShowUsers"></app-open-modal>
+          <app-my-calendar *ngIf="openComponentsService.openDialogCalendar"></app-my-calendar>
         </ion-col>
         <ion-col>
           <!--con size = 0 non fa il display di quest'ultima colonna-->

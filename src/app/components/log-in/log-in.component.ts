@@ -25,13 +25,7 @@ export class LogInComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    const userResponse = new UserResponse();
-    userResponse.name = '----------';
-    userResponse.email = '----------';
-    userResponse.surname = '----------';
-    const strings: Array<string> = ['----------', '----------'];   //// non si può fare push sugli array di stringhe, ma solo assegnare
-    userResponse.roles = strings;
-    this.listElements.push(userResponse);
+    //nothing to do
   }
 
   async submitToServerLogIn() {
@@ -42,8 +36,6 @@ export class LogInComponent implements OnInit {
         if (this.element.userName === this.childInput) {
           alert("User " + this.childInput + " found..");
           this.consulantService.loggedConsultant = this.element;
-          document.getElementById("header").textContent = "Commercialisti" + "logged: "+this.childInput;
-          return;
         }
       }
       alert("User not found..");
@@ -54,13 +46,12 @@ export class LogInComponent implements OnInit {
       for (this.element of this.listElements) {
         if (this.element.userName === this.childInput) {
           this.appComponent.userLogged = this.childInput;
-          document.getElementById("header").textContent = "Commercialisti " + "logged: "+this.childInput;
           alert("User " + this.childInput + " found..");
-          return;
         }
       }
       alert("User not found..");
     }
+    document.getElementById("header").textContent = document.getElementById("header").textContent + " logged user: "+this.childInput;
   }
 
 

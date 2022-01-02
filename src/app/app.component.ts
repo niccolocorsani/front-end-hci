@@ -9,17 +9,22 @@ export class AppComponent {
   pageClient = false;
   pageConsultant = false;
   chosePage = true;
- userLogged: string;
+  userLogged: string;
 
 
-  openCliente() {
+  async openCliente() {
     this.pageConsultant = false;
     this.chosePage = false;
     this.pageClient = true;
+
   }
-  openConsultant() {
+  async openConsultant() {
     this.pageClient = false;
     this.chosePage = false;
     this.pageConsultant = true;
+
   }
+
+
+
 }

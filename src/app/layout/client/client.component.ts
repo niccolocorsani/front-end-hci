@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {OpenComponentsService} from "../../services/open-components/open-components.service";
 
 @Component({
   selector: 'app-client',
@@ -12,68 +13,50 @@ export class ClientComponent implements OnInit {
   }
 
 
-  openDialogVarAccount = false;
-  openDialogVarShowUsers = false;
-  openDialogNotification = false;
-  openDialogCalendar = false;
-
-  openDialogMenu = true;
-
-
-
-
+  constructor(private openComponentsService: OpenComponentsService){
+  }
 
   public appPages = [
     {title: 'Account', url: '/folder/Inbox', icon: 'mail'},
     {title: 'Show Users', url: '/folder/Outbox', icon: 'paper-plane'},
     {title: 'Calendar', url: '/folder/Trash', icon: 'trash'},
-    /*  {title: 'Trash', url: '/folder/Trash', icon: 'star'},
-      {title: 'Trash', url: '/folder/Trash', icon: 'alarm'},
-      {title: 'Trash', url: '/folder/Trash', icon: 'at'},
-      {title: 'Trash', url: '/folder/Trash', icon: 'baseball'},
-      {title: 'Trash', url: '/folder/Trash', icon: 'bed'},
-      {title: 'Trash', url: '/folder/Trash', icon: 'bug'},
-      {title: 'Trash', url: '/folder/Trash', icon: 'build'},
-      {title: 'Trash', url: '/folder/Trash', icon: 'bicycle'},
-      {title: 'Trash', url: '/folder/Trash', icon: 'beer'},
-      {title: 'Trash', url: '/folder/Trash', icon: 'bookmark'},
-      {title: 'Trash', url: '/folder/Trash', icon: 'bulb'},
-      {title: 'Trash', url: '/folder/Trash', icon: 'trash'},*/
+
   ];
   public labels = ['Family', 'Friends', 'Notes', 'Work', 'Travel', 'Reminders'];
 
-
   openMenu() {
-    if (this.openDialogMenu === false) {
-      this.openDialogMenu = true;
+
+    if (this.openComponentsService.openDialogMenu === false) {
+      this.openComponentsService.openDialogMenu = true;
     } else {
-      this.openDialogMenu = false;
-      this.openDialogVarAccount = false;
-      this.openDialogVarShowUsers = false;
-      this.openDialogCalendar = false;
+      this.openComponentsService.openDialogMenu = false;
+      this.openComponentsService.openDialogVarAccount = false;
+      this.openComponentsService.openDialogVarShowUsers = false;
+      this.openComponentsService.openDialogCalendar = false;
 
     }
   }
 
   openDialog(title: any) {
+
     if (title === 'Account') {
-      this.openDialogVarAccount = true;
-      this.openDialogVarShowUsers = false;
-      this.openDialogCalendar = false;
+      this.openComponentsService.openDialogVarAccount = true;
+      this.openComponentsService.openDialogVarShowUsers = false;
+      this.openComponentsService.openDialogCalendar = false;
 
       return;
     }
     if (title === 'Show Users') {
-      this.openDialogVarShowUsers = true;
-      this.openDialogVarAccount = false;
-      this.openDialogCalendar = false;
+      this.openComponentsService.openDialogVarShowUsers = true;
+      this.openComponentsService.openDialogVarAccount = false;
+      this.openComponentsService.openDialogCalendar = false;
 
       return;
     }
     if (title === 'Calendar') {
-      this.openDialogCalendar = true;
-      this.openDialogVarShowUsers = false;
-      this.openDialogVarAccount = false;
+      this.openComponentsService.openDialogCalendar = true;
+      this.openComponentsService.openDialogVarShowUsers = false;
+      this.openComponentsService.openDialogVarAccount = false;
     }
   }
 
