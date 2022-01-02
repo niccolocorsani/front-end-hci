@@ -1,12 +1,10 @@
 import {Component, OnInit} from '@angular/core';
-import {RequestConsultantServiceService} from "../../services/request/request-consultant-service.service";
 import {ModalController} from "@ionic/angular";
-import {SelectUsersModalComponent} from "../select-users-modal/select-users-modal.component";
-import {AppComponent} from "../../app.component";
+import {SelectUsersModalComponent} from "./select-users-modal/select-users-modal.component";
 
 @Component({
   selector: 'app-open-modal',
-  templateUrl: './show-users.component.html',
+  templateUrl: './open-modal.html',
 })
 export class OpenModal implements OnInit {
 

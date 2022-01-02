@@ -20,7 +20,7 @@ import {FormsModule} from "@angular/forms";
 import {MyCalendarComponent} from "./components/my-calendar/my-calendar.component";
 import {ClientComponent} from "./layout/client/client.component";
 import {BusinessConsultantComponent} from "./layout/business-consultant/business-consultant.component";
-import {SelectUsersModalComponent} from "./components/select-users-modal/select-users-modal.component";
+import {SelectUsersModalComponent} from "./components/open-modal/select-users-modal/select-users-modal.component";
 
 
 @NgModule({

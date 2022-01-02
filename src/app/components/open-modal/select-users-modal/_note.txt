@@ -1,0 +1,2 @@
+Questo componente espone principalmente 3 metodi:
+- retriveUsers() il cui scopo e gestire la chiamta al backend e
