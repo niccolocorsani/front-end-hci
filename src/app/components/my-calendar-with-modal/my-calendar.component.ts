@@ -35,7 +35,7 @@ export class MyCalendarComponent implements OnInit {
 
   ngOnInit() {
    // https://levelup.gitconnected.com/5-ways-to-share-data-between-angular-components-d656a7eb7f96
-    this.consultantService.currentMessage.subscribe(events => (this.eventSource= events)); //<= Always get current value!
+    this.consultantService.currentMessage.subscribe(events => (this.eventSource= events)); //<= To retrive user appointments when my-calendar component is opened
   }
 
   next() {

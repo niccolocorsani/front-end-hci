@@ -18,8 +18,16 @@ export class RequestConsultantServiceService {
   public loggedConsultant: ConsultantResponse;
   currentMessage = this.events.asObservable();
 
+
+
   constructor(public http: HttpClient) {
-  }
+
+    if(document.getElementById("header").textContent === "Consultant portal" || document.getElementById("header").textContent === "Client portal")//// loggedUser=>     alert(document.getElementById("header").textContent);
+
+      alert("To see your appointments, you should log-in first");
+    ////TODO da concludere la parte dell' "else" (se l'user è loggatto)
+
+      }
 
   async updateAppointments(id: any) {
     this.getConsultantById(id);
@@ -99,10 +107,6 @@ export class RequestConsultantServiceService {
       error: (err: any) => alert('Observer got an error: ' + err.error + " " + err.response)
     });
     return this.listElements;
-  }
-
-  public viewLoggedUserAppointments(){
-    this.updateAppointments(this.loggedConsultant.id);
   }
 
   private handleError(error: HttpErrorResponse) {

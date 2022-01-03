@@ -36,9 +36,10 @@ export class LogInComponent implements OnInit {
         if (this.element.userName === this.childInput) {
           alert("User " + this.childInput + " found..");
           this.consulantService.loggedConsultant = this.element;
+          return;
         }
       }
-      alert("User not found..");
+      alert("Consultant not found..");
     }
     else   {
       this.listElements = this.clientService.getClientList();
@@ -47,9 +48,10 @@ export class LogInComponent implements OnInit {
         if (this.element.userName === this.childInput) {
           this.appComponent.userLogged = this.childInput;
           alert("User " + this.childInput + " found..");
+          return;
         }
       }
-      alert("User not found..");
+      alert("Client not found..");
     }
     document.getElementById("header").textContent = document.getElementById("header").textContent + " logged user: "+this.childInput;
   }
