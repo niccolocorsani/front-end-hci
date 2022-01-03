@@ -1,8 +1,8 @@
 import {Component, OnInit} from '@angular/core';
-import {UserResponse} from "../../services/response/user-response";
-import {AppComponent} from "../../app.component";
-import {RequestConsultantServiceService} from "../../services/request/request-consultant-service.service";
-import {RequestClientServiceService} from "../../services/request/request-client-service.service";
+import {UserResponse} from "../../../services/response/user-response";
+import {AppComponent} from "../../../app.component";
+import {RequestConsultantServiceService} from "../../../services/request/request-consultant-service.service";
+import {RequestClientServiceService} from "../../../services/request/request-client-service.service";
 
 @Component({
   selector: 'app-log-in',

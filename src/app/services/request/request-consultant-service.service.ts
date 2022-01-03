@@ -16,12 +16,10 @@ export class RequestConsultantServiceService {
   private events = new BehaviorSubject(this.editDataDetails);
   private currentSelectedConsultant: ConsultantResponse;
   public loggedConsultant: ConsultantResponse;
-
   currentMessage = this.events.asObservable();
 
   constructor(public http: HttpClient) {
   }
-
 
   async updateAppointments(id: any) {
     this.getConsultantById(id);
@@ -106,7 +104,6 @@ export class RequestConsultantServiceService {
   public viewLoggedUserAppointments(){
     this.updateAppointments(this.loggedConsultant.id);
   }
-
 
   private handleError(error: HttpErrorResponse) {
     if (error.status === 0) {

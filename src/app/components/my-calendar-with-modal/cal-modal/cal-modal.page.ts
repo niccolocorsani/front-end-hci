@@ -50,8 +50,6 @@ export class CalModalPage implements AfterViewInit {
     this.event.endTime.setHours(hourEnd);
     this.event.endTime.setMinutes(minuteEnd);
 
-
-
     this.modalCtrl.dismiss({event: this.event});
 
   }

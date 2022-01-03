@@ -1,7 +1,7 @@
 import {Component, Inject, LOCALE_ID, OnInit, ViewChild} from '@angular/core';
 import {CalendarComponent} from "ionic2-calendar";
 import {AlertController, ModalController} from "@ionic/angular";
-import {CalModalPage} from "../pages/cal-modal/cal-modal.page";
+import {CalModalPage} from "./cal-modal/cal-modal.page";
 import {formatDate} from "@angular/common";
 import {AppComponent} from "../../app.component";
 import {RequestConsultantServiceService} from "../../services/request/request-consultant-service.service";
@@ -55,7 +55,6 @@ export class MyCalendarComponent implements OnInit {
     // Use Angular date pipe for conversion
     let start = formatDate(event.startTime, 'medium', this.locale);
     let end = formatDate(event.endTime, 'medium', this.locale);
-
     const alert = await this.alertCtrl.create({
       header: event.title,
       subHeader: event.desc,
