@@ -10,7 +10,7 @@ export class OpenModal implements OnInit {
 
 
 
-  constructor( public modalCtrl: ModalController) {
+  constructor(public modalCtrl: ModalController) {
   }
 
   ngOnInit(): void {

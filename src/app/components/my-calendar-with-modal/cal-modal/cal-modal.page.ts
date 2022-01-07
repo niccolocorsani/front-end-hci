@@ -1,16 +1,24 @@
 import {Component, AfterViewInit} from '@angular/core';
 import {ModalController} from '@ionic/angular';
+import {RequestClientServiceService} from "../../../services/request/request-client-service.service";
+import {ClientResponse} from "../../../services/response/client-response";
 
 @Component({
   selector: 'app-cal-modal',
   templateUrl: './cal-modal.page.html',
 })
 export class CalModalPage implements AfterViewInit {
+
+
+  viewTitle: string;
+  selectedDate: string;
+  modalReady = false;
+  date: any;
+
   calendar = {
     mode: 'month',
     currentDate: new Date()
   };
-  viewTitle: string;
 
   event = {
     title: '',
@@ -21,12 +29,8 @@ export class CalModalPage implements AfterViewInit {
   };
 
 
-  modalReady = false;
-  private titolo: string;
-  private descrizione: string;
-  date: any;
 
-  constructor(private modalCtrl: ModalController) {
+  constructor(private modalCtrl: ModalController, private clientService: RequestClientServiceService) {
   }
 
   ngAfterViewInit() {
@@ -35,38 +39,77 @@ export class CalModalPage implements AfterViewInit {
     }, 0);
   }
 
-  save() {
-    var inputValue;
-    inputValue = (<HTMLInputElement>document.getElementById('start')).value;
-    let hourStart = inputValue.split(':')[0];
-    let minuteStart = inputValue.split(':')[1];
+
+  async saveEvent() {
+    var inputValueStart;
+    inputValueStart = (<HTMLInputElement>document.getElementById('start')).value;
+    console.log(inputValueStart)
+    let hourStart = inputValueStart.split(':')[0];
+    let minuteStart = inputValueStart.split(':')[1];
     this.event.startTime.setHours(hourStart);
     this.event.startTime.setMinutes(minuteStart);
-
-
-    inputValue = (<HTMLInputElement>document.getElementById('end')).value;
-    let hourEnd = inputValue.split(':')[0]
-    let minuteEnd = inputValue.split(':')[1]
+    var inputValueEnd;
+    inputValueEnd = (<HTMLInputElement>document.getElementById('end')).value;
+    console.log(inputValueEnd)
+    let hourEnd = inputValueEnd.split(':')[0]
+    let minuteEnd = inputValueEnd.split(':')[1]
     this.event.endTime.setHours(hourEnd);
     this.event.endTime.setMinutes(minuteEnd);
-
     this.modalCtrl.dismiss({event: this.event});
+    let month = this.event.startTime.toString().split(" ")[1];
 
+    if (month === "Jan") month = "01";
+    if (month === "Feb") month = "02";
+    if (month === "Mar") month = "03";
+    if (month === "Apr") month = "04";
+    if (month === "May") month = "05";
+    if (month === "Jun") month = "06";
+    if (month === "Jul") month = "07";
+    if (month === "Aug") month = "08";
+    if (month === "Sep") month = "09";
+    if (month === "Oct") month = "10";
+    if (month === "Nov") month = "11";
+    if (month === "Dec") month = "12";
+
+    let day = this.event.startTime.toString().split(" ")[2];
+    let year = this.event.startTime.toString().split(" ")[3];
+
+    console.log("date" + year + "-" + month + "-" + day)
+
+    if (document.getElementById("header").textContent === "Consultant portal" || document.getElementById("header").textContent === "Client portal") {
+      alert("You should log-in before choosing an appointment")
+      return;
+    }
+
+
+
+    let userName = document.getElementById("header").textContent.split(" ")[4];
+
+    this.clientService.updateClientAppoitnment(userName, {
+      "date": year + "-" + month + "-" + day,
+      "startTime": hourStart + ":" + minuteStart + ":" + "00",
+      "endTime": hourEnd + ":" + minuteEnd + ":" + "00",
+      "client": null,
+      "consultant": null
+    });
   }
 
   onViewTitleChanged(title) {
     this.viewTitle = title;
   }
 
-
   close() {
     this.modalCtrl.dismiss();
   }
-
-  timeSelected = 0;
 
   onTimeSelected(ev) {
     this.event.startTime = new Date(ev.selectedTime);
     this.event.endTime = new Date(ev.selectedTime);
   }
+
+  delay(ms: number) {
+    return new Promise(resolve => setTimeout(resolve, ms));
+  }
+
+
 }

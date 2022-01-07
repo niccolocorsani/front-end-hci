@@ -14,7 +14,6 @@ export class MyInputComponent implements OnInit {
     //nothing to do
   }
 
-
   newInputFromMyInput(value: string) {
     this.newItemEvent.emit(value);
 

@@ -1,6 +1,5 @@
 import {Component, OnInit} from '@angular/core';
 import {UserResponse} from "../../../services/response/user-response";
-import {AppComponent} from "../../../app.component";
 import {RequestConsultantServiceService} from "../../../services/request/request-consultant-service.service";
 import {RequestClientServiceService} from "../../../services/request/request-client-service.service";
 
@@ -21,7 +20,7 @@ export class LogInComponent implements OnInit {
     this.childInput = newItem;
   }
 
-  constructor(private consulantService: RequestConsultantServiceService, private clientService: RequestClientServiceService, private appComponent: AppComponent) {
+  constructor(private consulantService: RequestConsultantServiceService, private clientService: RequestClientServiceService) {
   }
 
   ngOnInit(): void {
@@ -29,13 +28,15 @@ export class LogInComponent implements OnInit {
   }
 
   async submitToServerLogIn() {
-    if (this.appComponent.pageConsultant === true) {
+    if (document.getElementById("header").textContent === "Consultant portal") {
       this.listElements = this.consulantService.getConsultantList();
       await this.delay(500);
       for (this.element of this.listElements) {
         if (this.element.userName === this.childInput) {
+          alert(this.element.userName)
           alert("User " + this.childInput + " found..");
-          this.consulantService.loggedConsultant = this.element;
+          this.consulantService.loggedConsultant = this.element; ////TODO da eliminare dal momento che ho messo il controllo su la stringa dell header
+          document.getElementById("header").textContent = document.getElementById("header").textContent + " logged user: "+this.childInput;
           return;
         }
       }
@@ -45,15 +46,15 @@ export class LogInComponent implements OnInit {
       this.listElements = this.clientService.getClientList();
       await this.delay(500);
       for (this.element of this.listElements) {
+        console.log(this.element)
         if (this.element.userName === this.childInput) {
-          this.appComponent.userLogged = this.childInput;
           alert("User " + this.childInput + " found..");
+          document.getElementById("header").textContent = document.getElementById("header").textContent + " logged user: "+this.childInput;
           return;
         }
       }
       alert("Client not found..");
     }
-    document.getElementById("header").textContent = document.getElementById("header").textContent + " logged user: "+this.childInput;
   }
 
 

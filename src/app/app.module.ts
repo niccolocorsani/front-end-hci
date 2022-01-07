@@ -21,22 +21,24 @@ import {MyCalendarComponent} from "./components/my-calendar-with-modal/my-calend
 import {ClientComponent} from "./layout/client/client.component";
 import {BusinessConsultantComponent} from "./layout/business-consultant/business-consultant.component";
 import {SelectUsersModalComponent} from "./components/select-appointmnent-with-modal/select-users-modal/select-users-modal.component";
+import {ShowUsersComponent} from "./components/show-users/show-users.component";
 
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    OpenModal,
-    LogInOrRegisterMenuComponent,
-    LogInComponent,
-    MyInputComponent,
-    RegisterComponent,
-    NotificationComponent,
-    MyCalendarComponent,
-    ClientComponent,
-    BusinessConsultantComponent,
-    SelectUsersModalComponent
-  ],
+    declarations: [
+        AppComponent,
+        OpenModal,
+        LogInOrRegisterMenuComponent,
+        LogInComponent,
+        MyInputComponent,
+        RegisterComponent,
+        NotificationComponent,
+        MyCalendarComponent,
+        ClientComponent,
+        BusinessConsultantComponent,
+        SelectUsersModalComponent,
+        ShowUsersComponent
+    ],
   entryComponents: [],
     imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule, NgCalendarModule, CalModalPageModule,
         HttpClientModule,

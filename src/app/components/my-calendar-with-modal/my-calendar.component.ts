@@ -28,7 +28,6 @@ export class MyCalendarComponent implements OnInit {
     private alertCtrl: AlertController,
     @Inject(LOCALE_ID) private locale: string,
     private modalCtrl: ModalController,
-    private appComponent: AppComponent
   ) {
   }
 

@@ -14,7 +14,7 @@ export class RequestConsultantServiceService {
   private listElements: Array<ConsultantResponse> = [];
   public editDataDetails: any = [];
   private events = new BehaviorSubject(this.editDataDetails);
-  private currentSelectedConsultant: ConsultantResponse;
+  public lastSelectedConsultant: ConsultantResponse;
   public loggedConsultant: ConsultantResponse;
   currentMessage = this.events.asObservable();
 
@@ -23,7 +23,6 @@ export class RequestConsultantServiceService {
   constructor(public http: HttpClient) {
 
     if(document.getElementById("header").textContent === "Consultant portal" || document.getElementById("header").textContent === "Client portal")//// loggedUser=>     alert(document.getElementById("header").textContent);
-
       alert("To see your appointments, you should log-in first");
     ////TODO da concludere la parte dell' "else" (se l'user è loggatto)
 
@@ -32,7 +31,7 @@ export class RequestConsultantServiceService {
   async updateAppointments(id: any) {
     this.getConsultantById(id);
     await this.delay(500);
-    let consultant = this.currentSelectedConsultant;
+    let consultant = this.lastSelectedConsultant;
     let events = [];
     console.log(consultant)
     let i = 0;
@@ -40,10 +39,15 @@ export class RequestConsultantServiceService {
       let appointment = consultant.appointments[i++]
       let startTime;
       let endTime;
+
+
       let splitDate = appointment.date.split("-");
       let splitStartTime = appointment.startTime.split(":");
       let splitEndTime = appointment.endTime.split(":");
-      console.log(splitDate,splitStartTime,splitEndTime)
+
+
+      console.log(splitDate, splitStartTime, splitEndTime)
+
       startTime = new Date(
         splitDate[0],
         splitDate[1]-1,
@@ -52,6 +56,7 @@ export class RequestConsultantServiceService {
         splitStartTime[1],
         splitStartTime[2],
       );
+
       endTime = new Date(
         splitDate[0],
         splitDate[1]-1,
@@ -72,7 +77,7 @@ export class RequestConsultantServiceService {
   }
 
   myObserver = {
-    next: (value: any) =>  this.currentSelectedConsultant = value,
+    next: (value: any) =>  this.lastSelectedConsultant = value,
     error: (err: any) => alert('Observer got an error: ' + err.error + " " + err.response)
   };
 
@@ -80,12 +85,13 @@ export class RequestConsultantServiceService {
     this.http.get<any>(this.url + '/consultant/' + id).pipe(
       catchError(this.handleError)
     ).subscribe(this.myObserver);
-    return this.currentSelectedConsultant ;
+    return this.lastSelectedConsultant ;
   }
 
   public putConsultant(userName: string): any {
     let body = new ConsultantResponse();
     body.userName = userName;
+
     this.http.put<ConsultantResponse>(this.url + '/consultant/putConsultant', body).pipe(
       catchError(this.handleError)
     ).subscribe(this.myObserver); ////sembra che senza sto subscribe non sia in grado di fare la richiesta
@@ -93,7 +99,6 @@ export class RequestConsultantServiceService {
 
   public getConsultantList(): any {
     //// metodo asicnrono
-    alert("Retrive consultant list")
     this.listElements.splice(0, this.listElements.length);
     this.http.get<any>(this.url + '/consultant/api/consultants').pipe(
       // delay(1000),

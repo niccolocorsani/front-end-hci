@@ -35,9 +35,22 @@ export class SelectUsersModalComponent implements OnInit {
     await this.delay(500);
   }
 
-  loadAppointments(id: string) {
+   consultant: ConsultantResponse;
+
+  async loadAppointments(id: string) {
     this.openComponentsService.openDialogCalendar = true;
     this.close();
+    this.openCalModal();
+    this.consultantService.getConsultantById(id);
+    await this.delay(500);
+    console.log(this.consultantService.lastSelectedConsultant.firstName)
+
+
+    document.getElementById("home-menu").textContent = this.consultantService.lastSelectedConsultant.firstName +" " + this.consultantService.lastSelectedConsultant.lastName ;
+
+    ////Boscata la cosa del modal che espone i momenti liberi, uno li osserva nel calendario principale i momenti liberi
+
+
     alert("Load appointments..")
     this.consultantService.updateAppointments(id);
   }
@@ -51,5 +64,55 @@ export class SelectUsersModalComponent implements OnInit {
   delay(ms: number) {
     return new Promise(resolve => setTimeout(resolve, ms));
   }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  async openCalModal() {
+    const modal = await this.modalCtrl.create({
+      component: CalModalPage,
+      cssClass: 'cal-modal',
+      backdropDismiss: false
+    });
+    await modal.present();
+    //// Questo è triggherato dopo che viene confermato l'evento nella ui di cal-modal
+    modal.onDidDismiss().then((result) => {
+        alert('Aggiunto evento con orario: ' +'..')
+        //this.eventSource.push(event);
+       // this.myCal.loadEvents();
+      ////TODO capire come mettere eventi nel modal ecc..
+      })
+    }
 
 }

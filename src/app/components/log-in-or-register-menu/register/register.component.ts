@@ -10,7 +10,6 @@ import {RequestConsultantServiceService} from "../../../services/request/request
 })
 export class RegisterComponent implements OnInit {
 
-////modificare register che se no aggiunge solo i clienti e non i consulenti
   name = 'Insert name';
   userName = 'Insert username';
   eMail = 'Insert email';

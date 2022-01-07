@@ -1,7 +1,7 @@
 <ion-app class="background-image">
   <ion-header>
     <ion-toolbar style="  --ion-background-color: linear-gradient(to right, #11998e, #38ef7d);">
-      <ion-title  id="header" class="ion-text-center">Client portal</ion-title>
+      <ion-title id="header" class="ion-text-center">Client portal</ion-title>
     </ion-toolbar>
   </ion-header>
   <ion-content>
@@ -16,7 +16,7 @@
         <ion-col size="6" size-sm>
           <!--La combinazione di size="3" insieme a size-md renderizza 3 colonne solo quando è su sm device, l'idea è di partire a  fare un layout
           buono per i device desktop e poi aggiungere  sm, md, lg così da aggiustare gli small, medium e large devices-->
-          <ion-list *ngIf="openComponentsService.openDialogMenu" id="inbox-list"  style="height: 100vh !important">
+          <ion-list *ngIf="openComponentsService.openDialogMenu" id="inbox-list" style="height: 100vh !important">
             <ion-menu-toggle auto-hide="false" *ngFor="let p of appPages; let i = index">
               <ion-item routerDirection="root" [routerLink]="[p.url]" lines="none" detail="false"
                         routerLinkActive="selected" (click)="openDialog(p.title)">
@@ -27,11 +27,14 @@
             </ion-menu-toggle>
           </ion-list>
         </ion-col>
-        <ion-col >
+        <ion-col>
           <!--<object data="assets/polygon-rotation.svg"></object>-->
           <app-log-in-or-register-menu *ngIf="openComponentsService.openDialogVarAccount"></app-log-in-or-register-menu>
-          <app-open-modal *ngIf="openComponentsService.openDialogCalendar || openComponentsService.openDialogVarShowUsers"></app-open-modal>
-          <app-my-calendar *ngIf="openComponentsService.openDialogCalendar"></app-my-calendar>
+          <app-open-modal
+            *ngIf="openComponentsService.openDialogCalendar"></app-open-modal>
+          <app-my-calendar
+            *ngIf="openComponentsService.openDialogCalendar"></app-my-calendar>
+          <app-show-users *ngIf="openComponentsService.openDialogVarShowUsers"></app-show-users>
         </ion-col>
         <ion-col>
           <!--con size = 0 non fa il display di quest'ultima colonna-->
