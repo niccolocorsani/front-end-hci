@@ -1,7 +1,7 @@
 <ion-header>
   <ion-toolbar color="primary">
     <ion-title>
-       Calendar
+      Calendar
     </ion-title>
     <ion-buttons slot="end">
       <ion-button (click)="openCalModal()">
@@ -10,7 +10,13 @@
     </ion-buttons>
   </ion-toolbar>
 </ion-header>
-
+<ion-row>
+  <ion-col>
+    <ion-button (click)="getMyAppointments()" expand="block" fill="outline">
+      Check your scheduled appoitnments
+    </ion-button>
+  </ion-col>
+</ion-row>
 <ion-content>
   <ion-segment [(ngModel)]="calendar.mode">
     <ion-segment-button value="month">
@@ -24,13 +30,7 @@
     </ion-segment-button>
   </ion-segment>
 
-  <ion-row>
-    <ion-col>
-      <ion-button (click)="removeEvents()" expand="block" fill="outline">
-        Remove all events
-      </ion-button>
-    </ion-col>
-  </ion-row>
+
 
   <ion-row>
     <!-- Move back one screen of the slides -->

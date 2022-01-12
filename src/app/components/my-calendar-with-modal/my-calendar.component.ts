@@ -3,16 +3,19 @@ import {CalendarComponent} from "ionic2-calendar";
 import {AlertController, ModalController} from "@ionic/angular";
 import {CalModalPage} from "./cal-modal/cal-modal.page";
 import {formatDate} from "@angular/common";
-import {AppComponent} from "../../app.component";
 import {RequestConsultantServiceService} from "../../services/request/request-consultant-service.service";
+import {RequestClientServiceService} from "../../services/request/request-client-service.service";
+import {ClientResponse} from "../../services/response/client-response";
 
 @Component({
   selector: 'app-my-calendar',
   templateUrl: './my-calendar.component.html',
 })
 export class MyCalendarComponent implements OnInit {
+
   eventSource = [];
   viewTitle: string;
+
 
   calendar = {
     mode: 'month',
@@ -25,6 +28,7 @@ export class MyCalendarComponent implements OnInit {
 
   constructor(
     private consultantService: RequestConsultantServiceService,
+    private clientService: RequestClientServiceService,
     private alertCtrl: AlertController,
     @Inject(LOCALE_ID) private locale: string,
     private modalCtrl: ModalController,
@@ -33,9 +37,62 @@ export class MyCalendarComponent implements OnInit {
 
 
   ngOnInit() {
-   // https://levelup.gitconnected.com/5-ways-to-share-data-between-angular-components-d656a7eb7f96
-    this.consultantService.currentMessage.subscribe(events => (this.eventSource= events)); //<= To retrive user appointments when my-calendar component is opened
+    // https://levelup.gitconnected.com/5-ways-to-share-data-between-angular-components-d656a7eb7f96
+    this.consultantService.currentMessage.subscribe(events => (this.eventSource = events)); //<= To retrive user appointments when my-calendar component is opened
+    this.clientService.currentMessage.subscribe(events => (this.eventSource = events)); //<= To retrive user appointments when my-calendar component is opened
   }
+
+  async openCalModal() {
+    const modal = await this.modalCtrl.create({
+      component: CalModalPage,
+      cssClass: 'cal-modal',
+      backdropDismiss: false
+    });
+
+    if (document.getElementById("header").textContent === "Consultant portal" || document.getElementById("header").textContent === "Client portal") {
+      alert("You should log-in before choosing an appointment")
+      return;
+    }
+    if(document.getElementById("home-menu").textContent === "Home"){
+      alert("You should chose a consultant before choosing an appointment")
+      return;
+    }
+
+
+
+    await modal.present();
+    //// Questo è triggherato dopo che viene confermato l'evento nella ui di cal-modal
+    modal.onDidDismiss().then((result) => {
+
+      if (result.data && result.data.event) {
+        let event = result.data.event;
+        let start = event.startTime;
+        let end = event.endTime;
+        event.startTime = new Date(
+          Date.UTC(
+            start.getUTCFullYear(),
+            start.getUTCMonth(),
+            start.getUTCDate(),
+            start.getUTCHours(),
+            start.getUTCMinutes()
+          )
+        );
+        event.endTime = new Date(
+          Date.UTC(
+            end.getUTCFullYear(),
+            end.getUTCMonth(),
+            end.getUTCDate(),
+            end.getUTCHours(),
+            end.getUTCMinutes()
+          )
+        );
+        alert('Aggiunto evento con orario: ' + event.startTime + ' ' + event.endTime + '..')
+        this.eventSource.push(event);
+        this.myCal.loadEvents();
+      }
+    });
+  }
+
 
   next() {
     this.myCal.slideNext();
@@ -64,83 +121,26 @@ export class MyCalendarComponent implements OnInit {
   }
 
 
-  removeEvents() {
-    this.eventSource = [];
-  }
+  ////Questa funzione ritorna gli appuntamenti dell'utente attualmente loggato
+  getMyAppointments() {
+    let userName;
+    let client: ClientResponse;
+    let clients: ClientResponse[];
+    if (document.getElementById("header").textContent.includes("Client")) {
+      if (userName = document.getElementById("header").textContent.split(" ")[4] != null) {
+        ////TODO da finire qui sotto ci vuole l'id del cliente
+       //  let client =  this.clientService.getSynchronousClientByUserName(userName);
+       /// client = this.clientService.getSynchronousClientById(1);
+      //  console.log("client information" + client.firstName);
+       //  clients = this.clientService.getSynchronousClients()
+      //  console.log("clients"+clients[0].firstName)
+        this.clientService.getClientAppointments(1)
 
-  async openCalModal() {
-    const modal = await this.modalCtrl.create({
-      component: CalModalPage,
-      cssClass: 'cal-modal',
-      backdropDismiss: false
-    });
-    await modal.present();
-    //// Questo è triggherato dopo che viene confermato l'evento nella ui di cal-modal
-    modal.onDidDismiss().then((result) => {
-      if (result.data && result.data.event) {
-        let event = result.data.event;
-        let start = event.startTime;
-        let end = event.endTime;
-        event.startTime = new Date(
-          Date.UTC(
-            start.getUTCFullYear(),
-            start.getUTCMonth(),
-            start.getUTCDate(),
-            start.getUTCHours(),
-            start.getUTCMinutes()
-          )
-        );
-        event.endTime = new Date(
-          Date.UTC(
-            end.getUTCFullYear(),
-            end.getUTCMonth(),
-            end.getUTCDate(),
-            end.getUTCHours(),
-            end.getUTCMinutes()
-          )
-        );
-        alert('Aggiunto evento con orario: ' + event.startTime + ' ' + event.endTime+'..')
-        this.eventSource.push(event);
-        this.myCal.loadEvents();
-      }
-    });
-  }
+      } else alert("You should log-in to retrive your appointments")
+    } else {
+      //// Implementare caso in cui siamo nel portale consultant
+    }
 
-  otherEvents = [];
-
-  loadData(events: any[]) {
-        var evss = [];
-        var date = new Date();
-        var startDay = 3;
-        var endDay = 3;
-        var startTime;
-        var endTime;
-        var startMinute = 30;
-        var endMinute = 45;
-        startTime = new Date(
-          date.getFullYear(),
-          date.getMonth(),
-          date.getDate() + startDay,
-          0,
-          date.getMinutes() + startMinute
-        );
-        endTime = new Date(
-          date.getFullYear(),
-          date.getMonth(),
-          date.getDate() + endDay,
-          0,
-          date.getMinutes() + endMinute
-        );
-        events.push({
-          title: 'Event - ' + 1,
-          startTime: startTime,
-          endTime: endTime,
-          allDay: false,
-        });
-    ////Provando a scatenare il riempimento cliccando il tasto random events si osserva che i dati di otherevents sono nulli
-    alert("prima dell'assegnamento " + this.otherEvents);
-    this.eventSource = events;
 
   }
-
 }

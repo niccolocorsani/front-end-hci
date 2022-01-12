@@ -19,14 +19,10 @@ export class ShowUsersComponent implements OnInit {
     if (this.showUser === false)
       this.showUser = true;
     else this.showUser = false;
-
-    this.listElements = this.consultantService.getConsultantList();
-    await this.delay(500);
+    this.listElements = this.consultantService.getSynchronousConsultants();
   }
 
-  delay(ms: number) {
-    return new Promise(resolve => setTimeout(resolve, ms));
-  }
+
 
 
 }

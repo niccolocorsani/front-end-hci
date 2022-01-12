@@ -9,12 +9,10 @@ import {SelectUsersModalComponent} from "./select-users-modal/select-users-modal
 export class OpenModal implements OnInit {
 
 
-
   constructor(public modalCtrl: ModalController) {
   }
 
   ngOnInit(): void {
-    //nothing to do
   }
 
   async initModal() {

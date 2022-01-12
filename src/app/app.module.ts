@@ -59,7 +59,6 @@ export class AppModule {
 }
 
 
-// eslint-disable-next-line @typescript-eslint/naming-convention
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http);
 }

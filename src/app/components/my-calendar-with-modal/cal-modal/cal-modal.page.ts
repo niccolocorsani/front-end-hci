@@ -2,6 +2,7 @@ import {Component, AfterViewInit} from '@angular/core';
 import {ModalController} from '@ionic/angular';
 import {RequestClientServiceService} from "../../../services/request/request-client-service.service";
 import {ClientResponse} from "../../../services/response/client-response";
+import {RequestConsultantServiceService} from "../../../services/request/request-consultant-service.service";
 
 @Component({
   selector: 'app-cal-modal',
@@ -29,8 +30,7 @@ export class CalModalPage implements AfterViewInit {
   };
 
 
-
-  constructor(private modalCtrl: ModalController, private clientService: RequestClientServiceService) {
+  constructor(private modalCtrl: ModalController, private clientService: RequestClientServiceService, private consultantService: RequestConsultantServiceService) {
   }
 
   ngAfterViewInit() {
@@ -41,6 +41,7 @@ export class CalModalPage implements AfterViewInit {
 
 
   async saveEvent() {
+
     var inputValueStart;
     inputValueStart = (<HTMLInputElement>document.getElementById('start')).value;
     console.log(inputValueStart)
@@ -76,21 +77,22 @@ export class CalModalPage implements AfterViewInit {
 
     console.log("date" + year + "-" + month + "-" + day)
 
-    if (document.getElementById("header").textContent === "Consultant portal" || document.getElementById("header").textContent === "Client portal") {
-      alert("You should log-in before choosing an appointment")
-      return;
-    }
 
 
 
     let userName = document.getElementById("header").textContent.split(" ")[4];
+    let client = this.clientService.getSynchronousClientByUserName(userName);
+    let consultantId = document.getElementById("home-menu").textContent.split(" ")[0];
+    let consultant = this.consultantService.getSynchronousConsultantById(consultantId);
 
-    this.clientService.updateClientAppoitnment(userName, {
+    console.log("consultantId " + consultantId)
+
+    this.clientService.updateAppoitnment( {
       "date": year + "-" + month + "-" + day,
       "startTime": hourStart + ":" + minuteStart + ":" + "00",
       "endTime": hourEnd + ":" + minuteEnd + ":" + "00",
-      "client": null,
-      "consultant": null
+      "client": client,
+      "consultant": consultant
     });
   }
 

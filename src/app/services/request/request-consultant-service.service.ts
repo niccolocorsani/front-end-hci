@@ -1,6 +1,6 @@
 import {Injectable} from '@angular/core';
 import {HttpClient, HttpErrorResponse} from "@angular/common/http";
-import {catchError, map} from "rxjs/operators";
+import {catchError} from "rxjs/operators";
 import {BehaviorSubject, throwError} from "rxjs";
 import {ConsultantResponse} from "../response/consultant-response";
 
@@ -11,46 +11,53 @@ export class RequestConsultantServiceService {
 
 
   private url = 'http://localhost:8080/spring-app';
-  private listElements: Array<ConsultantResponse> = [];
   public editDataDetails: any = [];
   private events = new BehaviorSubject(this.editDataDetails);
-  public lastSelectedConsultant: ConsultantResponse;
-  public loggedConsultant: ConsultantResponse;
   currentMessage = this.events.asObservable();
-
-
 
   constructor(public http: HttpClient) {
 
-    if(document.getElementById("header").textContent === "Consultant portal" || document.getElementById("header").textContent === "Client portal")//// loggedUser=>     alert(document.getElementById("header").textContent);
+    if (document.getElementById("header").textContent === "Consultant portal" || document.getElementById("header").textContent === "Client portal")//// loggedUser=>     alert(document.getElementById("header").textContent);
       alert("To see your appointments, you should log-in first");
     ////TODO da concludere la parte dell' "else" (se l'user è loggatto)
 
-      }
+  }
 
-  async updateAppointments(id: any) {
-    this.getConsultantById(id);
-    await this.delay(500);
-    let consultant = this.lastSelectedConsultant;
+  myObserver = {
+    next: (value: any) => console.log(value),
+    error: (err: any) => alert('Observer got an error: ' + err.error + " " + err.response)
+  };
+
+  ////writing method async, reading method sync
+
+  public async getConsultantAppointments(id: any) {
+    let consultant = this.getSynchronousConsultantById(id);
+    let appointments = this.getSynchronousAllAppointments();
+    let consultantAppointments = [];
+    appointments.forEach(element => {
+      if (element.consultant.id = id) {
+        consultantAppointments.push(element);
+        console.log("elemento" + element.id);
+      }
+    })
+
     let events = [];
     console.log(consultant)
     let i = 0;
-    consultant.appointments.forEach(element =>{
-      let appointment = consultant.appointments[i++]
+    appointments.forEach(element => {
+      let appointment = appointments[i++]
       let startTime;
       let endTime;
-
 
       let splitDate = appointment.date.split("-");
       let splitStartTime = appointment.startTime.split(":");
       let splitEndTime = appointment.endTime.split(":");
 
-
       console.log(splitDate, splitStartTime, splitEndTime)
 
       startTime = new Date(
         splitDate[0],
-        splitDate[1]-1,
+        splitDate[1] - 1,
         splitDate[2],
         splitStartTime[0],
         splitStartTime[1],
@@ -59,12 +66,13 @@ export class RequestConsultantServiceService {
 
       endTime = new Date(
         splitDate[0],
-        splitDate[1]-1,
+        splitDate[1] - 1,
         splitDate[2],
         splitEndTime[0],
         splitEndTime[1],
         splitEndTime[2],
       );
+
       events.push({
         title: 'Event - ' + 1,
         startTime: startTime,
@@ -73,22 +81,10 @@ export class RequestConsultantServiceService {
       });
       console.log(events)
       this.events.next(events)
-     });
+    });
   }
 
-  myObserver = {
-    next: (value: any) =>  this.lastSelectedConsultant = value,
-    error: (err: any) => alert('Observer got an error: ' + err.error + " " + err.response)
-  };
-
-  public getConsultantById(id: any): any {
-    this.http.get<any>(this.url + '/consultant/' + id).pipe(
-      catchError(this.handleError)
-    ).subscribe(this.myObserver);
-    return this.lastSelectedConsultant ;
-  }
-
-  public putConsultant(userName: string): any {
+  public async putConsultant(userName: string) {
     let body = new ConsultantResponse();
     body.userName = userName;
 
@@ -97,21 +93,62 @@ export class RequestConsultantServiceService {
     ).subscribe(this.myObserver); ////sembra che senza sto subscribe non sia in grado di fare la richiesta
   }
 
-  public getConsultantList(): any {
-    //// metodo asicnrono
-    this.listElements.splice(0, this.listElements.length);
-    this.http.get<any>(this.url + '/consultant/api/consultants').pipe(
-      // delay(1000),
-      map((data: any) => {
-        data.forEach(element => {
-          this.listElements.push(new ConsultantResponse(element));
-        });
-        return this.listElements;
-      })).subscribe({
-      next: (value: any) =>  console.log('Observer got value:'+value),
-      error: (err: any) => alert('Observer got an error: ' + err.error + " " + err.response)
-    });
-    return this.listElements;
+  public getSynchronousAllAppointments(): any {
+
+    var request = new XMLHttpRequest();
+    var myObj = [];
+    request.open('GET', this.url + "/appointment/api/appointments", false);  // `false` makes the request synchronous
+    request.onload = () => {
+      let serverResponse = request.responseText;
+      myObj = JSON.parse(serverResponse);
+    };
+    request.send(null); // The null parameter indicates that no body content is needed for the GET request.
+    if (request.status === 200) {
+      console.log(request.responseText);
+    }
+    return myObj;
+  }
+
+  public getSynchronousConsultantById(id: any): any {
+    var request = new XMLHttpRequest();
+    var myObj;
+    request.open('GET', this.url + "/consultant/" + id, false);  // `false` makes the request synchronous
+    request.onload = () => {
+      let serverResponse = request.responseText;
+      myObj = JSON.parse(serverResponse);
+    };
+    request.send(null); // The null parameter indicates that no body content is needed for the GET request.
+    if (request.status === 200) {
+      console.log(request.responseText);
+    }
+    return myObj;
+  }
+
+  public getSynchronousConsultants(): any {
+    var request = new XMLHttpRequest();
+    var myObj;
+    request.open('GET', this.url + "/consultant/api/consultants", false);  // `false` makes the request synchronous
+    request.onload = () => {
+      let serverResponse = request.responseText;
+      myObj = JSON.parse(serverResponse);
+    };
+    request.send(null); // The null parameter indicates that no body content is needed for the GET request.
+    if (request.status === 200) {
+      console.log(request.responseText);
+    }
+    return myObj;
+  }
+
+  public getSynchronousConsultantByUserName(userName: any) {
+    let consultant = new ConsultantResponse();
+    this.getSynchronousConsultants().forEach(element => {
+      if (element.userName === userName) {
+        consultant = element;
+        console.log("found user : " + element.firstName);
+      }
+    })
+    return consultant;
+
   }
 
   private handleError(error: HttpErrorResponse) {
@@ -127,10 +164,6 @@ export class RequestConsultantServiceService {
     // Return an observable with a user-facing error message.
     return throwError(
       'Something bad happened; please try again later.');
-  }
-
-  delay(ms: number) {
-    return new Promise(resolve => setTimeout(resolve, ms));
   }
 
 }

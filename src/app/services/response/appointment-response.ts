@@ -10,7 +10,6 @@ export class AppointmentResponse {
   consultant: ConsultantResponse;
 
 
-
   constructor(data?: any) {
     this.date = data ? data.date : null;
     this.startTime = data ? data.startTime : null;

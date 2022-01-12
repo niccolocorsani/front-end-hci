@@ -1,72 +1,159 @@
 import {Injectable} from '@angular/core';
 import {HttpClient, HttpErrorResponse} from "@angular/common/http";
-import {catchError, delay, map} from "rxjs/operators";
-import {throwError} from "rxjs";
+import {catchError, map} from "rxjs/operators";
+import {BehaviorSubject, throwError} from "rxjs";
 import {ClientResponse} from "../response/client-response";
-import {ConsultantResponse} from "../response/consultant-response";
 import {AppointmentResponse} from "../response/appointment-response";
+import {RequestConsultantServiceService} from "./request-consultant-service.service";
+import {ConsultantResponse} from "../response/consultant-response";
 
 @Injectable({
   providedIn: 'root'
 })
 export class RequestClientServiceService {
 
-  ////ricordarsi che nelle chiamate al backend va sempre gestita l'asincronia delle risposte fornite
 
   private url = 'http://localhost:8080/spring-app';
-  listElements: Array<ClientResponse> = [];
-  currentSelectedClient: ClientResponse;
+  public editDataDetails: any = [];
+  private events = new BehaviorSubject(this.editDataDetails);
+  currentMessage = this.events.asObservable();
 
-  constructor(public http: HttpClient) {
+  constructor(public http: HttpClient, private consultantService: RequestConsultantServiceService) {
   }
 
   myObserver = {
-    next: (value: any) => {
-      this.currentSelectedClient = value;
-      console.log(value)
-    },
+    next: (value: any) => console.log(value),
     error: (err: any) => alert('Observer got an error: ' + err + '..'),
   };
 
+  ////writing method async, reading method sync
 
-  public putClient(userName: string): any {
+  public async putClient(userName: string) {
     let body = new ClientResponse();
     body.userName = userName;
-    body.firstName = "qualcosa"; //TODO da tenere temporaneamente perchè  nel backend c è un controllo su questo campo: Javax Validation e quindi da errore se non lo metto
     console.log(body)
     this.http.put<ClientResponse>(this.url + '/client/putClient', body).pipe(
       catchError(this.handleError)
     ).subscribe(this.myObserver); ////sembra che senza sto subscribe non sia in grado di fare la richiesta
   }
 
-  public async updateClientAppoitnment(userName: string, appointment: AppointmentResponse) {
-    let client = new ClientResponse();
-    console.log(userName)
-    this.getClientList();
-    await this.delay(500);
-    this.listElements.forEach(element => {
-        console.log("found" + element.userName)
-        if (element.userName === userName) {
-          client = element;
-        }
-      }
-    );
-    client.appointments.push(appointment);
-    this.http.put<ClientResponse>(this.url + '/client/updateClient', client).pipe(
+  public async updateAppoitnment(appointment: AppointmentResponse){
+    this.http.put<AppointmentResponse>(this.url + '/appointment/putAppointment', appointment).pipe(
       catchError(this.handleError)
     ).subscribe(this.myObserver);
   }
 
-  public getClientList(): any {
-    this.listElements.splice(0, this.listElements.length);
-    this.http.get<any>(this.url + '/client/api/clients').pipe(
-      map((data: any) => {
-        data.forEach(element => {
-          this.listElements.push(new ClientResponse(element));
-        });
-        return this.listElements;
-      })).subscribe(this.myObserver);
-    return this.listElements;
+  public getClientAppointments(id: any) {
+    let client = this.getSynchronousClientById(id);
+
+    let appointments = this.getSynchronousAllAppointments();
+    let clientAppointments = [];
+    appointments.forEach(element => {
+      if (element.consultant.id = id) {
+        clientAppointments.push(element);
+        console.log("elemento" + element.id);
+      }
+    })
+
+    let events = [];
+    let i = 0;
+    appointments.forEach(element => {
+      let appointment = appointments[i++]
+      let startTime;
+      let endTime;
+
+      let splitDate = appointment.date.split("-");
+      let splitStartTime = appointment.startTime.split(":");
+      let splitEndTime = appointment.endTime.split(":");
+
+      console.log(splitDate, splitStartTime, splitEndTime)
+
+      startTime = new Date(
+        splitDate[0],
+        splitDate[1] - 1,
+        splitDate[2],
+        splitStartTime[0],
+        splitStartTime[1],
+        splitStartTime[2],
+      );
+
+      endTime = new Date(
+        splitDate[0],
+        splitDate[1] - 1,
+        splitDate[2],
+        splitEndTime[0],
+        splitEndTime[1],
+        splitEndTime[2],
+      );
+
+      events.push({
+        title: 'Event - ' + 1,
+        startTime: startTime,
+        endTime: endTime,
+        allDay: false,
+      });
+      console.log("events " + events)
+      this.events.next(events)
+    });
+  }
+
+  public getSynchronousAllAppointments(): any {
+
+    var request = new XMLHttpRequest();
+    var myObj = [];
+    request.open('GET', this.url + "/appointment/api/appointments", false);  // `false` makes the request synchronous
+    request.onload = () => {
+      let serverResponse = request.responseText;
+      myObj = JSON.parse(serverResponse);
+    };
+    request.send(null); // The null parameter indicates that no body content is needed for the GET request.
+    if (request.status === 200) {
+      console.log(request.responseText);
+    }
+    return myObj;
+  }
+
+
+  public getSynchronousClientById(id: any): any {
+    var request = new XMLHttpRequest();
+    var myObj;
+    request.open('GET', this.url + "/client/" + id, false);  // `false` makes the request synchronous
+    request.onload = () => {
+      let serverResponse = request.responseText;
+      myObj = JSON.parse(serverResponse);
+    };
+    request.send(null); // The null parameter indicates that no body content is needed for the GET request.
+    if (request.status === 200) {
+      console.log(request.responseText);
+    }
+    return myObj;
+  }
+
+  public getSynchronousClients(): any {
+    var request = new XMLHttpRequest();
+    var myObj;
+    request.open('GET', this.url + "/client/api/clients", false);  // `false` makes the request synchronous
+    request.onload = () => {
+      let serverResponse = request.responseText;
+      myObj = JSON.parse(serverResponse);
+    };
+    request.send(null); // The null parameter indicates that no body content is needed for the GET request.
+    if (request.status === 200) {
+      console.log(request.responseText);
+    }
+    return myObj;
+  }
+
+  public getSynchronousClientByUserName(userName: any) {
+    let client = new ClientResponse();
+    this.getSynchronousClients().forEach(element => {
+      if (element.userName === userName) {
+        client = element;
+        console.log("found user : " + element.firstName);
+      }
+    })
+    return client;
+
   }
 
   private handleError(error: HttpErrorResponse) {
@@ -84,9 +171,9 @@ export class RequestClientServiceService {
       'Something bad happened; please try again later.');
   }
 
+
   delay(ms: number) {
     return new Promise(resolve => setTimeout(resolve, ms));
   }
-
 
 }

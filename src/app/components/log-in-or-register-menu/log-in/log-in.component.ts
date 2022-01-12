@@ -2,6 +2,8 @@ import {Component, OnInit} from '@angular/core';
 import {UserResponse} from "../../../services/response/user-response";
 import {RequestConsultantServiceService} from "../../../services/request/request-consultant-service.service";
 import {RequestClientServiceService} from "../../../services/request/request-client-service.service";
+import {ConsultantResponse} from "../../../services/response/consultant-response";
+import {ClientResponse} from "../../../services/response/client-response";
 
 @Component({
   selector: 'app-log-in',
@@ -9,7 +11,7 @@ import {RequestClientServiceService} from "../../../services/request/request-cli
 })
 export class LogInComponent implements OnInit {
 
-  public listElements: Array<UserResponse> = [];
+
   private element: any;
   name = 'Insert name';
   userName = 'Insert Username';
@@ -29,13 +31,9 @@ export class LogInComponent implements OnInit {
 
   async submitToServerLogIn() {
     if (document.getElementById("header").textContent === "Consultant portal") {
-      this.listElements = this.consulantService.getConsultantList();
-      await this.delay(500);
-      for (this.element of this.listElements) {
+      for (this.element of this.consulantService.getSynchronousConsultants()) {
         if (this.element.userName === this.childInput) {
-          alert(this.element.userName)
           alert("User " + this.childInput + " found..");
-          this.consulantService.loggedConsultant = this.element; ////TODO da eliminare dal momento che ho messo il controllo su la stringa dell header
           document.getElementById("header").textContent = document.getElementById("header").textContent + " logged user: "+this.childInput;
           return;
         }
@@ -43,9 +41,7 @@ export class LogInComponent implements OnInit {
       alert("Consultant not found..");
     }
     else   {
-      this.listElements = this.clientService.getClientList();
-      await this.delay(500);
-      for (this.element of this.listElements) {
+      for (this.element of this.clientService.getSynchronousClients()) {
         console.log(this.element)
         if (this.element.userName === this.childInput) {
           alert("User " + this.childInput + " found..");
