@@ -14,5 +14,5 @@
 /capacitor.config.ts
 /package-lock.json
 /tsconfig.doc.json
-/Users/alternativooooooo/Desktop/front-end-ionic-25-10-2021/front-end-ionic/src/app/services/request/request-user-service.service.ts
-/Users/alternativooooooo/Desktop/front-end-ionic-25-10-2021/front-end-ionic/src/app/services/response/user-response.ts
+/src/app/services/request/request-user-service.service.ts
+/src/app/services/response/user-response.ts
