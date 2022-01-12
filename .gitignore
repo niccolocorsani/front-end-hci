@@ -15,5 +15,5 @@
 /capacitor.config.ts
 /package-lock.json
 /tsconfig.doc.json
-/src/app/services/request/request-user-service.service.ts
-/src/app/services/response/user-response.ts
+/request-user-service.service.ts
+/user-response.ts
