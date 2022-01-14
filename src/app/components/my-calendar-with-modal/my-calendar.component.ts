@@ -53,11 +53,10 @@ export class MyCalendarComponent implements OnInit {
       alert("You should log-in before choosing an appointment")
       return;
     }
-    if(document.getElementById("home-menu").textContent === "Home"){
+    if (document.getElementById("home-menu").textContent === "Home") {
       alert("You should chose a consultant before choosing an appointment")
       return;
     }
-
 
 
     await modal.present();
@@ -120,27 +119,19 @@ export class MyCalendarComponent implements OnInit {
     alert.present();
   }
 
-
   ////Questa funzione ritorna gli appuntamenti dell'utente attualmente loggato
   getMyAppointments() {
     let userName;
-    let client: ClientResponse;
-    let clients: ClientResponse[];
     if (document.getElementById("header").textContent.includes("Client")) {
       if (userName = document.getElementById("header").textContent.split(" ")[4] != null) {
-        ////TODO da finire qui sotto ci vuole l'id del cliente
-       //  let client =  this.clientService.getSynchronousClientByUserName(userName);
-       /// client = this.clientService.getSynchronousClientById(1);
-      //  console.log("client information" + client.firstName);
-       //  clients = this.clientService.getSynchronousClients()
-      //  console.log("clients"+clients[0].firstName)
-        this.clientService.getClientAppointments(1)
-
+        let client = this.clientService.getSynchronousClientByUserName(userName);
+        this.clientService.getClientAppointments(client.id)
       } else alert("You should log-in to retrive your appointments")
     } else {
-      //// Implementare caso in cui siamo nel portale consultant
+      if (userName = document.getElementById("header").textContent.split(" ")[4] != null) {
+        let consultant = this.consultantService.getSynchronousConsultantByUserName(userName);
+        this.consultantService.getConsultantAppointments(consultant.id)
+      }
     }
-
-
   }
 }

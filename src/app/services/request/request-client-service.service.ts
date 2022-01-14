@@ -28,11 +28,8 @@ export class RequestClientServiceService {
 
   ////writing method async, reading method sync
 
-  public async putClient(userName: string) {
-    let body = new ClientResponse();
-    body.userName = userName;
-    console.log(body)
-    this.http.put<ClientResponse>(this.url + '/client/putClient', body).pipe(
+  public async putClient(client: ClientResponse) {
+    this.http.put<ClientResponse>(this.url + '/client/putClient', client).pipe(
       catchError(this.handleError)
     ).subscribe(this.myObserver); ////sembra che senza sto subscribe non sia in grado di fare la richiesta
   }
@@ -45,13 +42,11 @@ export class RequestClientServiceService {
 
   public getClientAppointments(id: any) {
     let client = this.getSynchronousClientById(id);
-
     let appointments = this.getSynchronousAllAppointments();
     let clientAppointments = [];
     appointments.forEach(element => {
-      if (element.consultant.id = id) {
+      if (element.client.id = id) {
         clientAppointments.push(element);
-        console.log("elemento" + element.id);
       }
     })
 
@@ -175,5 +170,6 @@ export class RequestClientServiceService {
   delay(ms: number) {
     return new Promise(resolve => setTimeout(resolve, ms));
   }
+
 
 }

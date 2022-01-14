@@ -22,7 +22,9 @@ import {ClientComponent} from "./layout/client/client.component";
 import {BusinessConsultantComponent} from "./layout/business-consultant/business-consultant.component";
 import {SelectUsersModalComponent} from "./components/select-appointmnent-with-modal/select-users-modal/select-users-modal.component";
 import {ShowUsersComponent} from "./components/show-users/show-users.component";
-
+import {GeolocationComponent} from "./components/geolocation/geolocation.component";
+import {GoogleMapsModule} from "@angular/google-maps";
+import {AgmCoreModule} from "@agm/core";
 
 @NgModule({
     declarations: [
@@ -37,19 +39,23 @@ import {ShowUsersComponent} from "./components/show-users/show-users.component";
         ClientComponent,
         BusinessConsultantComponent,
         SelectUsersModalComponent,
-        ShowUsersComponent
+        ShowUsersComponent,
+        GeolocationComponent
     ],
   entryComponents: [],
-    imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule, NgCalendarModule, CalModalPageModule,
-        HttpClientModule,
-        // https://medium.com/letsboot/translate-angular-4-apps-with-ngx-translate-83302fb6c10d
-        TranslateModule.forRoot({
-            loader: {
-                provide: TranslateLoader,
-                useFactory: HttpLoaderFactory,
-                deps: [HttpClient]
-            }
-        }), FormsModule],
+  imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule, NgCalendarModule, CalModalPageModule,
+    HttpClientModule,
+    AgmCoreModule.forRoot({
+      apiKey: 'key=AIzaSyCrl5bxS7fNnPW5o5K9x7IeqXH-lS3gnLw'
+    }),
+    // https://medium.com/letsboot/translate-angular-4-apps-with-ngx-translate-83302fb6c10d
+    TranslateModule.forRoot({
+      loader: {
+        provide: TranslateLoader,
+        useFactory: HttpLoaderFactory,
+        deps: [HttpClient]
+      }
+    }), FormsModule, GoogleMapsModule],
   ////https://www.youtube.com/watch?v=FLHi2pc8gX0 spiegazione LocalNotifications
   providers: [{provide: RouteReuseStrategy, useClass: IonicRouteStrategy},LocalNotifications, AppComponent, MyCalendarComponent],
   bootstrap: [AppComponent],

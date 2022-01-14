@@ -4,6 +4,8 @@
   <app-my-input [inputStringValue]='password' (newItemEvent)="addInputToVariableRegisterMail($event)"></app-my-input>
   <app-my-input [inputStringValue]='eMail' (newItemEvent)="addInputToVariableRegisterMail($event)"></app-my-input>
   <app-my-input [inputStringValue]='confirm_password' (newItemEvent)="addInputToVariableRegisterMail($event)"></app-my-input>
+  <app-my-input *ngIf="!consultant_or_client" [inputStringValue]='description' (newItemEvent)="addInputToVariableRegisterMail($event)"></app-my-input>
+
   <ion-item id="submitLogin" (click)="submitToServerRegister()" style="width: 150px;">
     Register new account
   </ion-item>

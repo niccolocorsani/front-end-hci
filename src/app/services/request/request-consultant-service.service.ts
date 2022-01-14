@@ -84,11 +84,8 @@ export class RequestConsultantServiceService {
     });
   }
 
-  public async putConsultant(userName: string) {
-    let body = new ConsultantResponse();
-    body.userName = userName;
-
-    this.http.put<ConsultantResponse>(this.url + '/consultant/putConsultant', body).pipe(
+  public async putConsultant(consultant: ConsultantResponse) {
+    this.http.put<ConsultantResponse>(this.url + '/consultant/putConsultant', consultant).pipe(
       catchError(this.handleError)
     ).subscribe(this.myObserver); ////sembra che senza sto subscribe non sia in grado di fare la richiesta
   }

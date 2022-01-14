@@ -1,0 +1,30 @@
+<div>
+  <p>Click the button to get your coordinates.</p>
+
+  <ion-button (click)="getLocation()">Try It</ion-button>
+  <p id="demo">oooo</p>
+  <ion-button (click)="getLocationIonic()">Try It</ion-button>
+
+  <ion-content>
+    <!--
+
+<div id="map"></div>
+
+    Provided by
+      <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY"></script>
+      at index.html
+      ////TODO da mettere google api key
+    documentation at https://developers.google.com/maps/documentation/javascript/overview
+-->
+  </ion-content>
+
+
+  <h1>{{ title }}</h1>
+
+  <!-- this creates a google map on the page with the given lat/lng from -->
+  <!-- the component as the initial center of the map: -->
+  <agm-map [latitude]="lat" [longitude]="lng">
+    <agm-marker [latitude]="lat" [longitude]="lng"></agm-marker>
+  </agm-map>
+</div>
+
