@@ -71,7 +71,7 @@ export class CalModalPage implements AfterViewInit {
     if (month === "Nov") month = "11";
     if (month === "Dec") month = "12";
 
-    
+
     let day = this.event.startTime.toString().split(" ")[2];
     let year = this.event.startTime.toString().split(" ")[3];
 
