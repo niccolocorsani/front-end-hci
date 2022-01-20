@@ -1,76 +1,132 @@
-import {Component, OnInit, ViewChild} from '@angular/core';
-import {Geolocation} from '@ionic-native/geolocation/ngx';
+import {Component, OnInit} from '@angular/core';
+import {RequestConsultantServiceService} from "../../services/request/request-consultant-service.service";
+import {ConsultantResponse} from "../../services/response/consultant-response";
+
+//import {Geolocation} from '@ionic-native/geolocation/ngx';
 
 @Component({
-  selector: 'app-geolocation',
-  templateUrl: './geolocation.component.html',
-  styleUrls: ['./geolocation.component.scss'],
+    selector: 'app-geolocation',
+    templateUrl: './geolocation.component.html',
+    styleUrls: ['./geolocation.component.scss'],
 })
 export class GeolocationComponent implements OnInit {
 
-  x: any;
-  options: any;
+    ///documentation for google maps at: https://angular-maps.com/
+    /// is important to set the version of the dependency at "@types/googlemaps": "^3.36.4", because the leatest version doesn't work with @agm
+
+
+    title = 'My first AGM project';
+    lat = 43.77925;
+    lng = 11.24626;  // Florence coordinates
+    options: any;
+    map: google.maps.Map;
+    consultants: ConsultantResponse[];
+    checkConsultantOnMap = false;
+    address: any;
+    hideGetPositionOptionForClient = true;
 
 
 
-   map: google.maps.Map;
-
-   initMap(): void {
-    this.map = new google.maps.Map(document.getElementById("map") as HTMLElement, {
-      center: { lat: -34.397, lng: 150.644 },
-      zoom: 8,
-    });
-  }
-
-
-  title = 'My first AGM project';
-  lat = 51.678418;
-  lng = 7.809007;
-
-  constructor(/*private geolocation: Geolocation*/) {
-    this.options = {
-      enableHighAccuracy: true,
-      timeout: 5000,
-      maximumAge: 0
-    };
-  }
-
-  ngOnInit() {
-
-  }
-
-  async getLocation() {
-
-    this.x = document.getElementById("demo");
-    if (navigator.geolocation) {
-      let watch = navigator.geolocation.watchPosition(position => {
-        this.x.textContent = "lat: " + position.coords.latitude + "long: " + position.coords.longitude;
-      }, null, this.options);
-
-    } else {
-      this.x.textContent = "Geolocation is not supported by this browser.";
+    constructor(/*private geolocation: Geolocation*/ private consultantService: RequestConsultantServiceService) {
+        this.options = {
+            enableHighAccuracy: false,
+            timeout: 5000,
+            maximumAge: 0
+        };
     }
-  }
 
 
-  data: any;
+    ngOnInit() {
+        if (document.getElementById("header").textContent.includes("Client"))
+            this.hideGetPositionOptionForClient = false;
+        this.consultants = this.consultantService.getSynchronousConsultants();
+        document.getElementById("consultantLatLng").style.display = "none";
+        document.getElementById("consultant_city_street_cap").style.display = "none";
 
-  getLocationIonic() {
-    /*
-        this.geolocation.getCurrentPosition().then((resp) => {
-          // resp.coords.latitude
-          // resp.coords.longitude
-        }).catch((error) => {
-          console.log('Error getting location', error);
+        console.log("oooo")
+        this.getLocation();
+
+
+
+    }
+
+     initMap() {
+        this.map = new google.maps.Map(document.getElementById("map") as HTMLElement, {
+            zoom: 8,
         });
+    }
 
-        let watch = this.geolocation.watchPosition();
-        watch.subscribe((data) => {
-          this.data = data;
-          console.log("----->Watch latitude" + this.data.coords.latitude);
-          console.log("-----> Watch logitude" + this.data.coords.longitude)
-          console.log("-----> Watch accuracy" + this.data.coords.accuracy)
-        });
-    */
-  }
+
+    async getLocation() {
+        if (navigator.geolocation) {
+            //      let watch = navigator.geolocation.watchPosition(position => {
+            navigator.geolocation.getCurrentPosition(position => {
+                this.lat = position.coords.latitude;
+                this.lng = position.coords.longitude;
+            }, null, this.options);
+            this.getAddress();
+        } else {
+            console.error("Geolocation is not supported by this browser.");
+        }
+    }
+
+    city: any;
+    cap: any;
+    street: any;
+
+    getAddress() {
+        console.log('Finding Address');
+        if (navigator.geolocation) {
+            let geocoder = new google.maps.Geocoder();
+            let latlng = new google.maps.LatLng(this.lat, this.lng);
+            let request = {'location': latlng};
+            geocoder.geocode(request, (results, status) => {
+                if (status === google.maps.GeocoderStatus.OK) {
+                    let result = results[0];
+                    let rsltAdrComponent = result.address_components;
+                    if (result != null) {
+
+                        this.address = rsltAdrComponent;
+
+                        this.city = this.address[2].long_name;
+                        this.street =  this.address[1].long_name;
+                        this.cap = this.address[7].long_name;
+
+                        console.log(this.address)
+
+                    } else {
+                        alert('No address available!');
+                    }
+                }
+            });
+        }
+    }
+
+    // data: any;
+
+
+    getLocationIonic() {
+        /*
+            this.geolocation.getCurrentPosition().then((resp) => {
+              // resp.coords.latitude
+              // resp.coords.longitude
+            }).catch((error) => {
+              console.log('Error getting location', error);
+            });
+
+            let watch = this.geolocation.watchPosition();
+            watch.subscribe((data) => {
+              this.data = data;
+              console.log("----->Watch latitude" + this.data.coords.latitude);
+              console.log("-----> Watch logitude" + this.data.coords.longitude)
+              console.log("-----> Watch accuracy" + this.data.coords.accuracy)
+            });
+        */
+    }
+
+    checkAllConsultant() {
+        this.checkConsultantOnMap = true;
+    }
+
+
 }

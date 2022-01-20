@@ -1,50 +1,57 @@
 <ion-app class="background-image">
-  <ion-header>
-    <ion-toolbar style="  --ion-background-color: linear-gradient(to right, #11998e, #38ef7d);">
-      <ion-title id="header" class="ion-text-center">Client portal</ion-title>
-    </ion-toolbar>
-  </ion-header>
-  <ion-content>
-    <ion-item style="padding-top: 0px; width: 4%">
-      <ion-icon *ngIf="!openComponentsService.openDialogMenu" (click)="openMenu()"
-                name="list-outline" size="large"></ion-icon>
-      <ion-icon *ngIf="openComponentsService.openDialogMenu" (click)="openMenu()"
-                name="close-outline" size="large"></ion-icon>
-    </ion-item>
-    <ion-grid class="ion-no-padding">
-      <ion-row>
-        <ion-col size="6" size-sm>
-          <!--La combinazione di size="3" insieme a size-md renderizza 3 colonne solo quando è su sm device, l'idea è di partire a  fare un layout
-          buono per i device desktop e poi aggiungere  sm, md, lg così da aggiustare gli small, medium e large devices-->
-          <ion-list *ngIf="openComponentsService.openDialogMenu" id="inbox-list" style="height: 100vh !important">
-            <ion-menu-toggle auto-hide="false" *ngFor="let p of appPages; let i = index">
-              <ion-item routerDirection="root" [routerLink]="[p.url]" lines="none" detail="false"
-                        routerLinkActive="selected" (click)="openDialog(p.title)">
-                <ion-icon slot="start" [ios]="p.icon + '-outline'" [md]="p.icon + '-sharp'"></ion-icon>
-                <ion-label>{{ p.title }}</ion-label>
-              </ion-item>
-              <hr>
-            </ion-menu-toggle>
-          </ion-list>
-        </ion-col>
-        <ion-col>
-          <!--<object data="assets/polygon-rotation.svg"></object>-->
-          <app-log-in-or-register-menu *ngIf="openComponentsService.openDialogVarAccount"></app-log-in-or-register-menu>
-          <app-open-modal
-            *ngIf="openComponentsService.openDialogCalendar"></app-open-modal>
-          <app-my-calendar
-            *ngIf="openComponentsService.openDialogCalendar"></app-my-calendar>
-          <app-show-users *ngIf="openComponentsService.openDialogVarShowUsers"></app-show-users>
-        </ion-col>
-        <ion-col>
-          <!--con size = 0 non fa il display di quest'ultima colonna-->
-          <!--<img src="http://www.cflc.eu/wp-content/uploads/2018/12/commercialista-impresa-1080x675.jpg">-->
-          <!--  Qui sarebbe interssante metterci una cosa fatta con figma, design bellino dove viene spiegata l'app
-          -->
-        </ion-col>
-      </ion-row>
-    </ion-grid>
-  </ion-content>
+    <ion-header>
+        <ion-toolbar style="  --ion-background-color: linear-gradient(to right, #11998e, #38ef7d);">
+            <ion-title id="header" class="ion-text-center">Client portal</ion-title>
+        </ion-toolbar>
+    </ion-header>
+    <ion-content>
+        <ion-item style="padding-top: 0px; width: 4%">
+            <ion-icon *ngIf="!openComponentsService.openDialogMenu" (click)="openMenu()"
+                      name="list-outline" size="large"></ion-icon>
+            <ion-icon *ngIf="openComponentsService.openDialogMenu" (click)="openMenu()"
+                      name="close-outline" size="large"></ion-icon>
+        </ion-item>
+        <ion-grid class="ion-no-padding">
+            <ion-row>
+                <ion-col size="6" size-sm>
+                    <!--La combinazione di size="3" insieme a size-md renderizza 3 colonne solo quando è su sm device, l'idea è di partire a  fare un layout
+                    buono per i device desktop e poi aggiungere  sm, md, lg così da aggiustare gli small, medium e large devices-->
+                    <ion-card>
+
+                        <ion-list *ngIf="openComponentsService.openDialogMenu" id="inbox-list"
+                                  style="height: 100vh !important">
+                            <ion-menu-toggle auto-hide="false" *ngFor="let p of appPages; let i = index">
+                                <ion-item routerDirection="root" [routerLink]="[p.url]" lines="none" detail="false"
+                                          routerLinkActive="selected" (click)="openDialog(p.title)">
+                                    <ion-icon slot="start" [ios]="p.icon + '-outline'"
+                                              [md]="p.icon + '-sharp'"></ion-icon>
+                                    <ion-label>{{ p.title }}</ion-label>
+                                </ion-item>
+                                <hr>
+                            </ion-menu-toggle>
+                        </ion-list>
+                    </ion-card>
+                </ion-col>
+                <ion-col>
+                        <!--<object data="assets/polygon-rotation.svg"></object>-->
+                        <app-log-in-or-register-menu
+                                *ngIf="openComponentsService.openDialogVarAccount"></app-log-in-or-register-menu>
+                        <app-open-modal
+                                *ngIf="openComponentsService.openDialogCalendar"></app-open-modal>
+                        <app-my-calendar
+                                *ngIf="openComponentsService.openDialogCalendar"></app-my-calendar>
+                        <app-show-users *ngIf="openComponentsService.openDialogVarShowUsers"></app-show-users>
+                </ion-col>
+                <ion-col>
+                    <app-geolocation *ngIf="openComponentsService.openDialogVarShowUsers"></app-geolocation>
+                    <!--con size = 0 non fa il display di quest'ultima colonna-->
+                    <!--<img src="http://www.cflc.eu/wp-content/uploads/2018/12/commercialista-impresa-1080x675.jpg">-->
+                    <!--  Qui sarebbe interssante metterci una cosa fatta con figma, design bellino dove viene spiegata l'app
+                    -->
+                </ion-col>
+            </ion-row>
+        </ion-grid>
+    </ion-content>
 </ion-app>
 
 

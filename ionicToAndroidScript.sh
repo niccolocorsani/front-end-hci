@@ -10,5 +10,6 @@ ionic capacitor add android
 npm install jetifier
 npx jetify
 npx cap sync android
+npx cap init
 ionic capacitor copy android
 ionic cap open android

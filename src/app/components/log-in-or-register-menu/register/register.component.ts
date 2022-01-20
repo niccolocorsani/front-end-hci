@@ -1,6 +1,5 @@
 import {Component, OnInit} from '@angular/core';
 import {RequestClientServiceService} from "../../../services/request/request-client-service.service";
-import {AppComponent} from "../../../app.component";
 import {RequestConsultantServiceService} from "../../../services/request/request-consultant-service.service";
 import {ClientResponse} from "../../../services/response/client-response";
 import {ConsultantResponse} from "../../../services/response/consultant-response";
@@ -11,15 +10,12 @@ import {ConsultantResponse} from "../../../services/response/consultant-response
 })
 export class RegisterComponent implements OnInit {
 
-  name = 'Insert name';
-  userName = 'Insert username';
-  eMail = 'Insert email';
-  password = 'insert password';
-  confirm_password = 'confirm password';
+  name = 'name';
+  userName = 'username';
+  eMail = 'email';
   childInputUsername: string;
-  childInputMail: string;
   description= 'description';
-
+  phone_number = 'phone_number';
 
   consultant_or_client : boolean;
 
@@ -36,13 +32,10 @@ export class RegisterComponent implements OnInit {
     //nothing to do
   }
 
-  addInputToVariableRegisterUserName(newItem: string) {
+  addInputToVariableRegister(newItem: string) {
     this.childInputUsername = newItem;
   }
 
-  addInputToVariableRegisterMail(newItem: string) {
-    this.childInputMail = newItem;
-  }
 
 
   async submitToServerRegister() {

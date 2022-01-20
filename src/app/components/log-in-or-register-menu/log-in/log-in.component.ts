@@ -10,9 +10,9 @@ export class LogInComponent implements OnInit {
 
 
   private element: any;
-  name = 'Insert name';
-  userName = 'Insert Username';
-  eMail = 'Insert Email';
+  name = 'name';
+  userName = 'username';
+  eMail = 'email';
   childInput: string ;
 
   addInputToVariable(newItem: string) {
@@ -31,7 +31,7 @@ export class LogInComponent implements OnInit {
       for (this.element of this.consulantService.getSynchronousConsultants()) {
         if (this.element.userName === this.childInput) {
           alert("User " + this.childInput + " found..");
-          document.getElementById("header").textContent = document.getElementById("header").textContent + " logged user: "+this.childInput;
+          document.getElementById("header").textContent = document.getElementById("header").textContent + " logged : "+this.childInput;
           return;
         }
       }

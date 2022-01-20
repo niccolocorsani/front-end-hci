@@ -12,7 +12,7 @@ export class LogInOrRegisterMenuComponent implements OnInit {
   @Output() close = new EventEmitter<any>();    ///// Può essere applicato solo al padre nel tag in cui è presente <app-log-in-or-register-menu>
 
   ngOnInit(): void {
-
+// nothing to do
   }
   openRegisterDialog(): void {
     this.collapsedRegister = !this.collapsedRegister;

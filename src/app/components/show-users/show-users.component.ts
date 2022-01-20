@@ -9,18 +9,14 @@ import {RequestConsultantServiceService} from "../../services/request/request-co
 export class ShowUsersComponent implements OnInit {
 
   public listElements: Array<ConsultantResponse> = [];
-  private showUser = false;
 
   constructor(private consultantService: RequestConsultantServiceService) { }
 
-  ngOnInit() {}
-
-  async retriveUsers() {
-    if (this.showUser === false)
-      this.showUser = true;
-    else this.showUser = false;
+  ngOnInit() {
     this.listElements = this.consultantService.getSynchronousConsultants();
+
   }
+
 
 
 

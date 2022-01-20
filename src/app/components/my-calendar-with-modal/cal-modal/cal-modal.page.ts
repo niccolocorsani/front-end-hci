@@ -1,7 +1,6 @@
 import {Component, AfterViewInit} from '@angular/core';
 import {ModalController} from '@ionic/angular';
 import {RequestClientServiceService} from "../../../services/request/request-client-service.service";
-import {ClientResponse} from "../../../services/response/client-response";
 import {RequestConsultantServiceService} from "../../../services/request/request-consultant-service.service";
 
 @Component({
@@ -72,6 +71,7 @@ export class CalModalPage implements AfterViewInit {
     if (month === "Nov") month = "11";
     if (month === "Dec") month = "12";
 
+    
     let day = this.event.startTime.toString().split(" ")[2];
     let year = this.event.startTime.toString().split(" ")[3];
 

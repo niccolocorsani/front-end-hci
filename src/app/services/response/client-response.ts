@@ -8,6 +8,12 @@ export class ClientResponse {
   description: string;
   email:string;
   appointments: any;
+  lat: any;
+  lng: any;
+  street: string;
+  city: string;
+  cap: string;
+
 
 
   constructor(data?: any) {
@@ -18,6 +24,10 @@ export class ClientResponse {
     this.appointments = data ? data.appointments : null;
     this.description = data ? data.description : null;
     this.email = data ? data.email : null;
-
+    this.lat = data ? data.lat : null;
+    this.lng = data ? data.lng : null;
+    this.street = data ? data.street : null;
+    this.city = data ? data.city : null;
+    this.cap = data ? data.cap : null;
   }
 }

@@ -12,7 +12,10 @@ export class OpenComponentsService {
   openDialogNotification = false;
   openDialogCalendar = false;
   openDialogMenu = true;
+  openDialogMaps = false;
 
 
-  constructor() { }
+  constructor() {
+
+  }
 }
