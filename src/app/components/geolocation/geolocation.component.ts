@@ -2,7 +2,6 @@ import {Component, OnInit} from '@angular/core';
 import {RequestConsultantServiceService} from "../../services/request/request-consultant-service.service";
 import {ConsultantResponse} from "../../services/response/consultant-response";
 
-//import {Geolocation} from '@ionic-native/geolocation/ngx';
 
 @Component({
     selector: 'app-geolocation',
@@ -63,6 +62,7 @@ export class GeolocationComponent implements OnInit {
             navigator.geolocation.getCurrentPosition(position => {
                 this.lat = position.coords.latitude;
                 this.lng = position.coords.longitude;
+                console.log(this.lat +' '+ this.lng )
             }, null, this.options);
             this.getAddress();
         } else {
@@ -102,27 +102,7 @@ export class GeolocationComponent implements OnInit {
         }
     }
 
-    // data: any;
 
-
-    getLocationIonic() {
-        /*
-            this.geolocation.getCurrentPosition().then((resp) => {
-              // resp.coords.latitude
-              // resp.coords.longitude
-            }).catch((error) => {
-              console.log('Error getting location', error);
-            });
-
-            let watch = this.geolocation.watchPosition();
-            watch.subscribe((data) => {
-              this.data = data;
-              console.log("----->Watch latitude" + this.data.coords.latitude);
-              console.log("-----> Watch logitude" + this.data.coords.longitude)
-              console.log("-----> Watch accuracy" + this.data.coords.accuracy)
-            });
-        */
-    }
 
     checkAllConsultant() {
         this.checkConsultantOnMap = true;

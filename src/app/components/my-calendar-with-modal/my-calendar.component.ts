@@ -5,7 +5,6 @@ import {CalModalPage} from "./cal-modal/cal-modal.page";
 import {formatDate} from "@angular/common";
 import {RequestConsultantServiceService} from "../../services/request/request-consultant-service.service";
 import {RequestClientServiceService} from "../../services/request/request-client-service.service";
-import {ClientResponse} from "../../services/response/client-response";
 
 @Component({
   selector: 'app-my-calendar',

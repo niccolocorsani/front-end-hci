@@ -1,9 +1,8 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {ModalController} from '@ionic/angular';
 import {ConsultantResponse} from "../../../services/response/consultant-response";
 import {RequestConsultantServiceService} from "../../../services/request/request-consultant-service.service";
 import {OpenComponentsService} from "../../../services/open-components/open-components.service";
-import {CalModalPage} from "../../my-calendar-with-modal/cal-modal/cal-modal.page";
 
 @Component({
   selector: 'app-select-users-modal',
