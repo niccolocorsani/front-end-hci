@@ -2,15 +2,15 @@
 /android/
 
 
-!android/
-android/*
-!android/build/
-android/build/*
-!android/build/outputs/
-android/build/outputs/*
-!android/build/outputs/apk/
-android/build/outputs/apk/*
-!android/build/outputs/apk/debug/
+!/android/
+/android/*
+!/android/build/
+/android/build/*
+!/android/build/outputs/
+/android/build/outputs/*
+!/android/build/outputs/apk/
+/android/build/outputs/apk/*
+!/android/build/outputs/apk/debug/
 
 /www/
 /.idea/
