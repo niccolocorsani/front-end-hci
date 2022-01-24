@@ -5,19 +5,18 @@
         </ion-toolbar>
     </ion-header>
     <ion-content>
-        <ion-item style="padding-top: 0px; width: 4%">
+        <ion-item style="padding-top: 0px; width: 200px">
             <ion-icon *ngIf="!openComponentsService.openDialogMenu" (click)="openMenu()"
-                      name="list-outline" size="large"></ion-icon>
+                      name="home" ></ion-icon>
             <ion-icon *ngIf="openComponentsService.openDialogMenu" (click)="openMenu()"
-                      name="close-outline" size="large"></ion-icon>
+                      name="home" ></ion-icon>
         </ion-item>
         <ion-grid class="ion-no-padding">
             <ion-row>
-                <ion-col size="6" size-sm>
+                <ion-col size="12" size-sm>
                     <!--La combinazione di size="3" insieme a size-md renderizza 3 colonne solo quando è su sm device, l'idea è di partire a  fare un layout
                     buono per i device desktop e poi aggiungere  sm, md, lg così da aggiustare gli small, medium e large devices-->
                     <ion-card>
-
                         <ion-list *ngIf="openComponentsService.openDialogMenu" id="inbox-list"
                                   style="height: 100vh !important">
                             <ion-menu-toggle auto-hide="false" *ngFor="let p of appPages; let i = index">
@@ -32,7 +31,7 @@
                         </ion-list>
                     </ion-card>
                 </ion-col>
-                <ion-col>
+                <ion-col size="12" size-sm>
                         <!--<object data="assets/polygon-rotation.svg"></object>-->
                         <app-log-in-or-register-menu
                                 *ngIf="openComponentsService.openDialogVarAccount"></app-log-in-or-register-menu>
@@ -42,7 +41,7 @@
                                 *ngIf="openComponentsService.openDialogCalendar"></app-my-calendar>
                         <app-show-users *ngIf="openComponentsService.openDialogVarShowUsers"></app-show-users>
                 </ion-col>
-                <ion-col>
+                <ion-col size="12" size-sm>
                     <app-geolocation *ngIf="openComponentsService.openDialogVarShowUsers"></app-geolocation>
                     <!--con size = 0 non fa il display di quest'ultima colonna-->
                     <!--<img src="http://www.cflc.eu/wp-content/uploads/2018/12/commercialista-impresa-1080x675.jpg">-->

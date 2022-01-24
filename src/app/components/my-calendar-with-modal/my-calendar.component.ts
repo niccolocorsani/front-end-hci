@@ -121,16 +121,24 @@ export class MyCalendarComponent implements OnInit {
   ////Questa funzione ritorna gli appuntamenti dell'utente attualmente loggato
   getMyAppointments() {
     let userName;
+
+    console.log("ooooo")
+
+
     if (document.getElementById("header").textContent.includes("Client")) {
+
       if (userName = document.getElementById("header").textContent.split(" ")[4] != null) {
         let client = this.clientService.getSynchronousClientByUserName(userName);
         this.clientService.getClientAppointments(client.id)
+        console.log("ooooo")
       } else alert("You should log-in to retrive your appointments")
     } else {
       if (userName = document.getElementById("header").textContent.split(" ")[4] != null) {
         let consultant = this.consultantService.getSynchronousConsultantByUserName(userName);
+        console.log("ooooo")
+        console.log(userName);
         this.consultantService.getConsultantAppointments(consultant.id)
-      }
+      } else alert("You should log-in to retrive your appointments")
     }
   }
 }

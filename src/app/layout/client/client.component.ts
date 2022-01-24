@@ -22,14 +22,13 @@ export class ClientComponent implements OnInit {
     {title: 'Calendar', url: '/folder/Trash', icon: 'trash'},
 
   ];
-  public labels = ['Family', 'Friends', 'Notes', 'Work', 'Travel', 'Reminders'];
+
 
   openMenu() {
 
     if (this.openComponentsService.openDialogMenu === false) {
       this.openComponentsService.openDialogMenu = true;
     } else {
-      this.openComponentsService.openDialogMenu = false;
       this.openComponentsService.openDialogVarAccount = false;
       this.openComponentsService.openDialogVarShowUsers = false;
       this.openComponentsService.openDialogCalendar = false;
@@ -40,6 +39,7 @@ export class ClientComponent implements OnInit {
   openDialog(title: any) {
 
     if (title === 'Account') {
+      if (window.innerHeight < 700) this.openComponentsService.openDialogMenu = false;
       this.openComponentsService.openDialogVarAccount = true;
       this.openComponentsService.openDialogVarShowUsers = false;
       this.openComponentsService.openDialogCalendar = false;
@@ -47,6 +47,7 @@ export class ClientComponent implements OnInit {
       return;
     }
     if (title === 'Show Users') {
+      if (window.innerHeight < 700) this.openComponentsService.openDialogMenu = false;
       this.openComponentsService.openDialogVarShowUsers = true;
       this.openComponentsService.openDialogVarAccount = false;
       this.openComponentsService.openDialogCalendar = false;
@@ -54,6 +55,7 @@ export class ClientComponent implements OnInit {
       return;
     }
     if (title === 'Calendar') {
+      if (window.innerHeight < 700) this.openComponentsService.openDialogMenu = false;
       this.openComponentsService.openDialogCalendar = true;
       this.openComponentsService.openDialogVarShowUsers = false;
       this.openComponentsService.openDialogVarAccount = false;
