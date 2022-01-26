@@ -16,7 +16,7 @@ android/app/build/outputs/*
 android/app/build/outputs/apk/*
 !android/app/build/outputs/apk/release/
 android/app/build/outputs/apk/release/*
-!android/app/build/outputs/apk/release/app-release-unsigned.apk
+!android/app/build/outputs/apk/release/
 #https://theapache64.github.io/git-do-not-ignore/ for ignore file
 
 /www/
