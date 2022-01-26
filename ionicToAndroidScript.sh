@@ -1,6 +1,7 @@
 #! /bin/bash
 
 
+
 ng build || npm install @ionic-native/core --save # || esegue il secondo comando se il primo ha dato errore
 ng build
 npm install @capacitor/core
