@@ -13,5 +13,10 @@ npx jetify
 npx cap sync android
 npx cap init
 ionic capacitor copy android
-ionic cap open android
-
+#ionic cap open android
+cd android
+#gradle build
+./gradlew  assembleRelease # per far funzionare questo comando è necessario
+# che sia presente il file local.properties e che java sia installato correttamente.
+# Per installare java correttamente guarda: https://www.azul.com/downloads/?package=jdk
+# che scarica un software che setta tutto java per bene
