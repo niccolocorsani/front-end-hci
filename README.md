@@ -21,11 +21,12 @@ gitignore : https://theapache64.github.io/git-do-not-ignore/ for ignore file
 The Project concerns the development of a web application for the management, saving and manipulation of different types of data useful for the interaction between generic customers and consultants. In particular, the functions made available by the application are those of: saving data that identify a customer and a consultant, booking an appointment between them and displaying the consultants' position on a map.
 
 # Tools and Techniques
-*In this section list the tools and any special techniques you will employ.*
 
 The main tools and techniques we will employ are:
-- **Kivy**: for the Android and GUI application running on the table \[2\].
-- **ZeroMQ**: for communication between Android application and GUI \[3\].
+- **Angular**: For front-end implementation \[2\].
+- **Spring-Boot**: For back-end implementation \[3\].
+- **MySQL**: For the persistence of data and query manipulation \[3\].
+
 ...
 
 # Expected Outcomes
