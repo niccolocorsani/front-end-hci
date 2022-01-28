@@ -12,14 +12,13 @@ gitignore : https://theapache64.github.io/git-do-not-ignore/ for ignore file
 
 
 # Overview
-*In this section give a broad overview of the project goals and plan*
 
-- **Academic Year**: 2019-2020
-- **Project Title**: Cross-device interaction between smartphones and interactive surfaces
-- **Students**: John Smith and Marco Rossi 
-- **CFUs**: 9 (or 6)
+- **Academic Year**: 2021-2022
+- **Project Title**: Client consultant interaction application
+- **Students**: Niccolò Corsani
+- **CFUs**: 9
 
-In this project we will re-implement the underlying technology and some of the interaction modalities from the literature on cross-device interaction [1]. We will implement a Kivy-based subsystem for detecting touch events with smartphones on an interactive table. That is, we will detect when, where, and (some elements) of how a user physically touches the table with his smartphone. Key to this low-level subsystem will be the association of tap events with specific smartphones. This will be done using accelerometer and gyroscope measurements as described in \[1\]. Our implementation will require a both a mobile smartphone application, and a software component integrated in Kivy GUI application. Selected interaction modalities from [1] will be implemented to demonstrate the potential of this technology.
+The Project concerns the development of a web application for the management, saving and manipulation of different types of data useful for the interaction between generic customers and consultants. In particular, the functions made available by the application are those of: saving data that identify a customer and a consultant, booking an appointment between them and displaying the consultants' position on a map.
 
 # Tools and Techniques
 *In this section list the tools and any special techniques you will employ.*
