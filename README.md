@@ -23,9 +23,14 @@ The Project concerns the development of a web application for the management, sa
 # Tools and Techniques
 
 The main tools and techniques we will employ are:
+
 - **Angular**: For front-end implementation \[2\].
-- **Spring-Boot**: For back-end implementation \[3\].
-- **MySQL**: For the persistence of data and query manipulation \[3\].
+- **Ionic**: For the support of the front-end implementation \[3\].
+- **Spring-Boot**: For back-end implementation \[4\].
+- **MySQL**: For the persistence of data and query manipulation \[5\].
+- **Docker**: For the deploy of the back-end \[6\].
+- **Capacitor Android**: For cross-platform development \[7\].
+
 
 ...
 
