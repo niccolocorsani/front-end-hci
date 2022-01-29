@@ -5,7 +5,7 @@
         </ion-toolbar>
     </ion-header>
     <ion-content>
-        <ion-item style="padding-top: 0px; width: 200px">
+        <ion-item button="true" style="padding-top: 0px; width: 200px">
             <ion-icon *ngIf="!openComponentsService.openDialogMenu" (click)="openMenu()"
                       name="home" ></ion-icon>
             <ion-icon *ngIf="openComponentsService.openDialogMenu" (click)="openMenu()"
@@ -20,7 +20,7 @@
                         <ion-list *ngIf="openComponentsService.openDialogMenu" id="inbox-list"
                                   style="height: 100vh !important">
                             <ion-menu-toggle auto-hide="false" *ngFor="let p of appPages; let i = index">
-                                <ion-item routerDirection="root" [routerLink]="[p.url]" lines="none" detail="false"
+                                <ion-item button="true" routerDirection="root" [routerLink]="[p.url]" lines="none" detail="false"
                                           routerLinkActive="selected" (click)="openDialog(p.title)">
                                     <ion-icon slot="start" [ios]="p.icon + '-outline'"
                                               [md]="p.icon + '-sharp'"></ion-icon>

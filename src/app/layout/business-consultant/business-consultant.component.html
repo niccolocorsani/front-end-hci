@@ -1,40 +1,46 @@
 <ion-app class="background-image">
-  <ion-header>
-    <ion-toolbar style="  --ion-background-color: linear-gradient(to right, #11998e, #38ef7d);">
-      <ion-title id="header" class="ion-text-center">Consultant portal</ion-title>
-    </ion-toolbar>
-  </ion-header>
-  <ion-content>
-    <ion-item style="padding-top: 0px; width: 200px">
-      <ion-icon *ngIf="!openComponentsService.openDialogMenu" (click)="openMenu()"
-                name="home"></ion-icon>
-      <ion-icon *ngIf="openComponentsService.openDialogMenu" (click)="openMenu()"
-                name="home"></ion-icon>
-    </ion-item>
-    <ion-grid class="ion-no-padding">
-      <ion-row>
-        <ion-col size="12" size-sm>
-          <ion-list *ngIf="openComponentsService.openDialogMenu" id="inbox-list"   style="height: 100vh !important">
-            <ion-menu-toggle auto-hide="false" *ngFor="let p of appPages; let i = index">
-              <ion-item routerDirection="root" [routerLink]="[p.url]" lines="none" detail="false"
-                        routerLinkActive="selected" (click)="openDialog(p.title)">
-                <ion-icon slot="start" [ios]="p.icon + '-outline'" [md]="p.icon + '-sharp'"></ion-icon>
-                <ion-label>{{ p.title }}</ion-label>
-              </ion-item>
-              <hr>
-            </ion-menu-toggle>
-          </ion-list>
-        </ion-col>
-        <ion-col size="12" size-sm style="height: 400px">
-          <app-log-in-or-register-menu *ngIf="openComponentsService.openDialogVarAccount"></app-log-in-or-register-menu>
-          <app-my-calendar *ngIf="openComponentsService.openDialogCalendar"></app-my-calendar>
-        </ion-col>
-        <ion-col size="12" size-sm>
-          <app-geolocation *ngIf="openComponentsService.openDialogMaps"></app-geolocation>
-        </ion-col>
-      </ion-row>
-    </ion-grid>
-  </ion-content>
+    <ion-header>
+        <ion-toolbar style="  --ion-background-color: linear-gradient(to right, #11998e, #38ef7d);">
+            <ion-title id="header" class="ion-text-center">Consultant portal</ion-title>
+        </ion-toolbar>
+    </ion-header>
+    <ion-content>
+        <ion-item button="true" style="padding-top: 0px; width: 200px">
+            <ion-icon *ngIf="!openComponentsService.openDialogMenu" (click)="openMenu()"
+                      name="home"></ion-icon>
+            <ion-icon *ngIf="openComponentsService.openDialogMenu" (click)="openMenu()"
+                      name="home"></ion-icon>
+        </ion-item>
+        <ion-grid class="ion-no-padding">
+            <ion-row>
+                <ion-col size="12" size-sm>
+                    <ion-card>
+                        <ion-list *ngIf="openComponentsService.openDialogMenu" id="inbox-list"
+                                  style="height: 100vh !important">
+                            <ion-menu-toggle auto-hide="false" *ngFor="let p of appPages; let i = index">
+                                <ion-item button="true" routerDirection="root" [routerLink]="[p.url]" lines="none"
+                                          detail="false"
+                                          routerLinkActive="selected" (click)="openDialog(p.title)">
+                                    <ion-icon slot="start" [ios]="p.icon + '-outline'"
+                                              [md]="p.icon + '-sharp'"></ion-icon>
+                                    <ion-label>{{ p.title }}</ion-label>
+                                </ion-item>
+                                <hr>
+                            </ion-menu-toggle>
+                        </ion-list>
+                    </ion-card>
+                </ion-col>
+                <ion-col size="12" size-sm style="height: 400px">
+                    <app-log-in-or-register-menu
+                            *ngIf="openComponentsService.openDialogVarAccount"></app-log-in-or-register-menu>
+                    <app-my-calendar *ngIf="openComponentsService.openDialogCalendar"></app-my-calendar>
+                </ion-col>
+                <ion-col size="12" size-sm>
+                    <app-geolocation *ngIf="openComponentsService.openDialogMaps"></app-geolocation>
+                </ion-col>
+            </ion-row>
+        </ion-grid>
+    </ion-content>
 </ion-app>
 
 

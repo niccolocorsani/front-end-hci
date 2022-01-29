@@ -3,11 +3,11 @@
         <ion-card-subtitle>Consultant map</ion-card-subtitle>
         <ion-card-title>Google map</ion-card-title>
     </ion-card-header>
-    <ion-item *ngIf="hideGetPositionOptionForClient" (click)="getLocation()">Get your current position</ion-item>
-    <ion-item (click)="checkAllConsultant()">Check consultants position on map</ion-item>
+    <ion-item button="true" *ngIf="hideGetPositionOptionForClient" (click)="getLocation()">Get your current position</ion-item>
+    <ion-item button="true" (click)="checkAllConsultant()">Check consultants position on map</ion-item>
     <ion-card>
-
         <div>
+            <!--need to reseize window sometimes to see the map -->
             <agm-map [latitude]="lat" [longitude]="lng">
                 <agm-marker [latitude]="lat" [longitude]="lng">
                     <agm-info-window [disableAutoPan]="true">

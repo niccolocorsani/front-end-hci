@@ -5,7 +5,7 @@
     </ion-card-header>
     <div style="width: 60%">
         <!--attraverso la specifica di width: 60%, verrà occupato meta dello spazio relativo allo spazio di ion-col-->
-        <ion-item (click)="openLogInDialog()">
+        <ion-item button="true" (click)="openLogInDialog()">
             Log-in
         </ion-item>
         <div>
@@ -15,7 +15,7 @@
                 <br/>
             </div>
         </div>
-        <ion-item (click)="openRegisterDialog()">
+        <ion-item button="true" (click)="openRegisterDialog()">
             Register new account
         </ion-item>
         <div style="

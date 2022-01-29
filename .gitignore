@@ -2,21 +2,24 @@
 
 
 
+#per verificare il corretto funzionamento di gitignore è bene ricordare che su source tree rileva immediatamente il file .gitignore--> se qui vine aggiunto qualcosa
+ # e caso mai rimosso si può osservare che i file da committare cambiano (su source tree)
+!/
+/*
+!/android/
+/android/*
+!/android/app/
+/android/app/*
+!/android/app/build/
+/android/app/build/*
+!/android/app/build/outputs/
+/android/app/build/outputs/*
+!/android/app/build/outputs/apk/
+/android/app/build/outputs/apk/*
+!/android/app/build/outputs/apk/release/
+/android/app/build/outputs/apk/release/*
+!/android/app/build/outputs/apk/release/app-release-unsigned.apk
 
-
-!android/
-android/*
-!android/app/
-android/app/*
-!android/app/build/
-android/app/build/*
-!android/app/build/outputs/
-android/app/build/outputs/*
-!android/app/build/outputs/apk/
-android/app/build/outputs/apk/*
-!android/app/build/outputs/apk/release/
-android/app/build/outputs/apk/release/*
-!android/app/build/outputs/apk/release/
 #https://theapache64.github.io/git-do-not-ignore/ for ignore file
 
 /www/

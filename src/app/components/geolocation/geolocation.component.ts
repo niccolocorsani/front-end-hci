@@ -15,7 +15,7 @@ export class GeolocationComponent implements OnInit {
 
 
     title = 'My first AGM project';
-    lat = 43.77925;
+    lat = 44.77925;
     lng = 11.24626;  // Florence coordinates
     options: any;
     map: google.maps.Map;

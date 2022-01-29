@@ -24,6 +24,7 @@ import {SelectUsersModalComponent} from "./components/select-appointmnent-with-m
 import {ShowUsersComponent} from "./components/show-users/show-users.component";
 import {GeolocationComponent} from "./components/geolocation/geolocation.component";
 import {AgmCoreModule} from "@agm/core";
+import {SocialSharingComponent} from "./components/social-sharing/social-sharing.component";
 
 @NgModule({
     declarations: [
@@ -40,6 +41,7 @@ import {AgmCoreModule} from "@agm/core";
         SelectUsersModalComponent,
         ShowUsersComponent,
         GeolocationComponent,
+        SocialSharingComponent,
     ],
   entryComponents: [],
   imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule, NgCalendarModule, CalModalPageModule,

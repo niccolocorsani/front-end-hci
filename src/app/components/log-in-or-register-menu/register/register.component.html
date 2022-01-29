@@ -4,7 +4,7 @@
     <app-my-input [inputStringValue]='eMail' (newItemEvent)="addInputToVariableRegister($event)"></app-my-input>
     <app-my-input *ngIf="!consultant_or_client" [inputStringValue]='description'
                   (newItemEvent)="addInputToVariableRegister($event)"></app-my-input>
-    <ion-item id="submitLogin" (click)="submitToServerRegister()" style="width: 150px;">
+    <ion-item button="true" id="submitLogin" (click)="submitToServerRegister()" style="width: 150px;">
         Register new account
     </ion-item>
 </div>
