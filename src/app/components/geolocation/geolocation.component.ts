@@ -26,6 +26,8 @@ export class GeolocationComponent implements OnInit {
 
 
 
+
+
     constructor(/*private geolocation: Geolocation*/ private consultantService: RequestConsultantServiceService) {
         this.options = {
             enableHighAccuracy: false,
@@ -42,7 +44,7 @@ export class GeolocationComponent implements OnInit {
         document.getElementById("consultantLatLng").style.display = "none";
         document.getElementById("consultant_city_street_cap").style.display = "none";
 
-        console.log("oooo")
+        console.log("ii")
         this.getLocation();
 
 
