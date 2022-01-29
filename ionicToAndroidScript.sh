@@ -21,4 +21,6 @@ cd android
 # che sia presente il file local.properties e che java sia installato correttamente.
 # Per installare java correttamente guarda: https://www.azul.com/downloads/?package=jdk
 # che scarica un software che setta tutto java per bene
-
+git add .
+git commit -m "Modified android"
+git push origin master
