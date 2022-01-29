@@ -26,6 +26,16 @@ import {GeolocationComponent} from "./components/geolocation/geolocation.compone
 import {AgmCoreModule} from "@agm/core";
 import {SocialSharingComponent} from "./components/social-sharing/social-sharing.component";
 
+import { SocialLoginModule, SocialAuthServiceConfig } from 'angularx-social-login';
+import {
+    GoogleLoginProvider,
+    FacebookLoginProvider
+} from 'angularx-social-login';
+import {SocialLogInComponent} from "./components/social-log-in/social-log-in.component";
+
+
+
+
 @NgModule({
     declarations: [
         AppComponent,
@@ -42,13 +52,16 @@ import {SocialSharingComponent} from "./components/social-sharing/social-sharing
         ShowUsersComponent,
         GeolocationComponent,
         SocialSharingComponent,
+        SocialLogInComponent,
+
     ],
   entryComponents: [],
   imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule, NgCalendarModule, CalModalPageModule,
-    HttpClientModule,
+    HttpClientModule, SocialLoginModule,
 
 
-    AgmCoreModule.forRoot({
+
+      AgmCoreModule.forRoot({
       apiKey: 'AIzaSyCrl5bxS7fNnPW5o5K9x7IeqXH-lS3gnLw'
     }),
     // https://medium.com/letsboot/translate-angular-4-apps-with-ngx-translate-83302fb6c10d
@@ -60,7 +73,33 @@ import {SocialSharingComponent} from "./components/social-sharing/social-sharing
       }
     }), FormsModule],
   ////https://www.youtube.com/watch?v=FLHi2pc8gX0 spiegazione LocalNotifications
-  providers: [{provide: RouteReuseStrategy, useClass: IonicRouteStrategy},LocalNotifications, AppComponent, MyCalendarComponent],
+  providers: [{provide: RouteReuseStrategy, useClass: IonicRouteStrategy},LocalNotifications, AppComponent,
+      MyCalendarComponent,
+
+
+      {
+          provide: 'SocialAuthServiceConfig',
+          useValue: {
+              autoLogin: false,
+              providers: [
+                  {
+                      id: GoogleLoginProvider.PROVIDER_ID,
+                      provider: new GoogleLoginProvider(
+                          '262434699082-bnq5dgk6bdrb8g95vs56u82800s1at3e.apps.googleusercontent.com'
+                      )
+                  },
+                  {
+                      id: FacebookLoginProvider.PROVIDER_ID,
+                      provider: new FacebookLoginProvider('1543052669422518')
+                  }
+              ]
+          } as SocialAuthServiceConfig,
+      }
+
+
+
+
+  ],
   bootstrap: [AppComponent],
 
 })
