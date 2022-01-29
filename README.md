@@ -52,6 +52,11 @@ The purpose of this project is to experiment with cross-device interaction and d
 # Project Documents
 *Put links here to the **final report** and **presentation** for the project when finished.*
 
+# Instructuions to execute system
+
+Dal momento che vi è un riferimento alle api di Google e che il dominio registrato in google-dev-console è http://localhost:8100, risulta importante collegarsi a tale indirizzo facendo attenzione che la porta sia effettivamente 8100.
+
+
 # Bibliography
 *Be sure to include any relevant links to tools or bibliographic references to the literature.*
 
