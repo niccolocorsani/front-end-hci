@@ -54,7 +54,12 @@ The purpose of this project is to experiment with cross-device interaction and d
 
 # Instructuions to execute system
 
-Per eseguire il Front-end fare il clone del progetto e successivamente 
+Per eseguire il Front-end fare il clone del progetto e successivamente eseguire il comando:
+
+```
+ npm i --legacy-peer-deps
+ ```
+ per installare le dipendenze.
 
 Dal momento che vi è un riferimento alle API di Google e che il dominio registrato in google-dev-console è http://localhost:8100, risulta importante collegarsi a tale indirizzo facendo attenzione che la porta sia effettivamente 8100. Con il comando 
 ```
