@@ -1,45 +1,68 @@
-import { Component, OnInit } from '@angular/core';
-import { SocialAuthService } from "angularx-social-login";
-import { FacebookLoginProvider, GoogleLoginProvider } from "angularx-social-login";
+import {Component, OnInit} from '@angular/core';
+import {SocialAuthService, SocialUser} from "angularx-social-login";
+import {FacebookLoginProvider, GoogleLoginProvider} from "angularx-social-login";
+import {RequestClientServiceService} from "../../services/request/request-client-service.service";
+import {RequestConsultantServiceService} from "../../services/request/request-consultant-service.service";
 
-
-
-//https://www.npmjs.com/package/angularx-social-login
-//https://www.positronx.io/angular-google-social-login-tutorial-with-example/
-//https://remotestack.io/create-login-with-facebook-in-angular-application/
 
 @Component({
-  selector: 'app-social-log-in',
-  templateUrl: './social-log-in.component.html',
-  styleUrls: ['./social-log-in.component.scss'],
+    selector: 'app-social-log-in',
+    templateUrl: './social-log-in.component.html',
 })
 export class SocialLogInComponent implements OnInit {
 
+    user = new SocialUser();
 
-  user;
-  loggedIn;
+    constructor(private authService: SocialAuthService, private clientService: RequestClientServiceService, private consultantService: RequestConsultantServiceService) {
+    }
 
-  constructor(private authService: SocialAuthService) { }
+    ngOnInit(): void {
+        this.authService.authState.subscribe((user) => {
+            this.user = user;
+            console.log(this.user)
+        });
+    }
 
-  ngOnInit() {
-    this.authService.authState.subscribe((user) => {
-      this.user = user;
-      console.log(this.user)
-      this.loggedIn = (user != null);
-      console.log(this.loggedIn)
-    });
-  }
+    async logInWithFB() {
+        await this.authService.signIn(FacebookLoginProvider.PROVIDER_ID);
+        let userName = this.user.name.split(" ")[0] + "_" + this.user.name.split(" ")[1];
+        this.checkIfUserPresentOnDB(userName)
+    }
+
+    async logInWithGoogle() {
+        await this.authService.signIn(GoogleLoginProvider.PROVIDER_ID);
+        let userName = this.user.name.split(" ")[0] + "_" + this.user.name.split(" ")[1];
+        this.checkIfUserPresentOnDB(userName)
+    }
 
 
-  signInWithGoogle(): void {
-    this.authService.signIn(GoogleLoginProvider.PROVIDER_ID);
-  }
+    checkIfUserPresentOnDB(userName: string) {
+        if (document.getElementById("header").textContent === "Consultant portal") {
+            for (let element of this.consultantService.getSynchronousConsultants()) {
+                if (element.userName === userName) {
+                    alert("User " + userName + " found..");
+                    document.getElementById("header").textContent = document.getElementById("header").textContent
+                        + " logged user: " + userName;
+                    alert("ooooo")
+                    document.getElementById("user-image").setAttribute("src",this.user.photoUrl);
+                    document.getElementById("card-image").style.display="";
+                    return;
+                }
+            }
+            alert("Consultant not found..");
+        } else {
+            for (let element of this.clientService.getSynchronousClients()) {
+                if (element.userName === userName) {
+                    alert("User " + userName + " found..");
+                    document.getElementById("header").textContent = document.getElementById("header").textContent
+                        + " logged user: " + userName;
+                    document.getElementById("user-image").setAttribute("src",this.user.photoUrl);
+                    document.getElementById("card-image").style.display="";
 
-  signInWithFB(): void {
-    this.authService.signIn(FacebookLoginProvider.PROVIDER_ID);
-  }
-
-  signOut(): void {
-    this.authService.signOut();
-  }
+                    return;
+                }
+            }
+            alert("Client not found..");
+        }
+    }
 }

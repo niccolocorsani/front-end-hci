@@ -1,7 +1,5 @@
 <ion-card>
-
     <ion-header>
-
         <ion-toolbar color="primary">
             <ion-title>
                 Calendar
@@ -12,12 +10,9 @@
                 </ion-button>
             </ion-buttons>
         </ion-toolbar>
-
     </ion-header>
 </ion-card>
-
 <ion-card>
-
     <ion-row>
         <ion-col>
             <ion-button (click)="getMyAppointments()" expand="block" fill="outline">
@@ -26,7 +21,6 @@
         </ion-col>
     </ion-row>
 </ion-card>
-
 <ion-content>
     <ion-card>
         <ion-segment [(ngModel)]="calendar.mode">
@@ -42,7 +36,6 @@
         </ion-segment>
     </ion-card>
     <ion-row>
-        <!-- Move back one screen of the slides -->
         <ion-col size="2">
             <ion-button fill="clear" (click)="back()">
                 <ion-icon name="arrow-back" slot="icon-only"></ion-icon>
@@ -51,7 +44,6 @@
         <ion-col size="8" class="ion-text-center">
             <h2>{{ viewTitle }} </h2>
         </ion-col>
-        <!-- Move forward one screen of the slides -->
         <ion-col size="2">
             <ion-button fill="clear" (click)="next()">
                 <ion-icon name="arrow-forward" slot="icon-only"></ion-icon>
@@ -59,7 +51,6 @@
         </ion-col>
     </ion-row>
     <ion-card>
-
         <calendar
                 [eventSource]="eventSource"
                 [calendarMode]="calendar.mode"
@@ -72,5 +63,4 @@
                 startingDayWeek="1">
         </calendar>
     </ion-card>
-
 </ion-content>

@@ -6,6 +6,7 @@ import {ClientResponse} from "../response/client-response";
 import {AppointmentResponse} from "../response/appointment-response";
 import {RequestConsultantServiceService} from "./request-consultant-service.service";
 import {ConsultantResponse} from "../response/consultant-response";
+import {AsyncWaitAnimationService} from "../async-wait-animation/async-wait-animation.service";
 
 @Injectable({
   providedIn: 'root'
@@ -18,7 +19,7 @@ export class RequestClientServiceService {
   private events = new BehaviorSubject(this.editDataDetails);
   currentMessage = this.events.asObservable();
 
-  constructor(public http: HttpClient, private consultantService: RequestConsultantServiceService) {
+  constructor(public http: HttpClient,  private waitAnimationSerivce: AsyncWaitAnimationService) {
   }
 
   myObserver = {
@@ -41,7 +42,6 @@ export class RequestClientServiceService {
   }
 
   public getClientAppointments(id: any) {
-    let client = this.getSynchronousClientById(id);
     let appointments = this.getSynchronousAllAppointments();
     let clientAppointments = [];
     appointments.forEach(element => {
@@ -52,7 +52,7 @@ export class RequestClientServiceService {
 
     let events = [];
     let i = 0;
-    appointments.forEach(element => {
+    clientAppointments.forEach(element => {
       let appointment = appointments[i++]
       let startTime;
       let endTime;
@@ -148,7 +148,6 @@ export class RequestClientServiceService {
       }
     })
     return client;
-
   }
 
   private handleError(error: HttpErrorResponse) {
@@ -165,7 +164,6 @@ export class RequestClientServiceService {
     return throwError(
       'Something bad happened; please try again later.');
   }
-
 
   delay(ms: number) {
     return new Promise(resolve => setTimeout(resolve, ms));

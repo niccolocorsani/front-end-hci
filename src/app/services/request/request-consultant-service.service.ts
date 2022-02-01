@@ -29,6 +29,7 @@ export class RequestConsultantServiceService {
         let consultant = this.getSynchronousConsultantById(id);
         let appointments = this.getSynchronousAllAppointments();
         let consultantAppointments = [];
+
         appointments.forEach(element => {
             if (element.consultant.id = id) {
                 consultantAppointments.push(element);
@@ -39,7 +40,8 @@ export class RequestConsultantServiceService {
         let events = [];
         console.log(consultant)
         let i = 0;
-        appointments.forEach(element => {
+
+        consultantAppointments.forEach(element => {
             let appointment = appointments[i++]
             let startTime;
             let endTime;
@@ -96,6 +98,14 @@ export class RequestConsultantServiceService {
         this.http.put<ConsultantResponse>(this.url + '/consultant/putConsultant', consultant).pipe(
             catchError(this.handleError)
         ).subscribe(this.myObserver);
+    }
+
+    public async getAsyncConsultants(){
+ ////TODO da conculedere per google maps che meglio asincrona
+        this.http.get<ConsultantResponse[]>(this.url + '/consultant/putConsultant').pipe(
+            catchError(this.handleError)
+        ).subscribe(this.myObserver);
+
     }
 
     public getSynchronousAllAppointments(): any {

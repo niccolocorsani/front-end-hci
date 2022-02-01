@@ -8,7 +8,7 @@ import {OpenComponentsService} from "../../../services/open-components/open-comp
   selector: 'app-select-users-modal',
   templateUrl: './select-users-modal.component.html',
 })
-export class SelectUsersModalComponent implements OnInit {
+export class SelectUsersModalComponent  {
 
   public listElements: Array<ConsultantResponse> = [];
   public showUser: boolean;
@@ -19,9 +19,6 @@ export class SelectUsersModalComponent implements OnInit {
     this.showUser = false;
   }
 
-  ngOnInit() {
-    //nothing to do
-  }
 
   async retriveUsers() {
     if (this.showUser === false)

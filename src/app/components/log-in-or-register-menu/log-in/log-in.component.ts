@@ -6,7 +6,7 @@ import {RequestClientServiceService} from "../../../services/request/request-cli
   selector: 'app-log-in',
   templateUrl: './log-in.component.html',
 })
-export class LogInComponent implements OnInit {
+export class LogInComponent {
 
 
   private element: any;
@@ -22,9 +22,7 @@ export class LogInComponent implements OnInit {
   constructor(private consulantService: RequestConsultantServiceService, private clientService: RequestClientServiceService) {
   }
 
-  ngOnInit(): void {
-    //nothing to do
-  }
+
 
   async submitToServerLogIn() {
     if (document.getElementById("header").textContent === "Consultant portal") {

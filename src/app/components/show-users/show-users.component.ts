@@ -17,8 +17,4 @@ export class ShowUsersComponent implements OnInit {
 
   }
 
-
-
-
-
 }

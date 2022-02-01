@@ -8,7 +8,7 @@ import {ConsultantResponse} from "../../../services/response/consultant-response
   selector: 'app-register',
   templateUrl: './register.component.html',
 })
-export class RegisterComponent implements OnInit {
+export class RegisterComponent  {
 
   name = 'name';
   userName = 'username';
@@ -26,10 +26,6 @@ export class RegisterComponent implements OnInit {
       this.consultant_or_client = true;
     else  this.consultant_or_client = false;
 
-  }
-
-  ngOnInit(): void {
-    //nothing to do
   }
 
   addInputToVariableRegister(newItem: string) {

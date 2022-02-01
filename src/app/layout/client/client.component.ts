@@ -1,30 +1,36 @@
 import { Component, OnInit } from '@angular/core';
 import {OpenComponentsService} from "../../services/open-components/open-components.service";
+import {AsyncWaitAnimationService} from "../../services/async-wait-animation/async-wait-animation.service";
 
 @Component({
   selector: 'app-client',
   templateUrl: './client.component.html',
 })
-export class ClientComponent implements OnInit {
+export class ClientComponent  implements  OnInit{
 
 
-  ngOnInit() {
-    //nothing to do
-  }
+
+
 
 
   constructor(private openComponentsService: OpenComponentsService){
   }
 
-  public appPages = [
-    {title: 'Account', url: '/folder/Inbox', icon: 'mail'},
-    {title: 'Show Users', url: '/folder/Outbox', icon: 'paper-plane'},
-    {title: 'Calendar', url: '/folder/Trash', icon: 'trash'},
 
+  ngOnInit(): void {
+    document.getElementById("card-image").style.display="none";
+
+  }
+
+  public appPages = [
+    {title: 'Account', url: '/folder/Inbox', icon: 'cafe'},
+    {title: 'Show Users', url: '/folder/Outbox', icon: 'man'},
+    {title: 'Calendar', url: '/folder/Trash', icon: 'calendar'},
   ];
 
 
   openMenu() {
+
 
     if (this.openComponentsService.openDialogMenu === false) {
       this.openComponentsService.openDialogMenu = true;
@@ -55,11 +61,14 @@ export class ClientComponent implements OnInit {
       return;
     }
     if (title === 'Calendar') {
+
+
       if (window.innerHeight < 700) this.openComponentsService.openDialogMenu = false;
       this.openComponentsService.openDialogCalendar = true;
       this.openComponentsService.openDialogVarShowUsers = false;
       this.openComponentsService.openDialogVarAccount = false;
     }
   }
+
 
 }

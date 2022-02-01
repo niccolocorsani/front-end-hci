@@ -5,35 +5,22 @@ import {OpenComponentsService} from "../../services/open-components/open-compone
     selector: 'app-business-consultant',
     templateUrl: './business-consultant.component.html',
 })
-export class BusinessConsultantComponent implements OnInit {
+export class BusinessConsultantComponent  implements  OnInit{
 
 
     baseUrl = '/folder/Trash' ;
 
-    ngOnInit() {
-        //nothing to do
+    ngOnInit(): void {
+        document.getElementById("card-image").style.display="none";
     }
-
 
     constructor(private openComponentsService: OpenComponentsService) {
     }
 
 
     public appPages = [
-        {title: 'Account', url: '/folder/Inbox', icon: 'mail'},
-        {title: 'Calendar', url: '/folder/Trash', icon: 'trash'},
-        /*  {title: 'Trash', url: '/folder/Trash', icon: 'star'},
-          {title: 'Trash', url: '/folder/Trash', icon: 'alarm'},
-          {title: 'Trash', url: '/folder/Trash', icon: 'at'},
-          {title: 'Trash', url: '/folder/Trash', icon: 'baseball'},
-          {title: 'Trash', url: '/folder/Trash', icon: 'bed'},
-          {title: 'Trash', url: '/folder/Trash', icon: 'bug'},
-          {title: 'Trash', url: '/folder/Trash', icon: 'build'},
-          {title: 'Trash', url: '/folder/Trash', icon: 'bicycle'},
-          {title: 'Trash', url: '/folder/Trash', icon: 'beer'},
-          {title: 'Trash', url: '/folder/Trash', icon: 'bookmark'},
-          {title: 'Trash', url: '/folder/Trash', icon: 'bulb'},
-          {title: 'Trash', url: '/folder/Trash', icon: 'trash'},*/
+        {title: 'Account', url: '/folder/Inbox', icon: 'cafe'},
+        {title: 'Calendar', url: '/folder/Trash', icon: 'calendar'},
     ];
 
 
@@ -68,6 +55,7 @@ export class BusinessConsultantComponent implements OnInit {
 
         }
     }
+
 
 
 }

@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {RequestConsultantServiceService} from "../../services/request/request-consultant-service.service";
 import {ConsultantResponse} from "../../services/response/consultant-response";
+import {AsyncWaitAnimationService} from "../../services/async-wait-animation/async-wait-animation.service";
 
 
 @Component({
@@ -23,50 +24,48 @@ export class GeolocationComponent implements OnInit {
     checkConsultantOnMap = false;
     address: any;
     hideGetPositionOptionForClient = true;
+    openMap = false;
 
 
-
-
-
-    constructor(/*private geolocation: Geolocation*/ private consultantService: RequestConsultantServiceService) {
+    constructor(private consultantService: RequestConsultantServiceService, private waitAnimationSerivce: AsyncWaitAnimationService) {
         this.options = {
             enableHighAccuracy: false,
             timeout: 5000,
-            maximumAge: 0
         };
+
+        try {
+            this.consultants = this.consultantService.getSynchronousConsultants();
+        } catch (e) {
+            alert("could not retrieve data from back-end")
+        }
+        setTimeout(() => {
+            this.waitAnimationSerivce.replaceWithWaitingAnimation("map");
+        }, 100); // necessary for google maps to load correctly
     }
 
 
     ngOnInit() {
         if (document.getElementById("header").textContent.includes("Client"))
             this.hideGetPositionOptionForClient = false;
-        this.consultants = this.consultantService.getSynchronousConsultants();
+
         document.getElementById("consultantLatLng").style.display = "none";
         document.getElementById("consultant_city_street_cap").style.display = "none";
 
-        console.log("ii")
-        this.getLocation();
 
 
 
     }
 
-     initMap() {
-        this.map = new google.maps.Map(document.getElementById("map") as HTMLElement, {
-            zoom: 8,
-        });
-    }
 
-
-    async getLocation() {
+    getLocation() {
         if (navigator.geolocation) {
-            //      let watch = navigator.geolocation.watchPosition(position => {
             navigator.geolocation.getCurrentPosition(position => {
                 this.lat = position.coords.latitude;
                 this.lng = position.coords.longitude;
-                console.log(this.lat +' '+ this.lng )
+                console.log(this.lat + ' ' + this.lng)
+
             }, null, this.options);
-            this.getAddress();
+            this.getAddressFromCoordinates();
         } else {
             console.error("Geolocation is not supported by this browser.");
         }
@@ -76,7 +75,7 @@ export class GeolocationComponent implements OnInit {
     cap: any;
     street: any;
 
-    getAddress() {
+    getAddressFromCoordinates() {
         console.log('Finding Address');
         if (navigator.geolocation) {
             let geocoder = new google.maps.Geocoder();
@@ -89,11 +88,9 @@ export class GeolocationComponent implements OnInit {
                     if (result != null) {
 
                         this.address = rsltAdrComponent;
-
                         this.city = this.address[2].long_name;
-                        this.street =  this.address[1].long_name;
+                        this.street = this.address[1].long_name;
                         this.cap = this.address[7].long_name;
-
                         console.log(this.address)
 
                     } else {
@@ -105,9 +102,10 @@ export class GeolocationComponent implements OnInit {
     }
 
 
-
     checkAllConsultant() {
         this.checkConsultantOnMap = true;
+        this.openMap = true;
+
     }
 
 

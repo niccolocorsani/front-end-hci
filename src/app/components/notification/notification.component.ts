@@ -5,13 +5,10 @@ import { LocalNotifications } from '@ionic-native/local-notifications/ngx';
   selector: 'app-notification',
   templateUrl: './notification.component.html',
 })
-export class NotificationComponent implements OnInit {
+export class NotificationComponent  {
 
   constructor(private localNotifications: LocalNotifications) { }
 
-  ngOnInit(): void {
-    //nothing to do
-  }
 //https://ionicframework.com/docs/native/local-notifications
 //Per far funzionare il tutto qui sotto è stato aggiunto:
 //providers: [..., LocalNotifications]

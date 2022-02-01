@@ -6,15 +6,13 @@ import {SelectUsersModalComponent} from "./select-users-modal/select-users-modal
   selector: 'app-open-modal',
   templateUrl: './open-modal.html',
 })
-export class OpenModal implements OnInit {
+export class OpenModal {
 
 
   constructor(public modalCtrl: ModalController) {
   }
 
-  ngOnInit(): void {
-    //nothing to do
-  }
+
 
   async initModal() {
     const modal = await this.modalCtrl.create({

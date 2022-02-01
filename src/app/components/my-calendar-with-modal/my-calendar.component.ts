@@ -14,16 +14,13 @@ export class MyCalendarComponent implements OnInit {
 
   eventSource = [];
   viewTitle: string;
-
+  selectedDate: Date;
+  @ViewChild(CalendarComponent) myCal: CalendarComponent;
 
   calendar = {
     mode: 'month',
     currentDate: new Date(),
   };
-
-  selectedDate: Date;
-
-  @ViewChild(CalendarComponent) myCal: CalendarComponent;
 
   constructor(
     private consultantService: RequestConsultantServiceService,
@@ -33,7 +30,6 @@ export class MyCalendarComponent implements OnInit {
     private modalCtrl: ModalController,
   ) {
   }
-
 
   ngOnInit() {
     // https://levelup.gitconnected.com/5-ways-to-share-data-between-angular-components-d656a7eb7f96
@@ -120,20 +116,19 @@ export class MyCalendarComponent implements OnInit {
 
   ////Questa funzione ritorna gli appuntamenti dell'utente attualmente loggato
   getMyAppointments() {
-    let userName;
 
+    let userName = document.getElementById("header").textContent.split(" ")[4]
     console.log("ooooo")
-
 
     if (document.getElementById("header").textContent.includes("Client")) {
 
-      if (userName = document.getElementById("header").textContent.split(" ")[4] != null) {
+      if (userName != null) {
         let client = this.clientService.getSynchronousClientByUserName(userName);
         this.clientService.getClientAppointments(client.id)
         console.log("ooooo")
       } else alert("You should log-in to retrive your appointments")
     } else {
-      if (userName = document.getElementById("header").textContent.split(" ")[4] != null) {
+      if (userName != null) {
         let consultant = this.consultantService.getSynchronousConsultantByUserName(userName);
         console.log("ooooo")
         console.log(userName);

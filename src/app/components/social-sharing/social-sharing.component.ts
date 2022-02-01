@@ -3,9 +3,8 @@ import {Component, OnInit} from '@angular/core';
 @Component({
     selector: 'app-social-sharing',
     templateUrl: './social-sharing.component.html',
-    styleUrls: ['./social-sharing.component.scss'],
 })
-export class SocialSharingComponent implements OnInit {
+export class SocialSharingComponent  {
 
 // https://stackblitz.com/edit/social-sharing?file=src%2Fapp%2Fshare-button%2Fshare-button.component.html
 
@@ -17,8 +16,6 @@ export class SocialSharingComponent implements OnInit {
     constructor() {
     }
 
-    ngOnInit() {
-    }
 
     private createNavigationUrl(value: string) {
         let searchParams = new URLSearchParams();
@@ -31,15 +28,6 @@ export class SocialSharingComponent implements OnInit {
                 searchParams.set('url', this.shareUrl);
                 this.navUrl = 'https://twitter.com/share?' + searchParams;
                 break;
-            case 'whatsapp':
-                searchParams.set('url', this.shareUrl);
-                this.navUrl = 'https://whatsapp://send?text=' + searchParams;
-                break;
-            case 'instagram':
-                searchParams.set('url', this.shareUrl);
-                this.navUrl = 'https://whatsapp://send?text=' + searchParams;
-                break;
-
         }
     }
 
@@ -53,6 +41,4 @@ export class SocialSharingComponent implements OnInit {
         console.log(event.target.attributes.type)
         return window.open(this.navUrl, "_blank");
     }
-
-
 }
