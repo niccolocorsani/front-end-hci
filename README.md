@@ -64,6 +64,8 @@ Per ottenere i servizi presenti nel back-end è necessario inizializzare due con
 \[1\] Schmidt, D., Seifert, J., Rukzio, E. and Gellersen, H., 2012, June. “A cross-device interaction style for mobiles and surfaces.” In: Proceedings of the Designing Interactive Systems Conference (pp. 318-327). ACM.
 
 \[2\] https://kivy.org/#home
+![Uploading Schermata 2022-02-01 alle 11.56.35.png…]()
 
 \[3\] https://zeromq.org/
 
+<img width="95" alt="Schermata 2022-02-01 alle 11 56 51" src="https://user-images.githubusercontent.com/79635059/151956227-839e0d88-aeda-4b81-a3f5-497bb758d869.png">
