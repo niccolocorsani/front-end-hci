@@ -54,8 +54,19 @@ The purpose of this project is to experiment with cross-device interaction and d
 
 # Instructuions to execute system
 
-Dal momento che vi è un riferimento alle API di Google e che il dominio registrato in google-dev-console è http://localhost:8100, risulta importante collegarsi a tale indirizzo facendo attenzione che la porta sia effettivamente 8100. Con il comando "ionic serve" la connessione sarà di default orientata a tale porta.
-Per ottenere i servizi presenti nel back-end è necessario inizializzare due container attraverso Docker. I due container (Spring-app e MySQL engine) possono essere inizializzati eseguendo il comando da terminale: "docker-compose up" all'interno del progetto dove è presente il file target "docker-compose.yml".
+Per eseguire il Front-end fare il clone del progetto e successivamente 
+
+Dal momento che vi è un riferimento alle API di Google e che il dominio registrato in google-dev-console è http://localhost:8100, risulta importante collegarsi a tale indirizzo facendo attenzione che la porta sia effettivamente 8100. Con il comando 
+```
+ionic serve
+```
+la connessione sarà di default orientata a tale porta.
+Per ottenere i servizi presenti nel back-end è necessario inizializzare due container attraverso Docker. I due container (Spring-app e MySQL engine) possono essere inizializzati eseguendo il comando da terminale: 
+```
+docker-compose up
+```
+
+all'interno del progetto dove è presente il file target "docker-compose.yml".
 
 
 # Bibliography
@@ -68,4 +79,4 @@ Per ottenere i servizi presenti nel back-end è necessario inizializzare due con
 
 \[3\] https://zeromq.org/
 
-<img width="95" alt="Schermata 2022-02-01 alle 11 56 51" src="https://user-images.githubusercontent.com/79635059/151956227-839e0d88-aeda-4b81-a3f5-497bb758d869.png">
+
