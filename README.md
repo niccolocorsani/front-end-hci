@@ -54,7 +54,8 @@ The purpose of this project is to experiment with cross-device interaction and d
 
 # Instructuions to execute system
 
-Dal momento che vi è un riferimento alle api di Google e che il dominio registrato in google-dev-console è http://localhost:8100, risulta importante collegarsi a tale indirizzo facendo attenzione che la porta sia effettivamente 8100.
+Dal momento che vi è un riferimento alle API di Google e che il dominio registrato in google-dev-console è http://localhost:8100, risulta importante collegarsi a tale indirizzo facendo attenzione che la porta sia effettivamente 8100. Con il comando "ionic serve" la connessione sarà di default orientata a tale porta.
+Per ottenere i servizi presenti nel back-end è necessario inizializzare due container attraverso Docker. I due container (Spring-app e MySQL engine) possono essere inizializzati eseguendo il comando da terminale: "docker-compose up" all'interno del progetto dove è presente il file target "docker-compose.yml".
 
 
 # Bibliography
