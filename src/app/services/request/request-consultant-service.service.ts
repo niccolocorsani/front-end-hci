@@ -91,7 +91,6 @@ export class RequestConsultantServiceService {
         consultant.city = positionInformation.split(",")[0]
         consultant.street = positionInformation.split(",")[1]
         consultant.cap = positionInformation.split(",")[2]
-
         console.log(consultant.cap)
 
 

@@ -31,6 +31,7 @@ import {SocialLogInComponent} from "./components/social-log-in/social-log-in.com
 import {SocialRegisterComponent} from "./components/social-register/social-register.component";
 import {TooltipsModule} from "ionic-tooltips";
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
+import {PushNotificationComponent} from "./components/push-notification/push-notification.component";
 
 
 @NgModule({
@@ -51,6 +52,7 @@ import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
         SocialSharingComponent,
         SocialLogInComponent,
         SocialRegisterComponent,
+        PushNotificationComponent,
 
     ],
     entryComponents: [],
