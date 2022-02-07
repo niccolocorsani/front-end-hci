@@ -77,9 +77,6 @@ export class CalModalPage implements AfterViewInit {
 
     console.log("date" + year + "-" + month + "-" + day)
 
-
-
-
     let userName = document.getElementById("header").textContent.split(" ")[4];
     let client = this.clientService.getSynchronousClientByUserName(userName);
     let consultantId = document.getElementById("home-menu").textContent.split(" ")[0];

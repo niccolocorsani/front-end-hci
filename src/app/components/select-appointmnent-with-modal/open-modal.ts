@@ -12,8 +12,6 @@ export class OpenModal {
   constructor(public modalCtrl: ModalController) {
   }
 
-
-
   async initModal() {
     const modal = await this.modalCtrl.create({
       component: SelectUsersModalComponent,

@@ -19,7 +19,7 @@ export class RequestClientServiceService {
   private events = new BehaviorSubject(this.editDataDetails);
   currentMessage = this.events.asObservable();
 
-  constructor(public http: HttpClient,  private waitAnimationSerivce: AsyncWaitAnimationService) {
+  constructor(public http: HttpClient) {
   }
 
   myObserver = {
@@ -35,6 +35,8 @@ export class RequestClientServiceService {
     ).subscribe(this.myObserver); ////sembra che senza sto subscribe non sia in grado di fare la richiesta
   }
 
+
+  
   public async updateAppoitnment(appointment: AppointmentResponse){
     this.http.put<AppointmentResponse>(this.url + '/appointment/putAppointment', appointment).pipe(
       catchError(this.handleError)
@@ -107,7 +109,6 @@ export class RequestClientServiceService {
     }
     return myObj;
   }
-
 
   public getSynchronousClientById(id: any): any {
     var request = new XMLHttpRequest();

@@ -25,6 +25,8 @@ export class RequestConsultantServiceService {
 
     ////writing method async, reading method sync
 
+
+
     public async getConsultantAppointments(id: any) {
         let consultant = this.getSynchronousConsultantById(id);
         let appointments = this.getSynchronousAllAppointments();

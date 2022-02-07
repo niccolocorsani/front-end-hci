@@ -12,6 +12,8 @@ export class ConsultantResponse {
     street: string;
     city: string;
     cap: string;
+    pushId : string;
+    phoneNumber: any;
 
 
     constructor(data?: any) {
@@ -27,5 +29,7 @@ export class ConsultantResponse {
         this.street = data ? data.street : null;
         this.city = data ? data.city : null;
         this.cap = data ? data.cap : null;
+        this.pushId = data ? data.pushId : null;
+        this.phoneNumber = data ? data.phoneNumber : null;
     }
 }

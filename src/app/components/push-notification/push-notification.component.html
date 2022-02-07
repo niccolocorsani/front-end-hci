@@ -1,3 +1,38 @@
-<button (click)="fun()">
-  push-notification works!
-</button>
+<ion-card tooltip="Click to schedule a push-notification">
+    <ion-card-header>
+        <ion-card-subtitle>DIKMSAmnfl</ion-card-subtitle>
+        <ion-card-title>Google map</ion-card-title>
+    </ion-card-header>
+    <ion-item button="true" (click)="updateUserInformation()">
+        schedule push notification
+    </ion-item>
+    <br/>
+    <br/>
+</ion-card>
+<ion-card tooltip="In this section you can specify the importance of the notification:
+ Low will give only a notification of the appointment,with high you will recive even a message">
+    <ion-card *ngIf="showView" style="height: 70%">
+        <ion-list>
+            <ion-radio-group value="biff">
+                <ion-list-header>
+                    <ion-label>Name</ion-label>
+                </ion-list-header>
+                <ion-item>
+                    <ion-label>high priority</ion-label>
+                    <ion-radio slot="start" value="biff"></ion-radio>
+                </ion-item>
+                <ion-item>
+                    <ion-label>medium priority</ion-label>
+                    <ion-radio slot="start" value="buford"></ion-radio>
+                </ion-item>
+                <ion-item>
+                    <ion-label>low priority</ion-label>
+                    <ion-radio slot="start" value="griff"></ion-radio>
+                </ion-item>
+            </ion-radio-group>
+        </ion-list>
+    </ion-card>
+    <ion-item button="true" *ngIf="showView" (click)="schedulePushNotification()">
+        schedule
+    </ion-item>
+</ion-card>

@@ -48,6 +48,7 @@
                     <app-show-users *ngIf="openComponentsService.openDialogVarShowUsers"></app-show-users>
                 </ion-col>
                 <ion-col size="12" size-sm>
+                    <app-push-notification *ngIf="openComponentsService.openDialogCalendar"></app-push-notification>
                     <app-geolocation *ngIf="openComponentsService.openDialogVarShowUsers"></app-geolocation>
                     <!--con size = 0 non fa il display di quest'ultima colonna-->
                     <!--<img src="http://www.cflc.eu/wp-content/uploads/2018/12/commercialista-impresa-1080x675.jpg">-->

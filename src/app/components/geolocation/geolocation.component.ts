@@ -32,7 +32,6 @@ export class GeolocationComponent implements OnInit {
             enableHighAccuracy: false,
             timeout: 5000,
         };
-
         try {
             this.consultants = this.consultantService.getSynchronousConsultants();
         } catch (e) {
@@ -50,9 +49,6 @@ export class GeolocationComponent implements OnInit {
 
         document.getElementById("consultantLatLng").style.display = "none";
         document.getElementById("consultant_city_street_cap").style.display = "none";
-
-
-
 
     }
 

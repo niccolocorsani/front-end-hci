@@ -13,6 +13,8 @@ export class ClientResponse {
   street: string;
   city: string;
   cap: string;
+  pushId : string;
+  phoneNumber: any;
 
 
 
@@ -29,5 +31,9 @@ export class ClientResponse {
     this.street = data ? data.street : null;
     this.city = data ? data.city : null;
     this.cap = data ? data.cap : null;
+
+    this.pushId = data ? data.pushId : null;
+    this.phoneNumber = data ? data.phoneNumber : null;
+
   }
 }
