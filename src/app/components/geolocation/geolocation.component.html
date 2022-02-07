@@ -15,9 +15,6 @@
                         Here is your position
                     </agm-info-window>
                 </agm-marker>
-
-
-
                 <div *ngIf="checkConsultantOnMap">
                     <div *ngFor="let consultant of consultants">
                         <agm-marker [latitude]="consultant.lat" [longitude]="consultant.lng">
