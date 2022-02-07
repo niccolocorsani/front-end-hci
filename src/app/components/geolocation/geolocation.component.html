@@ -12,9 +12,12 @@
             <agm-map [latitude]="lat" [longitude]="lng">
                 <agm-marker [latitude]="lat" [longitude]="lng">
                     <agm-info-window [disableAutoPan]="true">
-                        Here is your position..
+                        Here is your position
                     </agm-info-window>
                 </agm-marker>
+
+
+
                 <div *ngIf="checkConsultantOnMap">
                     <div *ngFor="let consultant of consultants">
                         <agm-marker [latitude]="consultant.lat" [longitude]="consultant.lng">
