@@ -55,12 +55,23 @@ Di seguito il report finale e presentazione, oltre che qualche gif annimata per 
 
 Some Client features:
 
+
+
 ![123](https://user-images.githubusercontent.com/79635059/153195959-f6761ac7-0aa6-4ac5-a26d-159ac1c8c9b7.gif)
+
 
 Some Consultant features:
 
+
+
 ![123](https://user-images.githubusercontent.com/79635059/153251350-3c412134-565f-4d8b-8b87-22009bf377f1.gif)
 
+
+Flow to schedule a notification:
+
+
+
+![prova](https://user-images.githubusercontent.com/79635059/153254230-93f51ab0-f132-4d5a-91f5-7b6a259f39e1.gif)
 
 
 
