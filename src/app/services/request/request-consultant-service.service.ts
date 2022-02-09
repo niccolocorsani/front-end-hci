@@ -25,8 +25,6 @@ export class RequestConsultantServiceService {
 
     ////writing method async, reading method sync
 
-
-
     public async getConsultantAppointments(id: any) {
         let consultant = this.getSynchronousConsultantById(id);
         let appointments = this.getSynchronousAllAppointments();
@@ -102,7 +100,6 @@ export class RequestConsultantServiceService {
     }
 
     public async getAsyncConsultants(){
- ////TODO da conculedere per google maps che meglio asincrona
         this.http.get<ConsultantResponse[]>(this.url + '/consultant/putConsultant').pipe(
             catchError(this.handleError)
         ).subscribe(this.myObserver);
@@ -118,7 +115,12 @@ export class RequestConsultantServiceService {
             let serverResponse = request.responseText;
             myObj = JSON.parse(serverResponse);
         };
-        request.send(null); // The null parameter indicates that no body content is needed for the GET request.
+        try {
+            request.send(null); // The null parameter indicates that no body content is needed for the GET request.
+        }
+        catch(e){
+            alert("Problem to contact back-end")
+        }
         if (request.status === 200) {
             console.log(request.responseText);
         }
@@ -133,7 +135,12 @@ export class RequestConsultantServiceService {
             let serverResponse = request.responseText;
             myObj = JSON.parse(serverResponse);
         };
-        request.send(null); // The null parameter indicates that no body content is needed for the GET request.
+        try {
+            request.send(null); // The null parameter indicates that no body content is needed for the GET request.
+        }
+        catch(e){
+            alert("problem to contact back-end")
+        }
         if (request.status === 200) {
             console.log(request.responseText);
         }
@@ -148,7 +155,13 @@ export class RequestConsultantServiceService {
             let serverResponse = request.responseText;
             myObj = JSON.parse(serverResponse);
         };
-        request.send(null); // The null parameter indicates that no body content is needed for the GET request.
+        try {
+            request.send(null); // The null parameter indicates that no body content is needed for the GET request.
+        }
+        catch(e){
+            alert("Problem to contact back-end")
+            console.log("Catch error")
+        }
         if (request.status === 200) {
             console.log(request.responseText);
         }

@@ -24,7 +24,7 @@ export class ClientComponent  implements  OnInit{
 
   public appPages = [
     {title: 'Account', url: '/folder/Inbox', icon: 'cafe'},
-    {title: 'Show Users', url: '/folder/Outbox', icon: 'man'},
+    {title: 'Show Consultants', url: '/folder/Outbox', icon: 'man'},
     {title: 'Calendar', url: '/folder/Trash', icon: 'calendar'},
   ];
 

@@ -32,14 +32,11 @@ export class GeolocationComponent implements OnInit {
             enableHighAccuracy: false,
             timeout: 5000,
         };
-        try {
             this.consultants = this.consultantService.getSynchronousConsultants();
-        } catch (e) {
-            alert("could not retrieve data from back-end")
-        }
+
         setTimeout(() => {
             this.waitAnimationSerivce.replaceWithWaitingAnimation("map");
-        }, 100); // necessary for google maps to load correctly
+        }, 10); // necessary for google maps to load correctly
     }
 
 
@@ -72,6 +69,9 @@ export class GeolocationComponent implements OnInit {
     street: any;
 
     getAddressFromCoordinates() {
+
+        //// da finire, che non viene usato da nessuno
+
         console.log('Finding Address');
         if (navigator.geolocation) {
             let geocoder = new google.maps.Geocoder();

@@ -5,7 +5,10 @@
                 Calendar
             </ion-title>
             <ion-buttons slot="end">
-                <ion-button (click)="openCalModal()">
+                <div id="arrow">
+                </div>
+                <!--<img id="arrow-svg" src="assets/arrow.svg" height="87" style="transform: rotate(50deg)"/>-->
+                <ion-button id="open-modal-appointment"(click)="openCalModal()">
                     <ion-icon name="add" slot="icon-only"></ion-icon>
                 </ion-button>
             </ion-buttons>
@@ -50,7 +53,7 @@
             </ion-button>
         </ion-col>
     </ion-row>
-        <calendar
+        <calendar tooltip="The slots blue represent day with at least one appointment"
                 [eventSource]="eventSource"
                 [calendarMode]="calendar.mode"
                 [currentDate]="calendar.currentDate"

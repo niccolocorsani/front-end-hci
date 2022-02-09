@@ -1,6 +1,8 @@
 import {Component, OnInit} from '@angular/core';
 import {OneSignal} from 'onesignal-ngx';
-import {PushNotificationServiceService} from "../../services/push-notification-service/push-notification-service.service";
+import {
+    PushNotificationServiceService
+} from "../../services/push-notification-service/push-notification-service.service";
 import {RequestConsultantServiceService} from "../../services/request/request-consultant-service.service";
 import {RequestClientServiceService} from "../../services/request/request-client-service.service";
 import {ConsultantResponse} from "../../services/response/consultant-response";
@@ -34,8 +36,8 @@ export class PushNotificationComponent implements OnInit {
     updateUserInformation() {
 
         this.showView = true;
-         this.consultant = new ConsultantResponse();
-         this.client = new ConsultantResponse();
+        this.consultant = new ConsultantResponse();
+        this.client = new ConsultantResponse();
 
         if (document.getElementById("header").textContent === "Consultant portal" || document.getElementById("header").textContent === "Client portal") {
             alert("You should log-in before");
@@ -61,8 +63,15 @@ export class PushNotificationComponent implements OnInit {
 
 
     schedulePushNotification() {
+
+
         //TODO da concludere la parte dove specifico che c è anche il sms messaggio in base alla priorità
-        this.pushNotificationService.postNotification(this.client.pushId);
+        let info = document.getElementById("push-notification").textContent.split(" ");
+        let date = info[3] + "." + info[4] + "." + info[5] + "." + info[6] + info[7];
+        alert(date);
+        this.pushNotificationService.postNotification(this.client.pushId, date);
+
+
         alert(this.client.pushId);
     }
 }

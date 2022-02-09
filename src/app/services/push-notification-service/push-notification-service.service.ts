@@ -22,7 +22,7 @@ export class PushNotificationServiceService {
 
     constructor(public http: HttpClient) {}
 
-    public async postNotification(pushId: string) {
+    public async postNotification(pushId: string, date: string) {
 
 
         const requestOptions = {headers: this.header};

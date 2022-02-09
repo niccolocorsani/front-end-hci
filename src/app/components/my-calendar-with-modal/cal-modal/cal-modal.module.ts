@@ -6,15 +6,16 @@ import { CalModalPageRoutingModule } from './cal-modal-routing.module';
 import { CalModalPage } from './cal-modal.page';
 import { NgCalendarModule  } from 'ionic2-calendar';
 
-@NgModule({
-  imports: [
-    CommonModule,
-    FormsModule,
-    IonicModule,
-    CalModalPageRoutingModule,
-    NgCalendarModule
 
-  ],
+@NgModule({
+    imports: [
+        CommonModule,
+        FormsModule,
+        IonicModule,
+        CalModalPageRoutingModule,
+        NgCalendarModule,
+
+    ],
 
   declarations: [CalModalPage]
 })

@@ -12,7 +12,6 @@ import {RegisterComponent} from './components/log-in-or-register-menu/register/r
 import {HttpClient, HttpClientModule} from '@angular/common/http';
 import {TranslateHttpLoader} from '@ngx-translate/http-loader';
 import {TranslateLoader, TranslateModule} from '@ngx-translate/core';
-import {NotificationComponent} from './components/notification/notification.component';
 import {LocalNotifications} from '@ionic-native/local-notifications/ngx';
 import {NgCalendarModule} from 'ionic2-calendar';
 import {CalModalPageModule} from "./components/my-calendar-with-modal/cal-modal/cal-modal.module";
@@ -42,7 +41,6 @@ import {PushNotificationComponent} from "./components/push-notification/push-not
         LogInComponent,
         MyInputComponent,
         RegisterComponent,
-        NotificationComponent,
         MyCalendarComponent,
         ClientComponent,
         BusinessConsultantComponent,
@@ -52,7 +50,8 @@ import {PushNotificationComponent} from "./components/push-notification/push-not
         SocialSharingComponent,
         SocialLogInComponent,
         SocialRegisterComponent,
-        PushNotificationComponent,
+        PushNotificationComponent
+
 
     ],
     entryComponents: [],
@@ -92,6 +91,9 @@ import {PushNotificationComponent} from "./components/push-notification/push-not
         }
     ],
     bootstrap: [AppComponent],
+    exports: [
+        PushNotificationComponent
+    ]
 })
 export class AppModule {
 }

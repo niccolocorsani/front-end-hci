@@ -4,9 +4,6 @@ import {catchError, map} from "rxjs/operators";
 import {BehaviorSubject, throwError} from "rxjs";
 import {ClientResponse} from "../response/client-response";
 import {AppointmentResponse} from "../response/appointment-response";
-import {RequestConsultantServiceService} from "./request-consultant-service.service";
-import {ConsultantResponse} from "../response/consultant-response";
-import {AsyncWaitAnimationService} from "../async-wait-animation/async-wait-animation.service";
 
 @Injectable({
   providedIn: 'root'
@@ -103,7 +100,12 @@ export class RequestClientServiceService {
       let serverResponse = request.responseText;
       myObj = JSON.parse(serverResponse);
     };
-    request.send(null); // The null parameter indicates that no body content is needed for the GET request.
+    try {
+      request.send(null); // The null parameter indicates that no body content is needed for the GET request.
+    }
+    catch(e){
+      alert("Problem to contact back-end")
+    }
     if (request.status === 200) {
       console.log(request.responseText);
     }
@@ -118,7 +120,12 @@ export class RequestClientServiceService {
       let serverResponse = request.responseText;
       myObj = JSON.parse(serverResponse);
     };
-    request.send(null); // The null parameter indicates that no body content is needed for the GET request.
+    try {
+      request.send(null); // The null parameter indicates that no body content is needed for the GET request.
+    }
+    catch (e){
+      alert("Problem to contact back-end")
+    }
     if (request.status === 200) {
       console.log(request.responseText);
     }
@@ -133,7 +140,12 @@ export class RequestClientServiceService {
       let serverResponse = request.responseText;
       myObj = JSON.parse(serverResponse);
     };
-    request.send(null); // The null parameter indicates that no body content is needed for the GET request.
+    try {
+      request.send(null); // The null parameter indicates that no body content is needed for the GET request.
+    }
+    catch(e){
+      alert("Problem to contact back-end")
+    }
     if (request.status === 200) {
       console.log(request.responseText);
     }
@@ -155,12 +167,16 @@ export class RequestClientServiceService {
     if (error.status === 0) {
       // A client-side or network error occurred. Handle it accordingly.
       console.error('An error occurred:', error.error);
+      alert("Problem with back-end")
     } else {
       // The backend returned an unsuccessful response code.
       // The response body may contain clues as to what went wrong.
       console.error(
         `Backend returned code ${error.status}, body was: `, error.error);
+      alert("Problem with back-end")
+
     }
+    alert("Problem with back-end")
     // Return an observable with a user-facing error message.
     return throwError(
       'Something bad happened; please try again later.');
