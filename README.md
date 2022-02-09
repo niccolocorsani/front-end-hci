@@ -52,7 +52,16 @@ The purpose of this project is to experiment with cross-device interaction and d
 # Project Documents
 
 Di seguito il report finale e presentazione, oltre che qualche gif annimata per illustrare alcuni esempi delle possibili interazioni con l'interfaccia grafica. 
+
+Some Client features:
+
 ![123](https://user-images.githubusercontent.com/79635059/153195959-f6761ac7-0aa6-4ac5-a26d-159ac1c8c9b7.gif)
+
+Some Consultant features:
+
+![123](https://user-images.githubusercontent.com/79635059/153251350-3c412134-565f-4d8b-8b87-22009bf377f1.gif)
+
+
 
 
 *Put links here to the **final report** and **presentation** for the project when finished.*
@@ -85,6 +94,7 @@ all'interno del progetto dove è presente il file target "docker-compose.yml".
 \[1\] Schmidt, D., Seifert, J., Rukzio, E. and Gellersen, H., 2012, June. “A cross-device interaction style for mobiles and surfaces.” In: Proceedings of the Designing Interactive Systems Conference (pp. 318-327). ACM.
 
 \[2\] https://kivy.org/#home
+
 ![Uploading Schermata 2022-02-01 alle 11.56.35.png…]()
 
 \[3\] https://zeromq.org/
