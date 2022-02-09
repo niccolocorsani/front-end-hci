@@ -51,7 +51,7 @@ The purpose of this project is to experiment with cross-device interaction and d
 
 # Project Documents
 
-Di seguito il report finale e presentazione, oltre che qualche gif annimata per illustrare alcuni esempi di interazione con l'interfaccia grafica. 
+Di seguito il report finale e presentazione, oltre che qualche gif annimata per illustrare alcuni esempi delle possibili interazioni con l'interfaccia grafica. 
 ![123](https://user-images.githubusercontent.com/79635059/153195959-f6761ac7-0aa6-4ac5-a26d-159ac1c8c9b7.gif)
 
 
