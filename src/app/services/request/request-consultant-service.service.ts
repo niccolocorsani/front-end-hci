@@ -31,18 +31,18 @@ export class RequestConsultantServiceService {
         let consultantAppointments = [];
 
         appointments.forEach(element => {
-            if (element.consultant.id = id) {
+            console.log(element)
+            if (element.consultant.id === id) {
                 consultantAppointments.push(element);
-                console.log("elemento" + element.id);
+                console.log(element);
             }
         })
 
         let events = [];
         console.log(consultant)
-        let i = 0;
 
         consultantAppointments.forEach(element => {
-            let appointment = appointments[i++]
+            let appointment = element;
             let startTime;
             let endTime;
 
@@ -50,7 +50,6 @@ export class RequestConsultantServiceService {
             let splitStartTime = appointment.startTime.split(":");
             let splitEndTime = appointment.endTime.split(":");
 
-            console.log(splitDate, splitStartTime, splitEndTime)
 
             startTime = new Date(
                 splitDate[0],
@@ -76,9 +75,12 @@ export class RequestConsultantServiceService {
                 endTime: endTime,
                 allDay: false,
             });
-            console.log(events)
-            this.events.next(events)
         });
+
+
+        console.log(events)
+
+        this.events.next(events)
     }
 
     public async putConsultant(consultant: ConsultantResponse) {

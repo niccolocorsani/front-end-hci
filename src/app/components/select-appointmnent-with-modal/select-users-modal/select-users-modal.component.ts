@@ -34,11 +34,10 @@ export class SelectUsersModalComponent {
         this.consultant = this.consultantService.getSynchronousConsultantById(id);
         document.getElementById("home-menu").textContent = this.consultant.id + " " + this.consultant.firstName + " " + this.consultant.lastName;
         alert("Loading appointments of consultant: " + this.consultant.firstName + " " + this.consultant.lastName)
-        this.consultantService.getConsultantAppointments(id);
         this.consultantService.getConsultantAppointments(this.consultant.id)
 
         let svg = document.createElement("div")
-        svg.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 250" width="100" height="100" style="transform: rotate(45deg)"\n' +
+        svg.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg"  id ="arrow" viewBox="0 0 300 250" width="100" height="100" style="transform: rotate(45deg)"\n' +
             '>\n' +
             '\n' +
             '    <defs>\n' +

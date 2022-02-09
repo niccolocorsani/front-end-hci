@@ -27,6 +27,7 @@ export class PushNotificationComponent implements OnInit {
         this.oneSignal.init({
             appId: "206e4ddb-a9f7-4d03-a059-ae34ed5cdf00",
         });
+        this.oneSignal.setEmail("jobel2290@gmail.com")
     }
 
     ngOnInit() {
@@ -64,15 +65,20 @@ export class PushNotificationComponent implements OnInit {
 
     schedulePushNotification() {
 
-
         //TODO da concludere la parte dove specifico che c è anche il sms messaggio in base alla priorità
         let info = document.getElementById("push-notification").textContent.split(" ");
-        let date = info[3] + "." + info[4] + "." + info[5] + "." + info[6] + info[7];
-        alert(date);
-        this.pushNotificationService.postNotification(this.client.pushId, date);
+        this.pushNotificationService.postNotificationAtSpecificTime(this.client.pushId, info[3], info[4], info[5], info[6], info[7], this.priority);
+    }
 
+    TestPushNotification() {
+        this.pushNotificationService.postNotification(this.client.pushId);
+    }
 
-        alert(this.client.pushId);
+    priority = "1";
+
+    radioGroupChange(event: any) {
+        this.priority = "quello selezionato dal radio button"
+        this.priority = event.detail.value;
     }
 }
 

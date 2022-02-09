@@ -44,15 +44,14 @@ export class RequestClientServiceService {
     let appointments = this.getSynchronousAllAppointments();
     let clientAppointments = [];
     appointments.forEach(element => {
-      if (element.client.id = id) {
+      if (element.client.id === id) {
         clientAppointments.push(element);
       }
     })
 
     let events = [];
-    let i = 0;
     clientAppointments.forEach(element => {
-      let appointment = appointments[i++]
+      let appointment = element;
       let startTime;
       let endTime;
 
@@ -86,9 +85,11 @@ export class RequestClientServiceService {
         endTime: endTime,
         allDay: false,
       });
-      console.log("events " + events)
-      this.events.next(events)
+
     });
+
+    console.log("events " + events)
+    this.events.next(events)
   }
 
   public getSynchronousAllAppointments(): any {

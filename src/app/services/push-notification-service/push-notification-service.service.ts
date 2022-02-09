@@ -20,22 +20,42 @@ export class PushNotificationServiceService {
         error: (err: any) => alert('Observer got an error: ' + err + '..'),
     };
 
-    constructor(public http: HttpClient) {}
+    constructor(public http: HttpClient) {
+    }
 
-    public async postNotification(pushId: string, date: string) {
 
+    public async postNotificationAtSpecificTime(pushId: string, year: string, month: string, day: string, hour: string, minute: string, priority: string) {
 
         const requestOptions = {headers: this.header};
 
-    alert(pushId)
+        if (priority === "1") {
+            this.http.post<Object>(this.url, {
+                "app_id": "206e4ddb-a9f7-4d03-a059-ae34ed5cdf00",
+                "include_player_ids": [pushId],
+                "contents": {
+                    "en": "Sampple Push Message"
+                },
+                "send_after": year + "-" + month + "-" + day + " " + hour + ":" + minute + ":00 GMT+0100"  //// For italy time
+            }, requestOptions)
+                .subscribe(this.myObserver); ////sembra che senza sto subscribe non sia in grado di fare la richiesta
+        }
+    }
+
+
+    public async postNotification(pushId: string){
+
+        const requestOptions = {headers: this.header};
+
+        alert(pushId)
 
         this.http.post<Object>(this.url, {
             "app_id": "206e4ddb-a9f7-4d03-a059-ae34ed5cdf00",
             "include_player_ids": [pushId],
             "contents": {
                 "en": "Sampple Push Message"
-            }
+            },
         }, requestOptions)
-            .subscribe(this.myObserver); ////sembra che senza sto subscribe non sia in grado di fare la richiesta
+            .subscribe(this.myObserver);
     }
+
 }
