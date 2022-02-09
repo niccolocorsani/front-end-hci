@@ -50,6 +50,11 @@ After a final phase of evaluation, we will decide whether to release this system
 The purpose of this project is to experiment with cross-device interaction and determine how feasible it can be in practice. Our goal is to consider implementation strategies and experiment with at least one use-case scenario. If successful, the prototype software components developed in this project could foster cross-device interaction in real application in the future.
 
 # Project Documents
+
+Di seguito il report finale e presentazione, oltre che qualche gif annimata per illustrare alcuni esempi di interazione con l'interfaccia grafica. 
+![prova](https://user-images.githubusercontent.com/79635059/153191868-83030127-9624-4543-bdb9-a1cbaf2515bf.gif)
+
+
 *Put links here to the **final report** and **presentation** for the project when finished.*
 
 # Instructuions to execute system
