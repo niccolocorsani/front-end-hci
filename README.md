@@ -52,12 +52,35 @@ The purpose of this project is to experiment with cross-device interaction and d
 # Project Documents
 
 Di seguito il report finale e presentazione, oltre che qualche gif annimata per illustrare alcuni esempi delle possibili interazioni con l'interfaccia grafica. 
+
+Some Client features:
+
+
+
 ![123](https://user-images.githubusercontent.com/79635059/153195959-f6761ac7-0aa6-4ac5-a26d-159ac1c8c9b7.gif)
+
+
+Some Consultant features:
+
+
+
+![123](https://user-images.githubusercontent.com/79635059/153251350-3c412134-565f-4d8b-8b87-22009bf377f1.gif)
+
+
+Flow to schedule a notification:
+
+
+
+![prova](https://user-images.githubusercontent.com/79635059/153254230-93f51ab0-f132-4d5a-91f5-7b6a259f39e1.gif)
+
 
 
 *Put links here to the **final report** and **presentation** for the project when finished.*
 
 # Instructuions to execute system
+
+
+
 
 Per eseguire il Front-end fare il clone del progetto e successivamente eseguire il comando:
 
@@ -78,6 +101,8 @@ docker-compose up
 
 all'interno del progetto dove è presente il file target "docker-compose.yml".
 
+Ultima nota riguarda le push-notification: infatti è necessario, affinchè sia possibile ricevere tali notifiche, specificare nel sistema operativo il consenso a ricevere notifiche push. In particolare, sarà necessario dare il consenso all'applicazione Chrome.
+
 
 # Bibliography
 *Be sure to include any relevant links to tools or bibliographic references to the literature.*
@@ -85,6 +110,7 @@ all'interno del progetto dove è presente il file target "docker-compose.yml".
 \[1\] Schmidt, D., Seifert, J., Rukzio, E. and Gellersen, H., 2012, June. “A cross-device interaction style for mobiles and surfaces.” In: Proceedings of the Designing Interactive Systems Conference (pp. 318-327). ACM.
 
 \[2\] https://kivy.org/#home
+
 ![Uploading Schermata 2022-02-01 alle 11.56.35.png…]()
 
 \[3\] https://zeromq.org/
