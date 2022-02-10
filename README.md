@@ -1,13 +1,3 @@
-Eseguire il comando
-
-npm i --legacy-peer-deps
-
-Eseguire il comando
-
-ionic serve
-
-gitignore : https://theapache64.github.io/git-do-not-ignore/ for ignore file
-
 
 
 
@@ -34,20 +24,6 @@ The main tools and techniques we will employ are:
 
 ...
 
-# Expected Outcomes
-*Here you should itemize the specific project outcomes.*
-
-We expect the following outcomes from this project:
-- A server component integrable in Kivy GUI applications. This component will serve as the main point of entry for mobile phone interactions with the table.
-- An Android application supporting detection of interaction events. This application will read accelerometer (and possibly compass and gyroscope) data and stream it to the interaction server.
-- An application demonstrating touch detection and phone association. This GUI application will demonstrate visually how smartphone interactions are detected and associated with a specific phone.
-An application demonstrating bi-directional file transfer. This demonstrator will show-off a use case for cross-device interactions.
-
-After a final phase of evaluation, we will decide whether to release this system on Github as part of the Kivy Garden.
-
-# Summary
-*Finally, here give a summary of the project with some indication of impact.*
-The purpose of this project is to experiment with cross-device interaction and determine how feasible it can be in practice. Our goal is to consider implementation strategies and experiment with at least one use-case scenario. If successful, the prototype software components developed in this project could foster cross-device interaction in real application in the future.
 
 # Project Documents
 
@@ -105,14 +81,14 @@ Ultima nota riguarda le push-notification: infatti è necessario, affinchè sia 
 
 
 # Bibliography
-*Be sure to include any relevant links to tools or bibliographic references to the literature.*
 
-\[1\] Schmidt, D., Seifert, J., Rukzio, E. and Gellersen, H., 2012, June. “A cross-device interaction style for mobiles and surfaces.” In: Proceedings of the Designing Interactive Systems Conference (pp. 318-327). ACM.
+1.	Geolocation: https://angular-maps.com/
+2.	Rest API: https://angular.io/guide/http, https://medium.com/letsboot/translate-angular-4-apps-with-ngx-translate-83302fb6c10d
+3.	Push-Notification service OneSignal: https://onesignal.com/blog/how-to-integrate-push-notifications-in-angular/
+4.	Social Authentication: https://www.npmjs.com/package/angularx-social-login
+5.	Social sharing content: https://stackblitz.com/edit/social-sharing?file=src%2Fapp%2Fshare-button%2Fshare-button.component.html
+6.	Tooltip: https://github.com/zyra/ionic-tooltips
+![image](https://user-images.githubusercontent.com/79635059/153487752-cb6de48a-38b1-4c36-9535-bf79cd9de768.png)
 
-\[2\] https://kivy.org/#home
-
-![Uploading Schermata 2022-02-01 alle 11.56.35.png…]()
-
-\[3\] https://zeromq.org/
 
 
