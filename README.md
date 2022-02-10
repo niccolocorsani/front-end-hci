@@ -25,7 +25,7 @@ The main tools and techniques we will employ are:
 ...
 
 
-# Project Documents
+# Simulation of the project
 
 Below is the final report and presentation, as well as some animated gifs to illustrate some examples of possible interactions with the GUI.
 Some Client features:
@@ -82,6 +82,11 @@ of this repository
 
 Last note about push-notifications: in fact it is necessary, in order to receive these notifications, to specify in the operating system the consent to receive push notifications. In particular, it will be necessary to give consent to the Chrome application.
 
+# Project Documents
+
+Final report: [Client-Consultant-App-Bagdanov.pdf](https://github.com/niccolocorsani/front-end-hci/files/8044499/Client-Consultant-App-Bagdanov.pdf)
+
+
 
 
 
@@ -93,6 +98,9 @@ Last note about push-notifications: in fact it is necessary, in order to receive
 4.	Social Authentication:  https://www.npmjs.com/package/angularx-social-login
 5.	Social sharing content: https://stackblitz.com/edit/social-sharing?file=src%2Fapp%2Fshare-button%2Fshare-button.component.html
 6.	Tooltip: https://github.com/zyra/ionic-tooltips
+
+
+
 
 
 
