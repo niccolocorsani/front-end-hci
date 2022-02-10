@@ -79,6 +79,11 @@ Flow to schedule a notification:
 
 # Instructuions to execute system
 
+Il computer su cui è stato testato il sistema è un MacBook Pro Retina 2015, la versione di angular è la seguente:
+
+<img width="467" alt="Schermata 2022-02-10 alle 13 51 51" src="https://user-images.githubusercontent.com/79635059/153412161-20f71c87-ce7e-424e-9593-2ee1c5781282.png">
+
+
 Per eseguire il Front-end fare il clone del progetto e successivamente eseguire il comando:
 
 ```
