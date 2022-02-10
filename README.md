@@ -103,6 +103,8 @@ docker-compose up
 
 all'interno del progetto dove è presente il file target "docker-compose.yml".
 
+Ultima nota riguarda le push-notification: infatti è necessario, affinchè sia possibile ricevere tali notifiche, specificare nel sistema operativo il consenso a ricevere notifiche push. In particolare, sarà necessario dare il consenso all'applicazione Chrome.
+
 
 # Bibliography
 *Be sure to include any relevant links to tools or bibliographic references to the literature.*
