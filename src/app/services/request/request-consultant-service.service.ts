@@ -31,15 +31,12 @@ export class RequestConsultantServiceService {
         let consultantAppointments = [];
 
         appointments.forEach(element => {
-            console.log(element)
             if (element.consultant.id === id) {
                 consultantAppointments.push(element);
-                console.log(element);
             }
         })
 
         let events = [];
-        console.log(consultant)
 
         consultantAppointments.forEach(element => {
             let appointment = element;
@@ -78,7 +75,6 @@ export class RequestConsultantServiceService {
         });
 
 
-        console.log(events)
 
         this.events.next(events)
     }
@@ -88,12 +84,10 @@ export class RequestConsultantServiceService {
         let positionInformation = document.getElementById("consultant_city_street_cap").textContent;
 
         consultant.lat = Number(latlng.split(",")[0]);
-        console.log("lat: " + consultant.lat)
         consultant.lng = Number(latlng.split(",")[1]);
         consultant.city = positionInformation.split(",")[0]
         consultant.street = positionInformation.split(",")[1]
         consultant.cap = positionInformation.split(",")[2]
-        console.log(consultant.cap)
 
 
         this.http.put<ConsultantResponse>(this.url + '/consultant/putConsultant', consultant).pipe(
@@ -162,7 +156,6 @@ export class RequestConsultantServiceService {
         }
         catch(e){
             alert("Problem to contact back-end")
-            console.log("Catch error")
         }
         if (request.status === 200) {
             console.log(request.responseText);
@@ -175,7 +168,6 @@ export class RequestConsultantServiceService {
         this.getSynchronousConsultants().forEach(element => {
             if (element.userName === userName) {
                 consultant = element;
-                console.log("found user : " + element.firstName);
             }
         })
         return consultant;

@@ -22,6 +22,7 @@ export class PushNotificationComponent implements OnInit {
     consultant;
     client;
     showView = false;
+    priority = "1";
 
     constructor(private oneSignal: OneSignal, private pushNotificationService: PushNotificationServiceService, private consultantService: RequestConsultantServiceService, private clientService: RequestClientServiceService) {
         this.oneSignal.init({
@@ -43,18 +44,15 @@ export class PushNotificationComponent implements OnInit {
         if (document.getElementById("header").textContent === "Consultant portal" || document.getElementById("header").textContent === "Client portal") {
             alert("You should log-in before");
         } else this.oneSignal.getUserId((userId) => {
-            console.log('player_id of the subscribed user is : ' + userId);
             if (document.getElementById("header").textContent.includes("Consultant")) {
                 this.consultant = this.consultantService.getSynchronousConsultantByUserName(document.getElementById("header").textContent.split(" ")[4]);
                 this.consultant.pushId = userId;
-                console.log("push notification: " + this.consultant)
                 this.consultantService.putConsultant(this.consultant);
 
             }
             if (document.getElementById("header").textContent.includes("Client")) {
                 this.client = this.clientService.getSynchronousClientByUserName(document.getElementById("header").textContent.split(" ")[4]);
                 this.client.pushId = userId;
-                console.log("push notification: " + this.client)
                 this.clientService.putClient(this.client);
             }
             this.userId = userId;
@@ -64,20 +62,12 @@ export class PushNotificationComponent implements OnInit {
 
 
     schedulePushNotification() {
-
-        //TODO da concludere la parte dove specifico che c è anche il sms messaggio in base alla priorità
         let info = document.getElementById("push-notification").textContent.split(" ");
-        this.pushNotificationService.postNotificationAtSpecificTime(this.client.pushId, info[3], info[4], info[5], info[6], info[7], this.priority);
+        this.pushNotificationService.postNotificationWithPriority(this.client.pushId, info[3], info[4], info[5], info[6], info[7], this.priority);
     }
 
-    TestPushNotification() {
-        this.pushNotificationService.postNotification(this.client.pushId);
-    }
-
-    priority = "1";
 
     radioGroupChange(event: any) {
-        this.priority = "quello selezionato dal radio button"
         this.priority = event.detail.value;
     }
 }

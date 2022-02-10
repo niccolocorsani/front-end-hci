@@ -37,7 +37,6 @@ export class LogInComponent {
     }
     else   {
       for (this.element of this.clientService.getSynchronousClients()) {
-        console.log(this.element)
         if (this.element.userName === this.childInput) {
           alert("User " + this.childInput + " found..");
           document.getElementById("header").textContent = document.getElementById("header").textContent + " logged user: "+this.childInput;

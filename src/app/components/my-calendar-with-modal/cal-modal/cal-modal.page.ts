@@ -43,14 +43,12 @@ export class CalModalPage implements AfterViewInit {
 
         var inputValueStart;
         inputValueStart = (<HTMLInputElement>document.getElementById('start')).value;
-        console.log(inputValueStart)
         let hourStart = inputValueStart.split(':')[0];
         let minuteStart = inputValueStart.split(':')[1];
         this.event.startTime.setHours(hourStart);
         this.event.startTime.setMinutes(minuteStart);
         var inputValueEnd;
         inputValueEnd = (<HTMLInputElement>document.getElementById('end')).value;
-        console.log(inputValueEnd)
         let hourEnd = inputValueEnd.split(':')[0]
         let minuteEnd = inputValueEnd.split(':')[1]
         this.event.endTime.setHours(hourEnd);
@@ -75,14 +73,12 @@ export class CalModalPage implements AfterViewInit {
         let day = this.event.startTime.toString().split(" ")[2];
         let year = this.event.startTime.toString().split(" ")[3];
 
-        console.log("date" + year + "-" + month + "-" + day)
 
         let userName = document.getElementById("header").textContent.split(" ")[4];
         let client = this.clientService.getSynchronousClientByUserName(userName);
         let consultantId = document.getElementById("home-menu").textContent.split(" ")[0];
         let consultant = this.consultantService.getSynchronousConsultantById(consultantId);
 
-        console.log("consultantId " + consultantId)
 
         this.clientService.updateAppoitnment({
             "date": year + "-" + month + "-" + day,

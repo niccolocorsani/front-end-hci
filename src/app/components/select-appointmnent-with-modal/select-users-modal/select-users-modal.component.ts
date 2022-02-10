@@ -49,7 +49,7 @@ export class SelectUsersModalComponent {
             '          fill="none" stroke="royalblue" stroke-width="14"\n' +
             '          stroke-linejoin="round" marker-end="none">\n' +
             '        <animate attributeType="XML" attributeName="d"\n' +
-            '                 begin="0s" dur="15s" fill="remove"\n' +
+            '                 begin="0s" dur="10s" fill="remove"\n' +
             '                 keyTimes="0;0.18;0.18;0.27;0.27;0.45;0.55;0.73;0.73;0.82;0.82;1"\n' +
             '                 values="M 47,213 47,213 47,213 47,213;\n' +
             '                     M 47,213 47,213 47,213 120,100;\n' +
@@ -64,7 +64,7 @@ export class SelectUsersModalComponent {
             '                     M 47,213 47,213 47,213 120,100;\n' +
             '                     M 47,213 47,213 47,213 47,213"/>\n' +
             '        <set attributeType="CSS" attributeName="marker-end"\n' +
-            '             begin="0s" dur="15s" to="url(#tri)"/>\n' +
+            '             begin="0s" dur="10s" to="url(#tri)"/>\n' +
             '    </path>\n' +
             '</svg>'
 

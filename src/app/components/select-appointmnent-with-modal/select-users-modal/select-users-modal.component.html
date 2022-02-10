@@ -10,7 +10,7 @@
                 <div style="width: 60%">
                     <!--attraverso la specifica di width: 50%, verrà occupato meta dello spazio relativo allo spazio di ion-col-->
                     <br/>
-                    <ion-item button="true" (click)="retriveUsers()">Click to show consultants available</ion-item>
+                    <ion-item button="true" (click)="retriveUsers()">Show available consultants </ion-item>
                     <div *ngIf="showUser==true">
                         <div *ngFor="let item of listElements">
                             <ion-card>

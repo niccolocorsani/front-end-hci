@@ -55,7 +55,6 @@ export class MyCalendarComponent implements OnInit {
 
 
     await modal.present();
-    //// Questo è triggherato dopo che viene confermato l'evento nella ui di cal-modal
     modal.onDidDismiss().then((result) => {
 
       if (result.data && result.data.event) {
@@ -118,20 +117,16 @@ export class MyCalendarComponent implements OnInit {
   getMyAppointments() {
 
     let userName = document.getElementById("header").textContent.split(" ")[4]
-    console.log("ooooo")
 
     if (document.getElementById("header").textContent.includes("Client")) {
 
       if (userName != null) {
         let client = this.clientService.getSynchronousClientByUserName(userName);
         this.clientService.getClientAppointments(client.id)
-        console.log("ooooo")
       } else alert("You should log-in to retrive your appointments")
     } else {
       if (userName != null) {
         let consultant = this.consultantService.getSynchronousConsultantByUserName(userName);
-        console.log("ooooo")
-        console.log(userName);
         this.consultantService.getConsultantAppointments(consultant.id)
       } else alert("You should log-in to retrive your appointments")
     }

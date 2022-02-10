@@ -32,14 +32,12 @@ export class RegisterComponent {
 
         if (document.getElementById("header").textContent.includes("Client")) {
             let client = new ClientResponse();
-            console.log(client);
             client.userName = this.userName;
             client.email = this.eMail;
             client.description = this.description;
             this.clientService.putClient(client);
         } else {
             let consultant = new ConsultantResponse();
-            console.log(consultant);
             consultant.userName = this.userName
             consultant.email = this.eMail;
             consultant.description = this.description;

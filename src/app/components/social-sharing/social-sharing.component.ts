@@ -33,12 +33,8 @@ export class SocialSharingComponent  {
 
     public share(event: any) {
         let value = event.currentTarget.getAttribute('value');
-        console.log(value)
-        ////// ogni tanto ritorna null se su event faccio event.target,
-        // ma si risolve con event.currentTarget
         this.shareUrl = "https://www.google.it/"
         this.createNavigationUrl(value);
-        console.log(event.target.attributes.type)
         return window.open(this.navUrl, "_blank");
     }
 }

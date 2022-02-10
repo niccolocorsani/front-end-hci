@@ -10,7 +10,7 @@
         </div>
     </ion-card>
     <ion-content>
-        <ion-item button="true" style="padding-top: 0px; width: 200px" tooltip="Home button, click to clear view" positionV="bottom" arrow>
+        <ion-item button="true" style="padding-top: 0px; width: 200px" tooltip="Home button,to clear the view" positionV="bottom" arrow>
             <ion-icon *ngIf="!openComponentsService.openDialogMenu" (click)="openMenu()"
                       name="home"></ion-icon>
             <ion-icon *ngIf="openComponentsService.openDialogMenu" (click)="openMenu()"
@@ -40,7 +40,6 @@
                     <app-my-calendar *ngIf="openComponentsService.openDialogCalendar"></app-my-calendar>
                 </ion-col>
                 <ion-col size="12" size-sm>
-                    <app-push-notification *ngIf="openComponentsService.openDialogCalendar"></app-push-notification>
                     <app-geolocation *ngIf="openComponentsService.openDialogMaps"></app-geolocation>
                 </ion-col>
             </ion-row>

@@ -28,7 +28,6 @@ export class SocialRegisterComponent implements OnInit {
   ngOnInit() {
     this.authService.authState.subscribe((user) => {
       this.user = user ;
-      console.log(this.user)
     });
   }
 
@@ -50,11 +49,8 @@ export class SocialRegisterComponent implements OnInit {
    pushUserToBackEnd() {
     if (document.getElementById("header").textContent.includes("Client")) {
       this.client.firstName = this.user.name.split(" ")[0];
-      console.log(this.client.firstName)
       this.client.lastName = this.user.name.split(" ")[1];
-      console.log(this.client.lastName)
       this.client.userName = this.client.firstName + "_" + this.client.lastName;
-      console.log(this.client.userName)
       this.client.email = this.user.email;
       this.clientService.putClient(this.client);
       alert('aggiunto utente: ' + this.client.userName);
@@ -62,11 +58,8 @@ export class SocialRegisterComponent implements OnInit {
     else {
 
       this.consultant.firstName = this.user.name.split(" ")[0];
-      console.log(this.consultant.firstName)
       this.consultant.lastName = this.user.name.split(" ")[1];
-      console.log(this.consultant.lastName)
       this.consultant.userName = this.consultant.firstName + "_" + this.consultant.lastName;
-      console.log(this.consultant.userName)
       this.consultant.email = this.user.email;
       this.consultantService.putConsultant(this.consultant);
 

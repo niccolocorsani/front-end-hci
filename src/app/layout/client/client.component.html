@@ -11,7 +11,7 @@
         </div>
     </ion-card>
     <ion-content>
-        <ion-item button="true" style="padding-top: 0px; width: 200px" tooltip="Home button, click to clear view" positionV="bottom" arrow>
+        <ion-item button="true" style="padding-top: 0px; width: 200px" tooltip="Home button clear the view" positionV="bottom" arrow>
             <ion-icon *ngIf="!openComponentsService.openDialogMenu" (click)="openMenu()"
                       name="home"></ion-icon>
             <ion-icon *ngIf="openComponentsService.openDialogMenu" (click)="openMenu()"
@@ -50,10 +50,6 @@
                 <ion-col size="12" size-sm>
                     <app-push-notification *ngIf="openComponentsService.openDialogCalendar"></app-push-notification>
                     <app-geolocation *ngIf="openComponentsService.openDialogVarShowUsers"></app-geolocation>
-                    <!--con size = 0 non fa il display di quest'ultima colonna-->
-                    <!--<img src="http://www.cflc.eu/wp-content/uploads/2018/12/commercialista-impresa-1080x675.jpg">-->
-                    <!--  Qui sarebbe interssante metterci una cosa fatta con figma, design bellino dove viene spiegata l'app
-                    -->
                 </ion-col>
             </ion-row>
             <img id="arrow-svg" src="assets/arrow.svg" height="87" style="transform: rotate(180deg);"/>

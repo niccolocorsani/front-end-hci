@@ -55,7 +55,6 @@ export class GeolocationComponent implements OnInit {
             navigator.geolocation.getCurrentPosition(position => {
                 this.lat = position.coords.latitude;
                 this.lng = position.coords.longitude;
-                console.log(this.lat + ' ' + this.lng)
 
             }, null, this.options);
             this.getAddressFromCoordinates();
@@ -70,9 +69,7 @@ export class GeolocationComponent implements OnInit {
 
     getAddressFromCoordinates() {
 
-        //// da finire, che non viene usato da nessuno
 
-        console.log('Finding Address');
         if (navigator.geolocation) {
             let geocoder = new google.maps.Geocoder();
             let latlng = new google.maps.LatLng(this.lat, this.lng);
@@ -87,7 +84,7 @@ export class GeolocationComponent implements OnInit {
                         this.city = this.address[2].long_name;
                         this.street = this.address[1].long_name;
                         this.cap = this.address[7].long_name;
-                        console.log(this.address)
+                        alert("Your position is: "+this.city+ " "+this.street+ " "+this.cap)
 
                     } else {
                         alert('No address available!');
@@ -101,7 +98,6 @@ export class GeolocationComponent implements OnInit {
     checkAllConsultant() {
         this.checkConsultantOnMap = true;
         this.openMap = true;
-
     }
 
 

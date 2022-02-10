@@ -1,6 +1,6 @@
 import {Injectable} from '@angular/core';
 import {HttpClient, HttpErrorResponse} from "@angular/common/http";
-import {catchError, map} from "rxjs/operators";
+import {catchError} from "rxjs/operators";
 import {BehaviorSubject, throwError} from "rxjs";
 import {ClientResponse} from "../response/client-response";
 import {AppointmentResponse} from "../response/appointment-response";
@@ -29,7 +29,7 @@ export class RequestClientServiceService {
   public async putClient(client: ClientResponse) {
     this.http.put<ClientResponse>(this.url + '/client/putClient', client).pipe(
       catchError(this.handleError)
-    ).subscribe(this.myObserver); ////sembra che senza sto subscribe non sia in grado di fare la richiesta
+    ).subscribe(this.myObserver);
   }
 
 
@@ -59,7 +59,6 @@ export class RequestClientServiceService {
       let splitStartTime = appointment.startTime.split(":");
       let splitEndTime = appointment.endTime.split(":");
 
-      console.log(splitDate, splitStartTime, splitEndTime)
 
       startTime = new Date(
         splitDate[0],
@@ -88,7 +87,6 @@ export class RequestClientServiceService {
 
     });
 
-    console.log("events " + events)
     this.events.next(events)
   }
 
@@ -108,7 +106,6 @@ export class RequestClientServiceService {
       alert("Problem to contact back-end")
     }
     if (request.status === 200) {
-      console.log(request.responseText);
     }
     return myObj;
   }
@@ -128,7 +125,6 @@ export class RequestClientServiceService {
       alert("Problem to contact back-end")
     }
     if (request.status === 200) {
-      console.log(request.responseText);
     }
     return myObj;
   }
@@ -148,7 +144,6 @@ export class RequestClientServiceService {
       alert("Problem to contact back-end")
     }
     if (request.status === 200) {
-      console.log(request.responseText);
     }
     return myObj;
   }
@@ -158,7 +153,6 @@ export class RequestClientServiceService {
     this.getSynchronousClients().forEach(element => {
       if (element.userName === userName) {
         client = element;
-        console.log("found user : " + element.firstName);
       }
     })
     return client;
