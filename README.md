@@ -82,7 +82,6 @@ of this repository
 
 Last note about push-notifications: in fact it is necessary, in order to receive these notifications, to specify in the operating system the consent to receive push notifications. In particular, it will be necessary to give consent to the Chrome application.
 
-Translated with www.DeepL.com/Translator (free version)
 
 
 
