@@ -27,8 +27,7 @@ The main tools and techniques we will employ are:
 
 # Project Documents
 
-Di seguito il report finale e presentazione, oltre che qualche gif annimata per illustrare alcuni esempi delle possibili interazioni con l'interfaccia grafica. 
-
+Below is the final report and presentation, as well as some animated gifs to illustrate some examples of possible interactions with the GUI.
 Some Client features:
 
 
@@ -58,31 +57,32 @@ Flow to schedule a notification:
 
 
 
-Per eseguire il Front-end fare il clone del progetto e successivamente eseguire il comando:
+To run the Front-end do the project clone and then run the command:
 
 ```
  npm i --legacy-peer-deps
  ```
- per installare le dipendenze.
+ to install the dependencies.
 
-Dal momento che vi è un riferimento alle API di Google e che il dominio registrato in google-dev-console è http://localhost:8100, risulta importante collegarsi a tale indirizzo facendo attenzione che la porta sia effettivamente 8100. Con il comando 
+Since there is a reference to the Google API and the domain registered in google-dev-console is http://localhost:8100, it is important to connect to that address making sure that the port is actually 8100. With the command 
 ```
 ionic serve
 ```
-la connessione sarà di default orientata a tale porta.
-Per ottenere i servizi presenti nel back-end è necessario inizializzare due container attraverso Docker. I due container (Spring-app e MySQL engine) possono essere inizializzati eseguendo il comando da terminale: 
+the connection will be oriented to that port by default.
+To get the services in the back-end it is necessary to initialize two containers through Docker. The two containers (Spring-app and MySQL engine) can be initialized by running the command from terminal: 
 ```
 docker-compose up
 ```
 
-all'interno del progetto dove è presente il file target "docker-compose.yml".
+inside the project where there is the target file "docker-compose.yml".
 
-Come accennato in precendenza il progetto è stato sviluppato parzialmente anche come app Android, per fare ciò vedere lo script "ionic-to-andorid.sh".
-Vi è la possibilità di poter scaricare direttamente dallo smartphone l'apk. Tale apk si trova al percorso "front-end-hci/android/app/build/outputs/apk/release/"
-di questo repository
+As mentioned earlier the project has been partially developed as an Android app, to do this see the script "ionic-to-andorid.sh".
+There is a possibility to download the apk directly from the smartphone. Such apk can be found at the path "front-end-hci/android/app/build/outputs/apk/release/"
+of this repository
 
-Ultima nota riguarda le push-notification: infatti è necessario, affinchè sia possibile ricevere tali notifiche, specificare nel sistema operativo il consenso a ricevere notifiche push. In particolare, sarà necessario dare il consenso all'applicazione Chrome.
+Last note about push-notifications: in fact it is necessary, in order to receive these notifications, to specify in the operating system the consent to receive push notifications. In particular, it will be necessary to give consent to the Chrome application.
 
+Translated with www.DeepL.com/Translator (free version)
 
 
 
