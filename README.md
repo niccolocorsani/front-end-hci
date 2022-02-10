@@ -77,7 +77,9 @@ docker-compose up
 
 all'interno del progetto dove è presente il file target "docker-compose.yml".
 
-COme accennato in precendenza il progetto è stato sviluppato parzialmente anche come app Android, per fare ciò vedere lo script "ionic-to-andorid.sh"
+Come accennato in precendenza il progetto è stato sviluppato parzialmente anche come app Android, per fare ciò vedere lo script "ionic-to-andorid.sh".
+Vi è la possibilità di poter scaricare direttamente dallo smartphone l'apk. Tale apk si trova al percorso "front-end-hci/android/app/build/outputs/apk/release/"
+di questo repository
 
 Ultima nota riguarda le push-notification: infatti è necessario, affinchè sia possibile ricevere tali notifiche, specificare nel sistema operativo il consenso a ricevere notifiche push. In particolare, sarà necessario dare il consenso all'applicazione Chrome.
 
