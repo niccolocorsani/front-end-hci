@@ -85,10 +85,9 @@ Ultima nota riguarda le push-notification: infatti è necessario, affinchè sia 
 1.	Geolocation: https://angular-maps.com/
 2.	Rest API: https://angular.io/guide/http, https://medium.com/letsboot/translate-angular-4-apps-with-ngx-translate-83302fb6c10d
 3.	Push-Notification service OneSignal: https://onesignal.com/blog/how-to-integrate-push-notifications-in-angular/
-4.	Social Authentication: https://www.npmjs.com/package/angularx-social-login
+4.	Social Authentication:  https://www.npmjs.com/package/angularx-social-login
 5.	Social sharing content: https://stackblitz.com/edit/social-sharing?file=src%2Fapp%2Fshare-button%2Fshare-button.component.html
 6.	Tooltip: https://github.com/zyra/ionic-tooltips
-![image](https://user-images.githubusercontent.com/79635059/153487752-cb6de48a-38b1-4c36-9535-bf79cd9de768.png)
 
 
 
