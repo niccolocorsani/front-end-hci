@@ -52,7 +52,7 @@ Flow to schedule a notification:
 
 *Put links here to the **final report** and **presentation** for the project when finished.*
 
-# Instructuions to execute system
+# Instructions to execute system
 
 
 
