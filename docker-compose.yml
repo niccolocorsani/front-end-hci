@@ -4,7 +4,7 @@ version: '3.3'
 services:
 
   my-sql-db:
-    platform: linux/x86_64
+   
 
 
     image: mysql:latest
@@ -23,7 +23,7 @@ services:
 
   customerservice:
 
-    platform: linux/x86_64
+    
 
     image: niccocorsa/spring-back-end #custome-service
     #container_name: customer-service-app
