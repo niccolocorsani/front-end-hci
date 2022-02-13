@@ -27,7 +27,7 @@ The main tools and techniques we will employ are:
 
 # Simulation of the project
 
-Below is the final report and presentation, as well as some animated gifs to illustrate some examples of possible interactions with the GUI.
+Below is the final report, as well as some animated gifs to illustrate some examples of possible interactions with the GUI.
 Some Client features:
 
 
