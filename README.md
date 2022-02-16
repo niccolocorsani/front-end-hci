@@ -83,7 +83,7 @@ Last note about push-notifications: in fact it is necessary, in order to receive
 
 # Project Documents
 
-Final report: [Client-Consultant-App-Bagdanov.pdf](https://github.com/niccolocorsani/front-end-hci/files/8044499/Client-Consultant-App-Bagdanov.pdf)
+Final report: [report.pdf](https://github.com/niccolocorsani/front-end-hci/files/8044499/Client-Consultant-App-Bagdanov.pdf)
 
 
 
