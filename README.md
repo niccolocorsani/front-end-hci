@@ -59,7 +59,7 @@ Flow to schedule a notification:
 To run the Front-end do the project clone and then run the command:
 
 ```
- npm i --legacy-peer-deps
+ npm i 
  ```
  to install the dependencies.
 
